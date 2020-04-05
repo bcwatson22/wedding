@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: unset;
+  font-size: unset;
+  
+}
+
+a,
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}

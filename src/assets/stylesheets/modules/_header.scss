@@ -1,0 +1,13 @@
+header {
+  background: var(--green-dark);
+  font-weight: 600;
+
+  * {
+    color: var(--white);
+    margin: 0;
+  }
+
+  .inner {
+    padding: 2rem 3rem;
+  }
+}
