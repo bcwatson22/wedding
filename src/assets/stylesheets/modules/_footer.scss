@@ -1,14 +1,13 @@
-picture,
-img {
-  display: block;
-}
+footer {
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-picture {
-  overflow: hidden;
-}
-
-img {
-  width: 100%;
-  max-width: 100%;
-  object-fit: cover;
+  .logo {
+    width: 11.5rem;
+    margin-left: auto;
+  }
 }

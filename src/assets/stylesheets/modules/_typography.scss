@@ -18,14 +18,18 @@ h1,
 h2,
 h3,
 p {
-  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 h1,
 h2,
 h3 {
-  font-weight: 200;
+  font-weight: 400;
   font-family: var(--slab);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 h1 {
@@ -38,4 +42,8 @@ h2 {
 
 h3 {
   font-size: 1.8rem;
+}
+
+small {
+  font-size: 1.2rem;
 }

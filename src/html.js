@@ -1,5 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
+
+// import 'lazysizes';
 
 export default function HTML(props) {
   return (
@@ -21,7 +23,7 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <script src="lazysizes.min.js" async></script>
+        // <script src="lazysizes.min.js" async></script>
       </body>
     </html>
   )
@@ -33,5 +35,5 @@ HTML.propTypes = {
   bodyAttributes: PropTypes.object,
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
+  postBodyComponents: PropTypes.array
 }

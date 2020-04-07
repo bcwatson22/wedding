@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Container = ({children}) => {
+const Background = ({children}) => {
   return (
     <div className="inner">
       { children }
@@ -9,8 +9,8 @@ const Container = ({children}) => {
   );
 };
 
-Container.propTypes = {
+Background.propTypes = {
   children: PropTypes.node
 };
 
-export default Container;
+export default Background;
