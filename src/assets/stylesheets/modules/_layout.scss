@@ -10,6 +10,11 @@ body {
   color: var(--grey);
 }
 
+main {
+  position: relative;
+  min-height: 71rem;
+}
+
 .wrapper {
   overflow: hidden;
 }

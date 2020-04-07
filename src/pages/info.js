@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Layout from 'components/Layout';
+import Background from 'components/Background';
 import Container from 'components/Container';
 
 const Info = ({ children, location }) => {
@@ -10,6 +11,7 @@ const Info = ({ children, location }) => {
       <Helmet>
         <title>Info</title>
       </Helmet>
+      <Background />
       <Container>
         <h1>Info</h1>
         <h2>{location.search}</h2>
