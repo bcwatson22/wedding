@@ -8,17 +8,18 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
-  @media screen and (min-width: $tablet) {
-    justify-content: space-around;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   justify-content: space-around;
+  // }
 
-  .inner {
-    width: 100%;
-  }
+  // .inner {
+  //   width: 100%;
+  // }
 
   .shape {
     position: absolute;
     left: 0;
+    @include parallax(1, 7);
   }
 
   .column {
@@ -148,7 +149,7 @@
           }
 
           &-trapezium {
-            top: 37.246%;
+            top: 37.206%;
           }
 
           &-rectangle {
@@ -162,7 +163,7 @@
           }
 
           &-ring {
-            top: 37.246%;
+            top: 37.206%;
           }
         }
 

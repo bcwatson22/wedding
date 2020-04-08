@@ -3,6 +3,10 @@ header {
   color: mix(#b4dbd0, #ffffff, 40%);
   // color: var(--white);
 
+  @media screen and (min-width: $tablet) {
+    color: var(--white);
+  }
+
   .inner {
     display: flex;
     justify-content: space-between;

@@ -50,4 +50,18 @@
       }
     }
   }
+
+  @media screen and (min-width: $tablet) {
+    li:not(:last-of-type) {
+      margin-right: 3rem;
+    }
+
+    a {
+      color: var(--white);
+
+      .icon {
+        margin-right: 1rem;
+      }
+    }
+  }
 }

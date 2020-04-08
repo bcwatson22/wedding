@@ -32,7 +32,7 @@ const Nav = () => {
 
           return (
             <li key={link}>
-              <Link to={name === 'home' ? '/' : `/${link}`} className="nav__button">
+              <Link to={link === 'home' ? '/' : `/${link}`} className="nav__button">
                 <img src={image} className={`icon icon--${link}`} alt={`${name} icon`} />
                 <span>{name}</span>
               </Link>

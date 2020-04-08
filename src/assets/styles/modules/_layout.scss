@@ -16,20 +16,21 @@ main {
 }
 
 .wrapper {
-  max-width: 120rem;
-  min-width: 32rem;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .inner {
+  max-width: 120rem;
+  min-width: 32rem;
   width: 100%;
-  max-width: 72rem;
   margin: 0 auto;
   position: relative;
   padding: 1.5rem 3rem;
 
   main & {
     padding: 3rem;
+    max-width: 75rem;
     @include pseudo-before();
 
     * {
@@ -46,7 +47,7 @@ main {
   }
 
   @media screen and (min-width: $tablet) {
-    padding: 3rem 6rem;
+    padding: 3rem;
 
     main & {
       padding: 6rem;

@@ -7,11 +7,11 @@ const Header = () => {
   return (
     <header>
       <Container>
-        <h1 class="logo">
-          <span class="abbr">B&B</span>
-          <small class="abbr">29.5.2021</small>
-          <span class="full">Billy & Becky</span>
-          <small class="full">29.5.2021. Ilam, Dovedale, The Shire</small>
+        <h1 className="logo">
+          <span className="abbr">B&B</span>
+          <small className="abbr">29.5.2021</small>
+          <span className="full">Billy & Becky</span>
+          <small className="full">29.5.2021. Ilam, Dovedale, The Shire</small>
         </h1>
         <Nav />
       </Container>
