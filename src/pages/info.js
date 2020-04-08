@@ -9,11 +9,11 @@ const Info = ({ children, location }) => {
   return (
     <Layout pageName="two">
       <Helmet>
-        <title>Info</title>
+        <title>Info | B&B's wedding</title>
       </Helmet>
       <Background />
       <Container>
-        <h1>Info {location.search.length ? `for ${location.search.length}` : 'for nobody..'}</h1>
+        <h1>Info {location.search.length ? `for ${location.search.substring(location.search.indexOf('=') + 1, location.search.length)}` : 'for guests..'}</h1>
         <h2>Location</h2>
         <p>Helvetica literally chartreuse kale chips iceland dreamcatcher gentrify post-ironic. 3 wolf moon next level whatever pinterest. Wayfarers crucifix roof party post-ironic green juice. Fanny pack retro mlkshk street art master cleanse tousled 8-bit. Cold-pressed authentic readymade messenger bag wolf vaporware.</p>
         <h2>Accomodation</h2>

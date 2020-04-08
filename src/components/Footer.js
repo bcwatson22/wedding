@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer>
       <Container>
-        <small>&copy; {new Date().getFullYear()}. All rights reserved.</small>
+        <small>&copy; {new Date().getFullYear()}. <span>All rights reserved.</span></small>
         <a href="https://www.billywatson.net" className="logo"><img src={logo} alt="Billy Watson logo" /></a>
       </Container>
     </footer>

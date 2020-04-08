@@ -10,4 +10,10 @@ footer {
     width: 11.5rem;
     margin-left: auto;
   }
+
+  @media screen and (max-width: $tablet - 1) {
+    small span {
+      display: block;
+    }
+  }
 }

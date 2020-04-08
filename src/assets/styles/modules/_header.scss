@@ -1,9 +1,31 @@
 header {
   background: var(--green-dark);
-  font-weight: 600;
+  color: mix(#b4dbd0, #ffffff, 40%);
+  // color: var(--white);
 
-  * {
-    color: var(--white);
-    margin: 0;
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: $columns - 1) {
+      padding: 1.5rem;
+    }
+  }
+
+  .logo {
+    .full {
+      display: none;
+    }
+
+    @media screen and (min-width: $tablet) {
+      .full {
+        display: block;
+      }
+
+      .abbr {
+        display: none;
+      }
+    }
   }
 }

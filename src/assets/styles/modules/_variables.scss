@@ -1,13 +1,16 @@
 :root {
   --grey: #333337;
   --white: #fff;
-  --green-light: #b8ddd0;
-  --green-dark: #8bbaa9;
-  --peach-light: #e8c9c6;
-  --peach-dark: #e1b3ab;
+  --green-dark: #7ab2a1;
+  --green-mid: #8bbaa9;
+  --green-mint: #b4dbd0;
+  --green-light: #e1f1ec;
+  --pink: #edc9c9;
+  --peach: #e5ada3;
 
   --slab: 'Roboto Slab', Helvetica, Arial, sans-serif;
 }
 
+$columns: 500px;
 $tablet: 750px;
 $desktop: 1000px;

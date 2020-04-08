@@ -1,0 +1,79 @@
+@mixin hwa() {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform: translate3d(0, 0, 0);
+}
+
+@mixin hidden() {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+@mixin central() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin central-y() {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin central-x() {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin pseudo-before() {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+}
+
+@mixin pseudo-after() {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+}
+
+@mixin pseudo-blocks() {
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+}
+
+@mixin text-link-underline() {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+@mixin text-link-inverse() {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+}
