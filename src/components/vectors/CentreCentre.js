@@ -1,9 +1,9 @@
 import React from 'react';
 
-import peachTrapezium from './../../assets/vectors/cc/peach-trapezium.svg';
-import greenTriangle from './../../assets/vectors/cc/green-triangle.svg';
-import mintTrapezium from './../../assets/vectors/cc/mint-trapezium.svg';
-import pinkMoon from './../../assets/vectors/cc/pink-moon.svg';
+import peachTrapezium from './../../assets/patterns/cc/peach-trapezium.svg';
+import greenTriangle from './../../assets/patterns/cc/green-triangle.svg';
+import mintTrapezium from './../../assets/patterns/cc/mint-trapezium.svg';
+import pinkMoon from './../../assets/patterns/cc/pink-moon.svg';
 
 const CentreCentre = () => {
   return (

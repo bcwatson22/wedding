@@ -1,11 +1,11 @@
 import React from 'react';
 
-import mintTriangle from './../../assets/vectors/rr/mint-triangle.svg';
-import greenTriangle from './../../assets/vectors/rr/green-triangle.svg';
-import mintTrapezium from './../../assets/vectors/rr/mint-trapezium.svg';
-import greenRing from './../../assets/vectors/rr/green-ring.svg';
-import pinkMoon from './../../assets/vectors/rr/pink-moon.svg';
-import mintRectangle from './../../assets/vectors/rr/mint-rectangle.svg';
+import mintTriangle from './../../assets/patterns/rr/mint-triangle.svg';
+import greenTriangle from './../../assets/patterns/rr/green-triangle.svg';
+import mintTrapezium from './../../assets/patterns/rr/mint-trapezium.svg';
+import greenRing from './../../assets/patterns/rr/green-ring.svg';
+import pinkMoon from './../../assets/patterns/rr/pink-moon.svg';
+import mintRectangle from './../../assets/patterns/rr/mint-rectangle.svg';
 
 const RightRight = () => {
   return (

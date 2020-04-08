@@ -1,9 +1,9 @@
 import React from 'react';
 
-import peachMoon from './../../assets/vectors/lc/peach-moon.svg';
-import peachTriangle from './../../assets/vectors/lc/peach-triangle.svg';
-import mintTriangle from './../../assets/vectors/lc/mint-triangle.svg';
-import peachRectangle from './../../assets/vectors/lc/peach-rectangle.svg';
+import peachMoon from './../../assets/patterns/lc/peach-moon.svg';
+import peachTriangle from './../../assets/patterns/lc/peach-triangle.svg';
+import mintTriangle from './../../assets/patterns/lc/mint-triangle.svg';
+import peachRectangle from './../../assets/patterns/lc/peach-rectangle.svg';
 
 const LeftCentre = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import peachTrapezium from './../../assets/vectors/ll/peach-trapezium.svg';
-import pinkMoon from './../../assets/vectors/ll/pink-moon.svg';
-import greenTrapezium from './../../assets/vectors/ll/green-trapezium.svg';
-import greenRectangle from './../../assets/vectors/ll/green-rectangle.svg';
+import peachTrapezium from './../../assets/patterns/ll/peach-trapezium.svg';
+import pinkMoon from './../../assets/patterns/ll/pink-moon.svg';
+import greenTrapezium from './../../assets/patterns/ll/green-trapezium.svg';
+import greenRectangle from './../../assets/patterns/ll/green-rectangle.svg';
 
 const LeftLeft = () => {
   return (

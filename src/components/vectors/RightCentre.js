@@ -1,10 +1,10 @@
 import React from 'react';
 
-import peachTriangle from './../../assets/vectors/rc/peach-triangle.svg';
-import greenTriangle from './../../assets/vectors/rc/green-triangle.svg';
-import mintRing from './../../assets/vectors/rc/mint-ring.svg';
-import pinkMoon from './../../assets/vectors/rc/pink-moon.svg';
-import peachTrapezium from './../../assets/vectors/rc/peach-trapezium.svg';
+import peachTriangle from './../../assets/patterns/rc/peach-triangle.svg';
+import greenTriangle from './../../assets/patterns/rc/green-triangle.svg';
+import mintRing from './../../assets/patterns/rc/mint-ring.svg';
+import pinkMoon from './../../assets/patterns/rc/pink-moon.svg';
+import peachTrapezium from './../../assets/patterns/rc/peach-trapezium.svg';
 
 const RightCentre = () => {
   return (
