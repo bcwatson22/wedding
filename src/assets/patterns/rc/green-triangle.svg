@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100.004" height="263.998" viewBox="-0.002 0 100.004 263.998"><path fill="#7AB2A1" d="M100.002 263.998H-.002V0z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 264">
+  <path fill="#7AB2A1" class="shape" d="M100 264H0V0l100 264z" />
+  <path fill="#7AB2A1" class="circle" d="M55 132c0 2.8-2.2 5-5 5s-5-2.2-5-5 2.2-5 5-5 5 2.2 5 5z" />
+</svg>
