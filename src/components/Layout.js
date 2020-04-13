@@ -5,24 +5,26 @@ import Helmet from 'react-helmet';
 import 'assets/styles/application.scss';
 
 import Header from './Header';
+import Background from './Background';
 import Footer from './Footer';
 
 const Layout = ({ children, pageName }) => {
 
   let className = '';
 
-  if (pageName) {
-    className = `${className} page-${pageName}`;
-  }
+  if (pageName) className = `page-${pageName}`;
 
   return (
     <>
-      <Helmet bodyAttributes={{ class: className}}>
+      <Helmet bodyAttributes={{class: className}}>
         <title>Gatsby Site</title>
       </Helmet>
       <div className="wrapper">
         <Header />
-        <main>{ children }</main>
+        <main>
+          <Background />
+          { children }
+        </main>
         <Footer />
       </div>
     </>

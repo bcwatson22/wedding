@@ -11,7 +11,6 @@ const RSVP = ({ children, location }) => {
       <Helmet>
         <title>RSVP | B&B's wedding</title>
       </Helmet>
-      <Background />
       <Container>
         <h1>RSVP</h1>
         <h2>Hey there {location.search.length ? `${location.search.substring(location.search.indexOf('=') + 1, location.search.length)}` : 'gatecrasher'}!</h2>

@@ -2,7 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Layout from 'components/Layout';
-import Background from 'components/Background';
 import Container from 'components/Container';
 
 const Timings = ({ children, location }) => {
@@ -11,7 +10,6 @@ const Timings = ({ children, location }) => {
       <Helmet>
         <title>Timings | B&B's wedding</title>
       </Helmet>
-      <Background />
       <Container>
         <h1>Timings</h1>
         <h2>Order of the day</h2>
