@@ -34,7 +34,7 @@ const Background = ({children}) => {
       }
     }).start();
 
-  });
+  }, []);
 
   return (
     <div className={`background${loading ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
