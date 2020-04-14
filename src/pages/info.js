@@ -1,9 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Layout from 'components/Layout';
-import Background from 'components/Background';
-import Container from 'components/Container';
+import Layout from './../components/Layout';
+import Container from './../components/Container';
 
 const Info = ({ children, location }) => {
   return (
@@ -11,7 +10,6 @@ const Info = ({ children, location }) => {
       <Helmet>
         <title>Info | B&B's wedding</title>
       </Helmet>
-      <Background />
       <Container>
         <h1>Info {location.search.length ? `for ${location.search.substring(location.search.indexOf('=') + 1, location.search.length)}` : 'for guests..'}</h1>
         <h2>Location</h2>

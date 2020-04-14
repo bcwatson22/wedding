@@ -3,11 +3,11 @@
     visibility: hidden;
   }
 
-  &--green-mint {
+  &--mint {
     fill: var(--green-mint);
   }
 
-  &--green-dark {
+  &--green {
     fill: var(--green-dark);
   }
 
@@ -17,5 +17,13 @@
 
   &--pink {
     fill: var(--pink);
+  }
+
+  &--black {
+    fill: var(--black);
+  }
+
+  &--blank {
+    fill: none;
   }
 }

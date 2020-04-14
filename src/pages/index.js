@@ -1,9 +1,9 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import Layout from 'components/Layout';
-import Container from 'components/Container';
-import Hero from 'components/Hero';
+import Layout from './../components/Layout';
+import Container from './../components/Container';
+import Hero from './../components/Hero';
 
 const IndexPage = () => {
   return (

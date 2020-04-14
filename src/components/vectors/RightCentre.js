@@ -6,6 +6,10 @@ import React from 'react';
 // import peachTrapezium from './../../assets/patterns/rc/peach-trapezium.svg';
 // import greenTriangle from './../../assets/patterns/rc/green-triangle.svg';
 
+import PeachTriangle from './rc/PeachTriangle';
+import MintRing from './rc/MintRing';
+import PinkMoon from './rc/PinkMoon';
+import PeachTrapezium from './rc/PeachTrapezium';
 import GreenTriangle from './rc/GreenTriangle';
 
 const RightCentre = () => {
@@ -16,6 +20,10 @@ const RightCentre = () => {
       <img src={pinkMoon} className="shape shape--pink-moon" alt="Vector" />
       <img src={peachTrapezium} className="shape shape--peach-trapezium" alt="Vector" />
       <img src={greenTriangle} className="shape shape--green-triangle" alt="Vector" />*/}
+      <PeachTriangle />
+      <MintRing />
+      <PinkMoon />
+      <PeachTrapezium />
       <GreenTriangle />
     </div>
   );

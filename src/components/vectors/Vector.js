@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import KUTE from 'kute.js';
@@ -16,8 +16,8 @@ const Vector = ({ children, shape, circle }) => {
         path: shape.current
       },
       {
-        easing: 'easeOut',
-        duration: 600,
+        easing: 'easeInOut',
+        duration: 300,
         // morphIndex: 127
       }
     ).start();
@@ -35,8 +35,8 @@ const Vector = ({ children, shape, circle }) => {
 
 Vector.propTypes = {
   children: PropTypes.node.isRequired,
-  shape: PropTypes.node.isRequired,
-  circle: PropTypes.node.isRequired
+  shape: PropTypes.object.isRequired,
+  circle: PropTypes.object.isRequired
 }
 
 export default Vector;

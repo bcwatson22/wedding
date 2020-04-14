@@ -1,0 +1,10 @@
+.shape {
+  position: absolute;
+  left: 0;
+  @include parallax(1, 7);
+  border-radius: 50% / 15%;
+
+  .loading & {
+
+  }
+}
