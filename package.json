@@ -10,6 +10,7 @@
     "gatsby-plugin-resolve-src": "2.0.0",
     "gatsby-plugin-sass": "2.1.28",
     "gatsby-source-filesystem": "2.1.48",
+    "kute.js": "1.6.6",
     "node-sass": "4.13.1",
     "prop-types": "15.7.2",
     "react": "16.13.1",

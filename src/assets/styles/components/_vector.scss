@@ -1,0 +1,21 @@
+.vector {
+  &--target {
+    visibility: hidden;
+  }
+
+  &--green-mint {
+    fill: var(--green-mint);
+  }
+
+  &--green-dark {
+    fill: var(--green-dark);
+  }
+
+  &--peach {
+    fill: var(--peach);
+  }
+
+  &--pink {
+    fill: var(--pink);
+  }
+}
