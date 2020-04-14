@@ -1,6 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as basicScroll from 'basicscroll';
+
+import Utils from './../services/Utils';
 
 import LeftLeft from './vectors/LeftLeft';
 import LeftCentre from './vectors/LeftCentre';
@@ -10,8 +12,14 @@ import RightRight from './vectors/RightRight';
 
 const Background = ({children}) => {
   const wrapper = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
+
+    setLoading(false);
+
+    Utils.delay(1300).then(() => setScroll(true));
 
     basicScroll.create({
       elem: wrapper.current,
@@ -29,7 +37,7 @@ const Background = ({children}) => {
   });
 
   return (
-    <div className="background" ref={wrapper}>
+    <div className={`background${loading ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
       <LeftLeft />
       <LeftCentre />
       <CentreCentre />

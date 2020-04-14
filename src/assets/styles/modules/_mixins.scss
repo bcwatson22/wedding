@@ -78,6 +78,14 @@
   }
 }
 
+@mixin nth-of-type($from: 1, $to: 6) {
+  @for $i from $from to $to {
+    &:nth-of-type(#{$i}) {
+      @content;
+    }
+  }
+}
+
 @mixin parallax-down($distance) {
   transform: translateY(calc(var(--scroll) * #{$distance}rem));
 }
@@ -88,6 +96,14 @@
   @for $i from $from to $to {
     &:nth-of-type(#{$i}) {
       @include parallax-down($i * 20);
+    }
+  }
+}
+
+@mixin stagger($from: 1, $to: 6, $delay: 0.1s) {
+  @for $i from $from to $to {
+    &:nth-of-type(#{$i}) {
+      transition-delay: $i * $delay;
     }
   }
 }

@@ -1,10 +1,25 @@
 .shape {
+  @include hwa();
   position: absolute;
+  top: var(--top);
   left: 0;
-  @include parallax(1, 7);
-  border-radius: 50% / 15%;
+  @include stagger(1, 6, 0.1s);
+  border-radius: 0;
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0.999;
+  will-change: opacity transform border-radius;
 
   .loading & {
+    --top: 45vh;
+    transform: scale(0.1) translateY(calc(-50%));
+    transform-origin: 50% 0;
+    opacity: 0.001;
+    border-radius: 50% / 15%;
+  }
 
+  .scroll & {
+    @include parallax(1, 6);
+    transition-duration: 0.1s;
+    @include stagger(1, 6, 0s);
   }
 }

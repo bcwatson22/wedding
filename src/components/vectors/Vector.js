@@ -1,28 +1,26 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import KUTE from 'kute.js';
-import 'kute.js/kute-svg';
+// import KUTE from 'kute.js';
+// import 'kute.js/kute-svg';
 
 const Vector = ({ children, shape, circle }) => {
   useEffect(() => {
 
-    const tween = KUTE.fromTo(
-      circle.current,
-      {
-        path: circle.current
-      },
-      {
-        path: shape.current
-      },
-      {
-        easing: 'easeInOut',
-        duration: 300,
-        // morphIndex: 127
-      }
-    ).start();
-
-    tween.start();
+    // const tween = KUTE.fromTo(
+    //   circle.current,
+    //   {
+    //     path: circle.current
+    //   },
+    //   {
+    //     path: shape.current
+    //   },
+    //   {
+    //     easing: 'easeInOut',
+    //     duration: 300,
+    //     // morphIndex: 127
+    //   }
+    // ).start();
 
   });
 
