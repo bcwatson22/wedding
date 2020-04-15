@@ -1,0 +1,90 @@
+{
+  [
+    {
+      "_id": 12,
+      "guests": {
+        "nicknames": "Arch and Mya",
+        "greeting": "Buzzing that you're one of my groomsmen Archibald!",
+        "full": [
+          {
+            "name": "Archie",
+            "responded": true,
+            "rsvp": {
+              "date": "2020-05-03",
+              "attending": true,
+              "dietary": null
+            }
+          },
+          {
+            "name": "Mya",
+            "responded": true,
+            "rsvp": {
+              "date": "2020-05-03",
+              "attending": true,
+              "dietary": "Allergic to shellfish"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "_id": 34,
+      "guests": {
+        "nicknames": "Tys and Sarah",
+        "greeting": null,
+        "full": [
+          {
+            "name": "Jake",
+            "responded": true,
+            "rsvp": {
+              "date": "2020-06-11",
+              "attending": true,
+              "dietary": null
+            }
+          },
+          {
+            "name": "Sarah",
+            "responded": true,
+            "rsvp": {
+              "date": "2020-06-11",
+              "attending": false,
+              "dietary": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "_id": 56,
+      "guests": {
+        "nicknames": "Uncle Tay",
+        "greeting": "Unfortunately, we won't be serving any home brand lager so you might have to drink something tastier!",
+        "full": [
+          {
+            "name": "Jack",
+            "responded": false,
+            "rsvp": null
+          }
+        ]
+      }
+    },
+    {
+      "_id": 78,
+      "guests": {
+        "nicknames": "Auntie Festa",
+        "greeting": "There will be plenty of opportunities for beer sniping young man!",
+        "full": [
+          {
+            "name": "Jamie",
+            "responded": true,
+            "rsvp": {
+              "date": "2020-04-10",
+              "attending": true,
+              "dietary": null
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
