@@ -18,11 +18,12 @@ const shortid = require('shortid');
          // Use the collection 'people'
          const col = db.collection('guests');
 
+         // shortid.generate()
+
          // Construct a document
          let guestsDocument = [
            {
-             "_id": 12,
-             "shortId": shortid.generate(),
+             "shortId": "9yLbQgnkE",
              "personal": {
                "nicknames": "Arch and Mya",
                "greeting": "Buzzing that you're one of my groomsmen Archibald!",
@@ -37,8 +38,7 @@ const shortid = require('shortid');
                  "responded": true,
                  "rsvp": {
                    "date": "2020-05-03",
-                   "attending": true,
-                   "dietary": null
+                   "attending": true
                  }
                },
                {
@@ -53,40 +53,7 @@ const shortid = require('shortid');
              ]
            },
            {
-             "_id": 34,
-             "shortId": shortid.generate(),
-             "personal": {
-               "nicknames": "Tys and Sarah",
-               "greeting": null,
-             },
-             "contact": {
-               "address": "26 Hardman Street, Failsworth, M35 0BB",
-               "email": "jaketysome@gmail.com"
-             },
-             "guests": [
-               {
-                 "name": "Jake",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-06-11",
-                   "attending": true,
-                   "dietary": null
-                 }
-               },
-               {
-                 "name": "Sarah",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-06-11",
-                   "attending": false,
-                   "dietary": null
-                 }
-               }
-             ]
-           },
-           {
-             "_id": 56,
-             "shortId": shortid.generate(),
+             "shortId": "FdnRvyCAFp",
              "personal": {
                "nicknames": "Uncle Tay",
                "greeting": "Unfortunately, we won't be serving any home brand lager so you might have to drink something tastier!",
@@ -98,14 +65,12 @@ const shortid = require('shortid');
              "guests": [
                {
                  "name": "Jack",
-                 "responded": false,
-                 "rsvp": null
+                 "responded": false
                }
              ]
            },
            {
-             "_id": 78,
-             "shortId": shortid.generate(),
+             "shortId": "zUIDbD5x6M",
              "personal": {
                "nicknames": "Auntie Festa",
                "greeting": "There will be plenty of opportunities for beer sniping young man!",
@@ -120,8 +85,35 @@ const shortid = require('shortid');
                  "responded": true,
                  "rsvp": {
                    "date": "2020-04-10",
-                   "attending": true,
-                   "dietary": null
+                   "attending": true
+                 }
+               }
+             ]
+           },
+           {
+             "shortId": "1GNpq5bcLH",
+             "personal": {
+               "nicknames": "Tys and Sarah"
+             },
+             "contact": {
+               "address": "26 Hardman Street, Failsworth, M35 0BB",
+               "email": "jaketysome@gmail.com"
+             },
+             "guests": [
+               {
+                 "name": "Jake",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-06-11",
+                   "attending": true
+                 }
+               },
+               {
+                 "name": "Sarah",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-06-11",
+                   "attending": false
                  }
                }
              ]
