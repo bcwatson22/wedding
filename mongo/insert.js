@@ -21,95 +21,115 @@ const shortid = require('shortid');
          // Construct a document
          let guestsDocument = [
            {
-             "_id": shortid.generate(),
-             "guests": {
+             "_id": 12,
+             "shortId": shortid.generate(),
+             "personal": {
                "nicknames": "Arch and Mya",
                "greeting": "Buzzing that you're one of my groomsmen Archibald!",
-               "full": [
-                 {
-                   "name": "Archie",
-                   "responded": true,
-                   "rsvp": {
-                     "date": "2020-05-03",
-                     "attending": true,
-                     "dietary": null
-                   }
-                 },
-                 {
-                   "name": "Mya",
-                   "responded": true,
-                   "rsvp": {
-                     "date": "2020-05-03",
-                     "attending": true,
-                     "dietary": "Allergic to shellfish"
-                   }
+             },
+             "contact": {
+               "address": "21 Didsbury Road, Stockport, SK4 2BD",
+               "email": "archiegray@live.co.uk"
+             },
+             "guests": [
+               {
+                 "name": "Archie",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-05-03",
+                   "attending": true,
+                   "dietary": null
                  }
-               ]
-             }
+               },
+               {
+                 "name": "Mya",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-05-03",
+                   "attending": true,
+                   "dietary": "Allergic to shellfish"
+                 }
+               }
+             ]
            },
            {
-             "_id": shortid.generate(),
-             "guests": {
+             "_id": 34,
+             "shortId": shortid.generate(),
+             "personal": {
                "nicknames": "Tys and Sarah",
                "greeting": null,
-               "full": [
-                 {
-                   "name": "Jake",
-                   "responded": true,
-                   "rsvp": {
-                     "date": "2020-06-11",
-                     "attending": true,
-                     "dietary": null
-                   }
-                 },
-                 {
-                   "name": "Sarah",
-                   "responded": true,
-                   "rsvp": {
-                     "date": "2020-06-11",
-                     "attending": false,
-                     "dietary": null
-                   }
+             },
+             "contact": {
+               "address": "26 Hardman Street, Failsworth, M35 0BB",
+               "email": "jaketysome@gmail.com"
+             },
+             "guests": [
+               {
+                 "name": "Jake",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-06-11",
+                   "attending": true,
+                   "dietary": null
                  }
-               ]
-             }
+               },
+               {
+                 "name": "Sarah",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-06-11",
+                   "attending": false,
+                   "dietary": null
+                 }
+               }
+             ]
            },
            {
-             "_id": shortid.generate(),
-             "guests": {
+             "_id": 56,
+             "shortId": shortid.generate(),
+             "personal": {
                "nicknames": "Uncle Tay",
                "greeting": "Unfortunately, we won't be serving any home brand lager so you might have to drink something tastier!",
-               "full": [
-                 {
-                   "name": "Jack",
-                   "responded": false,
-                   "rsvp": null
-                 }
-               ]
-             }
+             },
+             "contact": {
+               "address": "17 Lily Road, London, E17 8HY",
+               "email": "jacktaylor1988@hotmail.co.uk"
+             },
+             "guests": [
+               {
+                 "name": "Jack",
+                 "responded": false,
+                 "rsvp": null
+               }
+             ]
            },
            {
-             "_id": shortid.generate(),
-             "guests": {
+             "_id": 78,
+             "shortId": shortid.generate(),
+             "personal": {
                "nicknames": "Auntie Festa",
                "greeting": "There will be plenty of opportunities for beer sniping young man!",
-               "full": [
-                 {
-                   "name": "Jamie",
-                   "responded": true,
-                   "rsvp": {
-                     "date": "2020-04-10",
-                     "attending": true,
-                     "dietary": null
-                   }
+             },
+             "contact": {
+               "address": "177 Sharrow Vale Road, Sheffield, S11 8ZB",
+               "email": "jamie.chapman11189@gmail.com"
+             },
+             "guests": [
+               {
+                 "name": "Jamie",
+                 "responded": true,
+                 "rsvp": {
+                   "date": "2020-04-10",
+                   "attending": true,
+                   "dietary": null
                  }
-               ]
-             }
+               }
+             ]
            }
          ]
 
          // Insert a single document, wait for promise so we can read it back
-         const p = await col.insertMany(guest);
+         const p = await col.insertMany(guestsDocument);
          // Find one document
          const myDoc = await col.find({});
          // Print to the console
