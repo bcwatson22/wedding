@@ -10,31 +10,40 @@ import CentreCentre from './vectors/CentreCentre';
 import RightCentre from './vectors/RightCentre';
 import RightRight from './vectors/RightRight';
 
-const Background = ({children}) => {
+const initScroll = (wrapper) => {
+
+  basicScroll.create({
+    elem: wrapper,
+    from: 'top-top',
+    to: 'bottom-bottom',
+    direct: true,
+    props: {
+      '--scroll': {
+        from: 0.0001,
+        to: 0.9999
+      }
+    }
+  }).start();
+
+}
+
+const Background = ({ children, loaded }) => {
   const wrapper = useRef(null);
   const [loading, setLoading] = useState(true);
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
 
-    setLoading(false);
+    if (loaded) setLoading(false);
 
-    Utils.delay(1300).then(() => setScroll(true));
+    Utils.delay(1300).then(() => {
 
-    basicScroll.create({
-      elem: wrapper.current,
-      from: 'top-top',
-      to: 'bottom-bottom',
-      direct: true,
-      props: {
-        '--scroll': {
-          from: 0.0001,
-          to: 0.9999
-        }
-      }
-    }).start();
+      // initScroll(wrapper.current);
+      setScroll(true);
 
-  }, []);
+    });
+
+  }, [loaded]);
 
   return (
     <div className={`background${loading ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
@@ -49,7 +58,8 @@ const Background = ({children}) => {
 };
 
 Background.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  hasData: PropTypes.bool
 };
 
 export default Background;
