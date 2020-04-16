@@ -1,0 +1,21 @@
+fieldset {
+  position: relative;
+  min-inline-size: unset;
+}
+
+select,
+option,
+input,
+textarea {
+  margin: 1.5rem 0 3rem;
+}
+
+input,
+textarea,
+.form-input--radio__indicator {
+  background: var(--white);
+}
+
+label {
+
+}

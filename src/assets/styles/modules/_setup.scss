@@ -2,9 +2,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0;
   font-weight: unset;
   font-size: unset;
-  
+}
+
+button,
+select,
+input,
+textarea {
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 a,

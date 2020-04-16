@@ -1,6 +1,6 @@
 import React from 'react';
-// import { useQuery } from '@apollo/react-hooks';
-// import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 //
 // const ids = {
 //   arch: '9yLbQgnkE',
@@ -24,9 +24,25 @@ const Form = () => {
   // const { loading, error, data } = useQuery(guestGreetingQuery(ids.tys));
 
   return (
-    <div>
-      Form
-    </div>
+    <form>
+      <fieldset>
+        <legend className="h2">Archie</legend>
+        <label className="form-input form-input--radio">
+          Can't wait!
+          <input type="radio" name="attendance" checked />
+          <span className="form-input--radio__indicator"></span>
+        </label>
+        <label className="form-input form-input--radio">
+          Can't make it
+          <input type="radio" name="attendance" />
+          <span className="form-input--radio__indicator"></span>
+        </label>
+        <label className="form-input form-input--textarea">
+          Dietary
+          <textarea rows="3" name="textarea"></textarea>
+        </label>
+      </fieldset>
+    </form>
   );
 };
 

@@ -11,7 +11,7 @@ import Container from './../components/Container';
 import Greeting from './../components/rsvp/Greeting';
 import Form from './../components/rsvp/Form';
 
-const token = {
+const userTokens = {
   arch: '9yLbQgnkE',
   festa: 'zUIDbD5x6M',
   tay: 'FdnRvyCAFp',
@@ -30,7 +30,12 @@ const guestGreetingQuery = (shortId) => gql`
 `
 
 const RSVP = ({ children, location }) => {
-  const { loading, error, data } = useQuery(guestGreetingQuery(token.arch));
+  const urlParams = new URLSearchParams(location.search);
+  const userToken = location.search.length ? urlParams.get('guest') : null;
+
+  const { loading, error, data } = useQuery(guestGreetingQuery(userTokens[userToken]), {
+    skip: !userToken
+  });
 
   return (
     <>
@@ -39,8 +44,12 @@ const RSVP = ({ children, location }) => {
           <title>RSVP | B&B's wedding</title>
         </Helmet>
         <Container>
-          <Greeting data={data ? data.guest.personal : {}} />
-          <Form />
+          {data &&
+            <>
+              <Greeting data={data.guest.personal} />
+              <Form />
+            </>
+          }
           {/*<h1>RSVP</h1>
           <h2>Hey there {location.search.length ? `${location.search.substring(location.search.indexOf('guest=') + 1, location.search.length)}` : 'gatecrasher'}!</h2>
           <p>PBR&B bicycle rights you probably haven't heard of them, shaman hammock church-key marfa. Fanny pack pickled art party vape vexillologist fam. Raclette butcher brooklyn subway tile church-key swag paleo tattooed pabst master cleanse tumeric. Hella pinterest church-key kitsch celiac hexagon cliche, put a bird on it wolf kinfolk dreamcatcher meh roof party sartorial. Organic bicycle rights scenester tbh, truffaut locavore salvia freegan pickled put a bird on it cornhole marfa activated charcoal brooklyn.</p>
