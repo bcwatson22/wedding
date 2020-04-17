@@ -39,7 +39,7 @@ const Background = ({ children, loaded }) => {
     Utils.delay(1300).then(() => {
 
       // initScroll(wrapper.current);
-      setScroll(true);
+      // setScroll(true);
 
     });
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GreetGuest = ({ data }) => {
-  const { nicknames, greeting } = data;
+const Guest = ({ personal }) => {
+  const { nicknames, greeting } = personal;
 
   return (
     <>
       <h1>RSVP</h1>
       <h2>Now then {nicknames && `${nicknames}!`}</h2>
-      <p>Please fill in the form below to let us know if you can make it. If you could make sure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
-      <p>The food in the day will all be vegetarian, so the <strong>Dietary</strong> field below is more for allergies and intolerances.</p>
       {greeting && <p>{greeting}</p>}
+      <p>Please fill in the form below to let us know if you can make it. If you could make sure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
+      <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
     </>
   );
 };
@@ -27,16 +27,16 @@ const Gatecrasher = () => {
   );
 };
 
-const Greeting = ({ data }) => {
+const Greeting = ({ personal }) => {
   return (
     <>
-      {data.nicknames ? <GreetGuest data={data} /> : <Gatecrasher />}
+      {personal.nicknames ? <Guest personal={personal} /> : <Gatecrasher />}
     </>
   );
 };
 
 Greeting.propTypes = {
-  data: PropTypes.object
+  personal: PropTypes.object
 }
 
 export default Greeting;

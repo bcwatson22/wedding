@@ -13,6 +13,14 @@
   margin: -1px; padding: 0; border: 0;
 }
 
+@mixin standard-spacing() {
+  margin-top: 3rem;
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 6rem;
+  }
+}
+
 @mixin central() {
   top: 50%;
   left: 50%;

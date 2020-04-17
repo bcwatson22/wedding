@@ -35,20 +35,11 @@ const shortid = require('shortid');
              "guests": [
                {
                  "name": "Archie",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-05-03",
-                   "attending": true
-                 }
+                 "responded": false
                },
                {
                  "name": "Mya",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-05-03",
-                   "attending": true,
-                   "dietary": "Allergic to shellfish"
-                 }
+                 "responded": false
                }
              ]
            },
@@ -85,7 +76,8 @@ const shortid = require('shortid');
                  "responded": true,
                  "rsvp": {
                    "date": "2020-04-10",
-                   "attending": true
+                   "attending": true,
+                   "comments": "Can't wait guys"
                  }
                }
              ]
@@ -102,19 +94,11 @@ const shortid = require('shortid');
              "guests": [
                {
                  "name": "Jake",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-06-11",
-                   "attending": true
-                 }
+                 "responded": false
                },
                {
                  "name": "Sarah",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-06-11",
-                   "attending": false
-                 }
+                 "responded": false
                }
              ]
            }

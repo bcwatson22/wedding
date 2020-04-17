@@ -12,7 +12,17 @@ const Utils = {
 
     });
 
-  }
+  },
+
+  setHeightVar($target, $element, varName) {
+
+  let height = $target.scrollHeight;
+
+  $element.style.setProperty(varName, height + 'px');
+
+  return height;
+
+}
 
 };
 

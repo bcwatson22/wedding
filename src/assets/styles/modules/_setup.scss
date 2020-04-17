@@ -5,6 +5,10 @@
   border: 0;
   font-weight: unset;
   font-size: unset;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 button,

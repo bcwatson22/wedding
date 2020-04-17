@@ -3,8 +3,6 @@ import Helmet from 'react-helmet';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import Utils from './../services/Utils';
-
 import Layout from './../components/Layout';
 import Container from './../components/Container';
 
@@ -18,12 +16,21 @@ const userTokens = {
   tys: '1GNpq5bcLH'
 }
 
-const guestGreetingQuery = (shortId) => gql`
-  query GuestGreeting {
+const guestQuery = (shortId) => gql`
+  query Guest {
     guest(query: { shortId: "${shortId}" }) {
       personal {
         nicknames
         greeting
+      }
+      guests {
+        name
+        responded
+        rsvp {
+          attending
+          date
+          dietary
+        }
       }
     }
   }
@@ -33,21 +40,28 @@ const RSVP = ({ children, location }) => {
   const urlParams = new URLSearchParams(location.search);
   const userToken = location.search.length ? urlParams.get('guest') : null;
 
-  const { loading, error, data } = useQuery(guestGreetingQuery(userTokens[userToken]), {
+  const { loading, error, data } = useQuery(guestQuery(userTokens[userToken]), {
     skip: !userToken
   });
 
   return (
     <>
-      <Layout pageName="rsvp" loaded={!loading}>
+      <Layout pageName="rsvp" loaded={!loading || !userToken}>
         <Helmet>
           <title>RSVP | B&B's wedding</title>
         </Helmet>
         <Container>
           {data &&
             <>
-              <Greeting data={data.guest.personal} />
-              <Form />
+              <Greeting personal={data ? data.guest.personal : {}} />
+              <Form guests={data.guest.guests ? data.guest.guests : []} />
+            </>
+          }
+          {error &&
+            <>
+              <h1>Bollocks</h1>
+              <h2>Something's gone wrong</h2>
+              <p>Unfortunately it appears the server has either lost its shit or spat its dummy out pram. Please try again!</p>
             </>
           }
           {/*<h1>RSVP</h1>

@@ -19,20 +19,27 @@ main {
 }
 
 h1,
-p {
+.h1,
+p,
+input,
+textarea {
   font-family: var(--slab);
 }
 
-h1 {
+h1,
+.h1 {
   font-weight: 300;
 }
 
 h2,
-h3 {
-  margin-top: 3rem;
+.h2,
+h3,
+.h3 {
+  @include standard-spacing();
 }
 
-h1 {
+h1,
+.h1 {
   font-size: 3.2rem;
 
   * {
@@ -41,12 +48,15 @@ h1 {
   }
 }
 
-h2 {
+h2,
+.h2 {
   font-size: 2.4rem;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 1.8rem;
+  // font-weight: 500;
 }
 
 p {
@@ -66,7 +76,8 @@ small {
 }
 
 @media screen and (min-width: $tablet) {
-  h1 * {
+  h1,
+  .h1 * {
     margin: 0;
   }
 }
@@ -76,20 +87,18 @@ small {
     font-size: 1.8rem;
   }
 
-  h2,
-  h3 {
-    margin-top: 6rem;
-  }
-
-  h1 {
+  h1,
+  .h1 {
     font-size: 4rem;
   }
 
-  h2 {
+  h2,
+  .h2 {
     font-size: 2.8rem;
   }
 
-  h3 {
+  h3,
+  .h3 {
     font-size: 2.4rem;
   }
 
