@@ -32,7 +32,7 @@ const shortid = require('shortid');
                "address": "21 Didsbury Road, Stockport, SK4 2BD",
                "email": "archiegray@live.co.uk"
              },
-             "guests": [
+             "responses": [
                {
                  "name": "Archie",
                  "responded": false
@@ -53,7 +53,7 @@ const shortid = require('shortid');
                "address": "17 Lily Road, London, E17 8HY",
                "email": "jacktaylor1988@hotmail.co.uk"
              },
-             "guests": [
+             "responses": [
                {
                  "name": "Jack",
                  "responded": false
@@ -70,7 +70,7 @@ const shortid = require('shortid');
                "address": "177 Sharrow Vale Road, Sheffield, S11 8ZB",
                "email": "jamie.chapman11189@gmail.com"
              },
-             "guests": [
+             "responses": [
                {
                  "name": "Jamie",
                  "responded": true,
@@ -91,7 +91,7 @@ const shortid = require('shortid');
                "address": "26 Hardman Street, Failsworth, M35 0BB",
                "email": "jaketysome@gmail.com"
              },
-             "guests": [
+             "responses": [
                {
                  "name": "Jake",
                  "responded": false

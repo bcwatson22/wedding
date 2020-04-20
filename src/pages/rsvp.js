@@ -23,7 +23,7 @@ const guestQuery = (shortId) => gql`
         nicknames
         greeting
       }
-      guests {
+      responses {
         name
         responded
         rsvp {
@@ -54,7 +54,7 @@ const RSVP = ({ children, location }) => {
           {data &&
             <>
               <Greeting personal={data ? data.guest.personal : {}} />
-              <Form guests={data.guest.guests ? data.guest.guests : []} />
+              <Form shortId={userTokens[userToken]} guests={data.guest.responses ? data.guest.responses : []} />
             </>
           }
           {error &&
