@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-const Guest = ({ personal }) => {
+const Instructions = ({ nicknames, greeting }) => {
+  return (
+    <>
+      <h2>Now then {nicknames && `${nicknames}!`}</h2>
+      {greeting && <p>{greeting}</p>}
+      <p>Please fill in the form below to let us know if you can make it. If you could make sure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
+      <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
+    </>
+  );
+};
+
+const Thanks = ({ nicknames, date }) => {
+  return (
+    <>
+      <h2>Thanks {nicknames && `${nicknames}!`}</h2>
+      <p>We received your RSVP on {date}.</p>
+      <p>You can edit your response below, or please check out the Info and Timings pages for more information about the big day.</p>
+    </>
+  );
+};
+
+const Guest = ({ completed, personal }) => {
   const { nicknames, greeting } = personal;
 
   return (
     <>
       <h1>RSVP</h1>
-      <h2>Now then {nicknames && `${nicknames}!`}</h2>
-      {greeting && <p>{greeting}</p>}
-      <p>Please fill in the form below to let us know if you can make it. If you could make sure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
-      <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
+      {completed
+        ? <Thanks date={completed} nicknames={nicknames} />
+        : <Instructions nicknames={nicknames} greeting={greeting} />}
     </>
   );
 };
@@ -27,16 +47,17 @@ const Gatecrasher = () => {
   );
 };
 
-const Greeting = ({ personal }) => {
+const Greeting = (props, ref) => {
   return (
     <>
-      {personal.nicknames ? <Guest personal={personal} /> : <Gatecrasher />}
+      {props.personal.nicknames ? <Guest completed={props.completed} personal={props.personal} /> : <Gatecrasher />}
     </>
   );
 };
 
-Greeting.propTypes = {
+Guest.propTypes = {
+  completed: PropTypes.string,
   personal: PropTypes.object
 }
 
-export default Greeting;
+export default forwardRef(Greeting);

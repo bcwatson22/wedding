@@ -5,10 +5,9 @@
   background: var(--green);
   border-radius: 0.5rem;
   color: var(--white);
-  transition: all 0.35s ease;
+  // transition: all 0.35s ease;
 
   &:not([disabled]):hover {
-    font-weight: 650;
     background: var(--green-dark);
   }
 

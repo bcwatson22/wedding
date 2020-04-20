@@ -32,14 +32,15 @@ const shortid = require('shortid');
                "address": "21 Didsbury Road, Stockport, SK4 2BD",
                "email": "archiegray@live.co.uk"
              },
+             "response": {
+               "responded": false
+             },
              "responses": [
                {
-                 "name": "Archie",
-                 "responded": false
+                 "name": "Archie"
                },
                {
-                 "name": "Mya",
-                 "responded": false
+                 "name": "Mya"
                }
              ]
            },
@@ -53,10 +54,12 @@ const shortid = require('shortid');
                "address": "17 Lily Road, London, E17 8HY",
                "email": "jacktaylor1988@hotmail.co.uk"
              },
+             "response": {
+               "responded": false
+             },
              "responses": [
                {
-                 "name": "Jack",
-                 "responded": false
+                 "name": "Jack"
                }
              ]
            },
@@ -70,15 +73,16 @@ const shortid = require('shortid');
                "address": "177 Sharrow Vale Road, Sheffield, S11 8ZB",
                "email": "jamie.chapman11189@gmail.com"
              },
+             "response": {
+               "responded": true,
+               "date": "2020-04-20"
+             },
              "responses": [
                {
                  "name": "Jamie",
-                 "responded": true,
-                 "rsvp": {
-                   "date": "2020-04-10",
-                   "attending": true,
-                   "comments": "Can't wait guys"
-                 }
+                 "attending": true,
+                 "comments": "Can't wait guys",
+                 "dietary": "I'll eat anything"
                }
              ]
            },
@@ -91,14 +95,15 @@ const shortid = require('shortid');
                "address": "26 Hardman Street, Failsworth, M35 0BB",
                "email": "jaketysome@gmail.com"
              },
+             "response": {
+               "responded": false
+             },
              "responses": [
                {
-                 "name": "Jake",
-                 "responded": false
+                 "name": "Jake"
                },
                {
-                 "name": "Sarah",
-                 "responded": false
+                 "name": "Sarah"
                }
              ]
            }

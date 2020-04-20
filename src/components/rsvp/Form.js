@@ -8,31 +8,30 @@ import Utils from './../../services/Utils';
 // import Guest from './Guest';
 
 const updateGuestResponseMutation = gql`
-  mutation updateGuestResponse($shortId: String!, $responses: [GuestResponsesUpdateInput]!) {
+  mutation updateGuestResponse($shortId: String!, $response: GuestResponseUpdateInput!, $responses: [GuestResponsesUpdateInput]!) {
     updateOneGuest(
       query: { shortId: $shortId }
-      set: { responses: $responses }
+      set: { response: $response, responses: $responses }
     ) {
-      responses {
-        name
-        responded
-        rsvp {
-          attending
-          date
-          dietary
-          comments
-        }
+      response {
+        date
       }
     }
   }
 `
 
-const Form = ({ shortId, guests }) => {
+const Form = ({ shortId, guests, setStatus }) => {
   const fieldRefs = useRef(guests.map(() => createRef()));
-  const [responses, setResponses] = useState(guests);
-  const [updateGuestResponses] = useMutation(updateGuestResponseMutation);
+  const [completedResponses, setCompletedResponses] = useState(guests);
+  const [updateGuestResponses] = useMutation(updateGuestResponseMutation, {
+    onCompleted(result) {
+      setStatus(result.updateOneGuest.response.date);
+    }
+  });
 
   useEffect(() => {
+
+    console.log(guests);
 
     fieldRefs.current.map((field, i) => Utils.setHeightVar(field.current, field.current, '--height'));
 
@@ -40,11 +39,11 @@ const Form = ({ shortId, guests }) => {
 
   const scaffoldRsvp = (i) => {
 
-    const existing = [...responses];
+    const existing = [...completedResponses];
 
-    if (!existing[i].responded) existing[i].responded = true;
+    // if (!existing[i].responded) existing[i].responded = true;
 
-    if (!existing[i].rsvp) existing[i].rsvp = { date: new Date().toISOString().split('T')[0] }
+    if (!existing[i].rsvp) existing[i].rsvp = {}
 
     return existing;
 
@@ -58,7 +57,7 @@ const Form = ({ shortId, guests }) => {
 
     existing[i].rsvp.attending = attending;
 
-    setResponses(existing);
+    setCompletedResponses(existing);
 
   }
 
@@ -68,7 +67,7 @@ const Form = ({ shortId, guests }) => {
 
     existing[i].rsvp[e.target.name] = e.target.value;
 
-    setResponses(existing);
+    setCompletedResponses(existing);
 
   }
 
@@ -76,16 +75,24 @@ const Form = ({ shortId, guests }) => {
 
     e.preventDefault();
 
-    const cleanedResponses = JSON.parse(JSON.stringify(responses));
+    const cleanedResponses = JSON.parse(JSON.stringify(completedResponses));
 
-    cleanedResponses.map((response) => (
-      delete response.__typename
-    ));
+    cleanedResponses.map((response) => {
+      delete response.__typename;
+      delete response.rsvp.__typename
+    });
 
     // console.log(cleanedResponses);
 
     updateGuestResponses({
-      variables: { shortId: shortId, responses: cleanedResponses }
+      variables: {
+        shortId: shortId,
+        response: {
+          responded: true,
+          date: new Date().toISOString().split('T')[0]
+        },
+        responses: cleanedResponses
+      }
     })
 
   }
@@ -94,41 +101,42 @@ const Form = ({ shortId, guests }) => {
     <form onSubmit={handleSubmit}>
       {/*<Guest ref={guestsRef} guest={guests[0]} />*/}
       {/*{guests.map((guest, i) => <Guest ref={guestsRefs.current[i]} key={guest.name} guest={guest} />)}*/}
-      {responses.map((response, i) => {
+      {completedResponses.map((response, i) => {
         return (
           <fieldset key={response.name}>
             <legend className="h2">{response.name}</legend>
             <div className="form-group">
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="true" onChange={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="true" checked={response.rsvp && response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't wait!
               </label>
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="false" onChange={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="false" checked={response.rsvp && !response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't make it
               </label>
             </div>
             <label className="form-input form-input--textarea h3">
               Comments
-              <textarea rows="2" name="comments" value={responses[i].rsvp && responses[i].rsvp.comments ? responses[i].rsvp.comments : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
+              <textarea rows="2" name="comments" value={completedResponses[i].rsvp && completedResponses[i].rsvp.comments ? completedResponses[i].rsvp.comments : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
             </label>
-            <label className={`form-input form-input--textarea h3${responses[i].rsvp && responses[i].rsvp.attending ? ' form-input--shown' : ' form-input--hidden'}`} ref={fieldRefs.current[i]}>
+            <label className={`form-input form-input--textarea h3${completedResponses[i].rsvp && completedResponses[i].rsvp.attending ? ' form-input--shown' : ' form-input--hidden'}`} ref={fieldRefs.current[i]}>
               Dietary requirements
-              <textarea rows="2" name="dietary" value={responses[i].rsvp && responses[i].rsvp.dietary ? responses[i].rsvp.dietary : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
+              <textarea rows="2" name="dietary" value={completedResponses[i].rsvp && completedResponses[i].rsvp.dietary ? completedResponses[i].rsvp.dietary : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
             </label>
           </fieldset>
         );
       })}
-      <button type="submit" className="button" disabled={responses.filter(guest => guest.responded).length !== guests.length}>Submit</button>
+      <button type="submit" className="button" disabled={completedResponses.filter(guest => guest.rsvp).length !== guests.length}>Submit</button>
     </form>
   );
 };
 
 Form.propTypes = {
   shortId: PropTypes.string,
-  guests: PropTypes.array
+  guests: PropTypes.array,
+  setStatus: PropTypes.func
 }
 
 export default Form;
