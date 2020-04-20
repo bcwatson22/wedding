@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef, createRef } from 'react';
 import PropTypes from 'prop-types';
+
+import Utils from './../../services/Utils';
 
 // import Guest from './Guest';
 
 const Form = ({ guests }) => {
+  const fieldRefs = useRef(guests.map(() => createRef()));
   const [responses, setResponses] = useState(guests);
+
+  useEffect(() => {
+
+    Utils.delay(100).then(() => fieldRefs.current.map((field, index) => Utils.setHeightVar(field.current, field.current, '--height')));
+
+    // Utils.delay(100).then(() => console.log(getComputedStyle(fieldRefs.current[0].current).getPropertyValue('--height')));
+
+    // Utils.delay(1300).then(() => {
+    //
+    //   // initScroll(wrapper.current);
+    //   // setScroll(true);
+    //
+    // });
+
+  }, []);
 
   const scaffoldRsvp = (index) => {
 
@@ -72,12 +90,10 @@ const Form = ({ guests }) => {
               Comments
               <textarea rows="2" name="comments" value={responses[index].rsvp && responses[index].rsvp.comments ? responses[index].rsvp.comments : ''} onChange={(e) => handleTextarea(e, index)}></textarea>
             </label>
-            {responses[index].rsvp && responses[index].rsvp.attending &&
-              <label className="form-input form-input--textarea h3">
-                Dietary requirements
-                <textarea rows="2" name="dietary" value={responses[index].rsvp && responses[index].rsvp.dietary ? responses[index].rsvp.dietary : ''} onChange={(e) => handleTextarea(e, index)}></textarea>
-              </label>
-            }
+            <label className={`form-input form-input--textarea h3${responses[index].rsvp && responses[index].rsvp.attending ? ' form-input--shown' : ' form-input--hidden'}`} ref={fieldRefs.current[index]}>
+              Dietary requirements
+              <textarea rows="2" name="dietary" value={responses[index].rsvp && responses[index].rsvp.dietary ? responses[index].rsvp.dietary : ''} onChange={(e) => handleTextarea(e, index)}></textarea>
+            </label>
           </fieldset>
         );
       })}

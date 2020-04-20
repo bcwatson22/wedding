@@ -6,26 +6,16 @@ button[type="submit"] {
 fieldset {
   position: relative;
   min-inline-size: unset;
-  // @include standard-spacing();
-
-  // &:first-of-type {
-  //   margin-top: 6rem;
-  // }
 }
 
 input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 .form-input--checkbox,
-.form-input--radio,
-.form-group {
+.form-input--radio {
   margin: 1.5rem 0 3rem;
 
   label:last-of-type & {
     margin-bottom: 0;
-  }
-
-  legend + & {
-    // margin-top: 3rem;
   }
 }
 
@@ -72,11 +62,38 @@ input[type="radio"] {
   left: -99999rem;
 }
 
+textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.form-input {
+  @include hwa();
+  display: block;
+  transition: max-height 0.35s ease, font-weight 0.35s ease;
+  overflow: hidden;
+  margin: 0;
+
+  &--hidden {
+    // margin-top: 0;
+    max-height: 0;
+  }
+
+  &--shown {
+    max-height: calc(var(--height) * 0.1rem);
+  }
+
+  &:hover {
+    font-weight: 650;
+  }
+}
+
 .form-input--checkbox,
 .form-input--radio {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 3rem;
 
   &__indicator {
     display: block;
@@ -117,7 +134,7 @@ input[type="radio"] {
 }
 
 .form-group {
-  margin-bottom: 0;
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

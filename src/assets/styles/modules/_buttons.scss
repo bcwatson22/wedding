@@ -1,17 +1,19 @@
 .button {
   padding: 1.5rem 2rem;
   font-size: 1.8rem;
-  font-weight: 500;
   display: inline-block;
   background: var(--green);
   border-radius: 0.5rem;
   color: var(--white);
+  transition: all 0.35s ease;
 
   &:hover {
+    font-weight: 650;
     background: var(--green-dark);
   }
 
   &:active {
+    transition: none;
     transform: scale(0.98);
   }
 
