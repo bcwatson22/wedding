@@ -49,9 +49,9 @@ const Gatecrasher = () => {
 
 const Greeting = (props, ref) => {
   return (
-    <>
+    <div ref={ref}>
       {props.personal.nicknames ? <Guest completed={props.completed} personal={props.personal} /> : <Gatecrasher />}
-    </>
+    </div>
   );
 };
 

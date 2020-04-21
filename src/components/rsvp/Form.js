@@ -41,8 +41,6 @@ const Form = ({ shortId, guests, setStatus }) => {
 
     const existing = [...completedResponses];
 
-    // if (!existing[i].responded) existing[i].responded = true;
-
     if (!existing[i].rsvp) existing[i].rsvp = {}
 
     return existing;
@@ -107,12 +105,12 @@ const Form = ({ shortId, guests, setStatus }) => {
             <legend className="h2">{response.name}</legend>
             <div className="form-group">
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="true" checked={response.rsvp && response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="true" defaultChecked={response.rsvp && response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't wait!
               </label>
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="false" checked={response.rsvp && !response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="false" defaultChecked={response.rsvp && !response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't make it
               </label>

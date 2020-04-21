@@ -16,9 +16,9 @@ const userTokens = {
   tys: '1GNpq5bcLH'
 }
 
-const guestQuery = (shortId) => gql`
-  query Guest {
-    guest(query: { shortId: "${shortId}" }) {
+const getGuestInfoQuery = () => gql`
+  query Guest($shortId: String!) {
+    guest(query: { shortId: $shortId }) {
       personal {
         nicknames
         greeting
@@ -45,8 +45,14 @@ const RSVP = ({ children, location }) => {
   const urlParams = new URLSearchParams(location.search);
   const userToken = location.search.length ? urlParams.get('guest') : null;
 
-  const { loading, error, data } = useQuery(guestQuery(userTokens[userToken]), {
-    skip: !userToken
+  const { loading, error, data } = useQuery(getGuestInfoQuery(), {
+    variables: {
+      shortId: userTokens[userToken]
+    },
+    skip: !userToken,
+    onCompleted(result) {
+      console.log(result)
+    }
   });
 
   const setStatus = (date) => {
