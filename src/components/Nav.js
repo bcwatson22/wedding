@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { useContext } from 'react';
+import { navigate } from 'gatsby';
 
-// import home from './../assets/icons/nav/home.svg';
-// import info from './../assets/icons/nav/info.svg';
-// import timings from './../assets/icons/nav/clock.svg';
-// import rsvp from './../assets/icons/nav/rsvp.svg';
+import LoadingContext from './../context/LoadingContext';
+
+import Utils from './../services/Utils';
 
 const navItems = [
   {
@@ -22,6 +21,21 @@ const navItems = [
 ];
 
 const Nav = () => {
+  const {showLoading} = useContext(LoadingContext);
+
+  const navigateTo = (e) => {
+
+    e.preventDefault();
+
+    const elem = (e.target.localName === 'a') ? e.target : e.target.parentElement,
+          location = elem.getAttribute('href');
+
+    showLoading();
+
+    Utils.delay(200).then(() => navigate(location));
+
+  }
+
   return (
     <nav className="nav nav--primary">
       <ul>
@@ -32,10 +46,10 @@ const Nav = () => {
 
           return (
             <li key={link}>
-              <Link to={link === 'home' ? '/' : `/${link}`} className="nav__button">
+              <a href={link === 'home' ? '/' : `/${link}`} className="nav__button" onClick={navigateTo}>
                 <img src={image} className={`icon icon--${link}`} alt={`${name} icon`} />
                 <span>{name}</span>
-              </Link>
+              </a>
             </li>
           );
         })}

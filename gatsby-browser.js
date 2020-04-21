@@ -1,15 +1,17 @@
 import React from 'react';
 
+import LoadingProvider from './src/context/LoadingProvider';
+
 // Apollo
-import { ApolloClient, HttpLink, InMemoryCache } from "apollo-boost";
-import { setContext } from "apollo-link-context";
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
+import { setContext } from 'apollo-link-context';
+import { ApolloProvider } from '@apollo/react-hooks';
 // Stitch
-import { Stitch, AnonymousCredential } from "mongodb-stitch-browser-sdk";
+import { Stitch, AnonymousCredential } from 'mongodb-stitch-browser-sdk';
 
 // Instantiate a StitchClient
 // TODO: Replace this with your Stitch App ID
-const APP_ID = "application0-khtwt";
+const APP_ID = 'application0-khtwt';
 const app = Stitch.hasAppClient(APP_ID)
   ? Stitch.getAppClient(APP_ID)
   : Stitch.initializeAppClient(APP_ID);
@@ -45,24 +47,19 @@ const httpLink = new HttpLink({ uri: graphql_url });
 // Construct a new Apollo client with the links we just defined
 const client = new ApolloClient({
   link: authorizationHeaderLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });
 
 const wrapRootElement = ({ element }) => {
   return (
     <ApolloProvider client={client}>
-      {element}
+      <LoadingProvider>
+        {element}
+      </LoadingProvider>
     </ApolloProvider>
   )
 }
 
-// Logs when the client route changes
-const onRouteUpdate = ({ location, prevLocation }) => {
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
-}
-
 export {
-  wrapRootElement,
-  onRouteUpdate
+  wrapRootElement
 };

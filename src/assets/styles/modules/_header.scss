@@ -1,7 +1,6 @@
 header {
   background: var(--green-dark);
   color: mix(#b4dbd0, #ffffff, 40%);
-  // color: var(--white);
 
   @media screen and (min-width: $tablet) {
     color: var(--white);

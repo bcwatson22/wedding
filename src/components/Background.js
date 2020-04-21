@@ -1,6 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import * as basicScroll from 'basicscroll';
+
+import LoadingContext from './../context/LoadingContext';
 
 import Utils from './../services/Utils';
 
@@ -27,14 +29,12 @@ const initScroll = (wrapper) => {
 
 }
 
-const Background = ({ children, loaded }) => {
+const Background = ({ children }) => {
   const wrapper = useRef(null);
-  const [loading, setLoading] = useState(true);
   const [scroll, setScroll] = useState(false);
+  const {loadingCount} = useContext(LoadingContext);
 
   useEffect(() => {
-
-    if (loaded) setLoading(false);
 
     Utils.delay(1300).then(() => {
 
@@ -43,10 +43,10 @@ const Background = ({ children, loaded }) => {
 
     });
 
-  }, [loaded]);
+  }, []);
 
   return (
-    <div className={`background${loading ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
+    <div className={`background${loadingCount > 0 ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
       <LeftLeft />
       <LeftCentre />
       <CentreCentre />

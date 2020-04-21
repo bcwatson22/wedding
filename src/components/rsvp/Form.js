@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef, createRef } from 'react';
+import React, { useEffect, useState, useRef, createRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+
+import LoadingContext from './../../context/LoadingContext';
 
 import Utils from './../../services/Utils';
 
@@ -23,15 +25,18 @@ const updateGuestResponseMutation = gql`
 const Form = ({ shortId, guests, setStatus }) => {
   const fieldRefs = useRef(guests.map(() => createRef()));
   const [completedResponses, setCompletedResponses] = useState(guests);
+  const {showLoading, hideLoading} = useContext(LoadingContext);
+
   const [updateGuestResponses] = useMutation(updateGuestResponseMutation, {
     onCompleted(result) {
+      hideLoading();
       setStatus(result.updateOneGuest.response.date);
     }
   });
 
   useEffect(() => {
 
-    console.log(guests);
+    // console.log(guests);
 
     fieldRefs.current.map((field, i) => Utils.setHeightVar(field.current, field.current, '--height'));
 
@@ -69,18 +74,26 @@ const Form = ({ shortId, guests, setStatus }) => {
 
   }
 
+  const cleanResponses = () => {
+
+    const copiedResponses = JSON.parse(JSON.stringify(completedResponses));
+
+    copiedResponses.forEach((response) => {
+      delete response.__typename;
+      delete response.rsvp.__typename;
+    });
+
+    return copiedResponses;
+
+  }
+
   const handleSubmit = (e) => {
 
     e.preventDefault();
 
-    const cleanedResponses = JSON.parse(JSON.stringify(completedResponses));
+    showLoading();
 
-    cleanedResponses.map((response) => {
-      delete response.__typename;
-      delete response.rsvp.__typename
-    });
-
-    // console.log(cleanedResponses);
+    const cleanedResponses = cleanResponses();
 
     updateGuestResponses({
       variables: {

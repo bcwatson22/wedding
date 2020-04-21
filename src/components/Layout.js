@@ -8,7 +8,7 @@ import Header from './Header';
 import Background from './Background';
 import Footer from './Footer';
 
-const Layout = ({ children, pageName, loaded }) => {
+const Layout = ({ children, pageName }) => {
 
   let className = '';
 
@@ -22,7 +22,7 @@ const Layout = ({ children, pageName, loaded }) => {
       <div className="wrapper">
         <Header />
         <main>
-          <Background loaded={loaded} />
+          <Background />
           { children }
         </main>
         <Footer />
@@ -34,8 +34,7 @@ const Layout = ({ children, pageName, loaded }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  pageName: PropTypes.node,
-  loaded: PropTypes.bool.isRequired
+  pageName: PropTypes.node
 }
 
 export default Layout;

@@ -1,11 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import Helmet from 'react-helmet';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
+import LoadingContext from './../context/LoadingContext';
+
 import Layout from './../components/Layout';
 import Container from './../components/Container';
-
+import Gatecrasher from './../components/rsvp/Gatecrasher';
 import Greeting from './../components/rsvp/Greeting';
 import Form from './../components/rsvp/Form';
 
@@ -42,6 +44,8 @@ const getGuestInfoQuery = () => gql`
 const RSVP = ({ children, location }) => {
   const greeting = useRef(null);
   const [completed, setCompleted] = useState(null);
+  const {hideLoading} = useContext(LoadingContext);
+
   const urlParams = new URLSearchParams(location.search);
   const userToken = location.search.length ? urlParams.get('guest') : null;
 
@@ -51,13 +55,11 @@ const RSVP = ({ children, location }) => {
     },
     skip: !userToken,
     onCompleted(result) {
-      console.log(result)
+      hideLoading()
     }
   });
 
   const setStatus = (date) => {
-
-    console.log(greeting);
 
     setCompleted(date);
 
@@ -65,11 +67,20 @@ const RSVP = ({ children, location }) => {
 
   return (
     <>
-      <Layout pageName="rsvp" loaded={!loading || !userToken}>
+      <Layout pageName="rsvp">
         <Helmet>
           <title>RSVP | B&B's wedding</title>
         </Helmet>
         <Container>
+          {!userToken &&
+            <Gatecrasher />
+          }
+          {loading &&
+            <>
+              <h1>Un momentito</h1>
+              <h2>Just grabbing your deets</h2>
+            </>
+          }
           {data &&
             <>
               <Greeting completed={data && data.guest.response.date ? data.guest.response.date : completed} personal={data ? data.guest.personal : {}} ref={greeting} />
