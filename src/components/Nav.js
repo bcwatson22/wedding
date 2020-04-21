@@ -1,9 +1,6 @@
-import React, { useContext } from 'react';
-import { navigate } from 'gatsby';
+import React from 'react';
 
-import LoadingContext from './../context/LoadingContext';
-
-import Utils from './../services/Utils';
+import Link from './Link';
 
 const navItems = [
   {
@@ -21,21 +18,6 @@ const navItems = [
 ];
 
 const Nav = () => {
-  const {showLoading} = useContext(LoadingContext);
-
-  const navigateTo = (e) => {
-
-    e.preventDefault();
-
-    const elem = (e.target.localName === 'a') ? e.target : e.target.parentElement,
-          location = elem.getAttribute('href');
-
-    showLoading();
-
-    Utils.delay(200).then(() => navigate(location));
-
-  }
-
   return (
     <nav className="nav nav--primary">
       <ul>
@@ -46,10 +28,10 @@ const Nav = () => {
 
           return (
             <li key={link}>
-              <a href={link === 'home' ? '/' : `/${link}`} className="nav__button" onClick={navigateTo}>
+              <Link target={link === 'home' ? '/' : `/${link}`}>
                 <img src={image} className={`icon icon--${link}`} alt={`${name} icon`} />
                 <span>{name}</span>
-              </a>
+              </Link>
             </li>
           );
         })}

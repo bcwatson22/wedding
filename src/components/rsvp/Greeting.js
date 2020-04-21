@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import Link from './../Link';
+
 const Instructions = ({ nicknames, greeting }) => {
   return (
     <>
@@ -26,7 +28,7 @@ const Thanks = ({ nicknames, date }) => {
     <>
       <h2>Thanks {nicknames && `${nicknames}!`}</h2>
       <p>We received your RSVP <strong>{string}</strong>.</p>
-      <p>You can edit your response below, or please check out the Info and Timings pages for more information about the big day.</p>
+      <p>You can edit your response below, or please check out the <Link target="/info">Info</Link> and <Link target="/timings">Timings</Link> pages for more information about the big day.</p>
     </>
   );
 };

@@ -135,7 +135,7 @@ const Form = ({ shortId, guests, setStatus }) => {
           </fieldset>
         );
       })}
-      <button type="submit" className="button" disabled={completedResponses.filter(guest => guest.rsvp).length !== guests.length}>Submit</button>
+      <button type="submit" className="button button--block" disabled={completedResponses.filter(guest => guest.rsvp).length !== guests.length}>Submit</button>
     </form>
   );
 };

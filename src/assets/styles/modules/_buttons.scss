@@ -1,27 +1,35 @@
 .button {
-  padding: 1.5rem 2rem;
-  font-size: 1.8rem;
-  display: inline-block;
-  background: var(--green);
-  border-radius: 0.5rem;
-  color: var(--white);
-  // transition: all 0.35s ease;
+  &--block {
+    padding: 1.5rem 2rem;
+    font-size: 1.8rem;
+    display: inline-block;
+    background: var(--green);
+    border-radius: 0.5rem;
+    color: var(--white);
+    // transition: all 0.35s ease;
 
-  &:not([disabled]):hover {
-    background: var(--green-dark);
+    &:not([disabled]):hover {
+      background: var(--green-dark);
+    }
+
+    &:active {
+      transition: none;
+      transform: scale(0.98);
+    }
+
+    &[disabled] {
+      background: var(--border);
+      cursor: not-allowed;
+    }
+
+    // @media screen and (min-width: $tablet) {
+    //   font-size: 2.4rem;
+    // }
   }
 
-  &:active {
-    transition: none;
-    transform: scale(0.98);
-  }
-
-  &[disabled] {
-    background: var(--border);
-    cursor: not-allowed;
-  }
-
-  @media screen and (min-width: $desktop) {
-    font-size: 2.4rem;
+  &--text {
+    @include text-link-inverse();
+    color: inherit;
+    font-weight: 650;
   }
 }
