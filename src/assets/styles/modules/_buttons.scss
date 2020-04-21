@@ -6,7 +6,6 @@
     background: var(--green);
     border-radius: 0.5rem;
     color: var(--white);
-    // transition: all 0.35s ease;
 
     &:not([disabled]):hover {
       background: var(--green-dark);
@@ -21,10 +20,6 @@
       background: var(--border);
       cursor: not-allowed;
     }
-
-    // @media screen and (min-width: $tablet) {
-    //   font-size: 2.4rem;
-    // }
   }
 
   &--text {

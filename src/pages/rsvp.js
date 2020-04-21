@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -20,8 +20,8 @@ const userTokens = {
   tys: '1GNpq5bcLH'
 }
 
-const getGuestInfoQuery = () => gql`
-  query Guest($shortId: String!) {
+const getGuestInfoQuery = gql`
+  query guest($shortId: String!) {
     guest(query: { shortId: $shortId }) {
       personal {
         nicknames
@@ -50,17 +50,24 @@ const RSVP = ({ children, location }) => {
 
   const scroll = new SmoothScroll();
   const urlParams = new URLSearchParams(location.search);
-  const userToken = location.search.length ? urlParams.get('guest') : null;
+  const urlToken = location.search.length ? urlParams.get('guest') : null;
+  const userToken = localStorage.getItem('bb-wedding-guest') ? localStorage.getItem('bb-wedding-guest') : userTokens[urlToken];
 
-  const { loading, error, data } = useQuery(getGuestInfoQuery(), {
+  const { loading, error, data } = useQuery(getGuestInfoQuery, {
     variables: {
-      shortId: userTokens[userToken]
+      shortId: userToken
     },
     skip: !userToken,
     onCompleted(result) {
       hideLoading()
     }
   });
+
+  useEffect(() => {
+
+    if (userToken) localStorage.setItem('bb-wedding-guest', userToken);
+
+  }, [userToken]);
 
   const setStatus = (date) => {
 
@@ -89,7 +96,7 @@ const RSVP = ({ children, location }) => {
           {data &&
             <>
               <Greeting completed={completed ? completed : data.guest.response.date} personal={data ? data.guest.personal : {}} />
-              <Form shortId={userTokens[userToken]} guests={data.guest.responses ? data.guest.responses : []} setStatus={setStatus} />
+              <Form shortId={userToken} guests={data.guest.responses ? data.guest.responses : []} setStatus={setStatus} />
             </>
           }
           {error &&

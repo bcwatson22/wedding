@@ -7,7 +7,7 @@ import Link from './../Link';
 const Instructions = ({ nicknames, greeting }) => {
   return (
     <>
-      <h2>Now then {nicknames && `${nicknames}!`}</h2>
+      <h2>Now then {nicknames && `${nicknames}`}</h2>
       {greeting && <p>{greeting}</p>}
       <p>Please fill in the form below to let us know if you can make it. If you could make sure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
       <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
@@ -16,9 +16,9 @@ const Instructions = ({ nicknames, greeting }) => {
 };
 
 const Thanks = ({ nicknames, date }) => {
-  const today = moment(),
-        submitted = moment(date),
-        difference = today.diff(submitted, 'months');
+  const today = moment();
+  const submitted = moment(date);
+  const difference = today.diff(submitted, 'months');
 
   let string = `on ${moment(date).format('Do MMMM')}`;
 
@@ -26,7 +26,7 @@ const Thanks = ({ nicknames, date }) => {
 
   return (
     <>
-      <h2>Thanks {nicknames && `${nicknames}!`}</h2>
+      <h2>Thanks {nicknames && `${nicknames}`}</h2>
       <p>We received your RSVP <strong>{string}</strong>.</p>
       <p>You can edit your response below, or please check out the <Link target="/info">Info</Link> and <Link target="/timings">Timings</Link> pages for more information about the big day.</p>
     </>

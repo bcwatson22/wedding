@@ -2,22 +2,22 @@ import React from 'react';
 
 import Link from './Link';
 
-const navItems = [
-  {
-    name: 'Home'
-  },
-  {
-    name: 'Info'
-  },
-  {
-    name: 'Timings'
-  },
-  {
-    name: 'RSVP'
-  }
-];
-
 const Nav = () => {
+  const navItems = [
+    {
+      name: 'Home'
+    },
+    {
+      name: 'Info'
+    },
+    {
+      name: 'Timings'
+    },
+    {
+      name: 'RSVP'
+    }
+  ];
+
   return (
     <nav className="nav nav--primary">
       <ul>
