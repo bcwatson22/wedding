@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Instructions = ({ nicknames, greeting }) => {
@@ -22,7 +22,7 @@ const Thanks = ({ nicknames, date }) => {
   );
 };
 
-const Guest = ({ completed, personal }) => {
+const Greeting = ({ completed, personal }) => {
   const { nicknames, greeting } = personal;
 
   return (
@@ -35,29 +35,9 @@ const Guest = ({ completed, personal }) => {
   );
 };
 
-const Gatecrasher = () => {
-  return (
-    <>
-      <h1>RSVP</h1>
-      <h2>Now then gatecrasher!</h2>
-      <p>Only joking. But we need you to have clicked the link in your email to be able to tell who you are and to store your response.</p>
-      <p>Either you didn't come here via the link, or something fishy is going on!</p>
-      <p>Please try again.</p>
-    </>
-  );
-};
-
-const Greeting = (props, ref) => {
-  return (
-    <div ref={ref}>
-      {props.personal.nicknames ? <Guest completed={props.completed} personal={props.personal} /> : <Gatecrasher />}
-    </div>
-  );
-};
-
-Guest.propTypes = {
+Greeting.propTypes = {
   completed: PropTypes.string,
   personal: PropTypes.object
 }
 
-export default forwardRef(Greeting);
+export default Greeting;

@@ -1,29 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, forwardRef } from 'react';
 import Helmet from 'react-helmet';
 
 import 'assets/styles/application.scss';
+
+import LoadingContext from './../context/LoadingContext';
 
 import Header from './Header';
 import Background from './Background';
 import Footer from './Footer';
 
-const Layout = ({ children, pageName }) => {
+const Layout = (props, ref) => {
+  const {loadingCount} = useContext(LoadingContext);
 
   let className = '';
 
-  if (pageName) className = `page-${pageName}`;
+  if (props.pageName) className = `page-${props.pageName}`;
 
   return (
     <>
       <Helmet bodyAttributes={{class: className}}>
         <title>Gatsby Site</title>
       </Helmet>
-      <div className="wrapper">
+      <div className={`wrapper${loadingCount > 0 ? ' loading' : ''}`}>
         <Header />
-        <main>
+        <main ref={ref}>
           <Background />
-          { children }
+          { props.children }
         </main>
         <Footer />
       </div>
@@ -32,9 +34,4 @@ const Layout = ({ children, pageName }) => {
 
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  pageName: PropTypes.node
-}
-
-export default Layout;
+export default forwardRef(Layout);

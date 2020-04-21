@@ -1,3 +1,3 @@
-exports.onCreateNode = ({ node }) => {
-  console.log(node.internal.type)
-}
+// exports.onCreateNode = ({ node }) => {
+//   console.log(node.internal.type)
+// }

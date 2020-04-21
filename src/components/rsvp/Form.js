@@ -7,8 +7,6 @@ import LoadingContext from './../../context/LoadingContext';
 
 import Utils from './../../services/Utils';
 
-// import Guest from './Guest';
-
 const updateGuestResponseMutation = gql`
   mutation updateGuestResponse($shortId: String!, $response: GuestResponseUpdateInput!, $responses: [GuestResponsesUpdateInput]!) {
     updateOneGuest(
@@ -35,8 +33,6 @@ const Form = ({ shortId, guests, setStatus }) => {
   });
 
   useEffect(() => {
-
-    // console.log(guests);
 
     fieldRefs.current.map((field, i) => Utils.setHeightVar(field.current, field.current, '--height'));
 
@@ -110,8 +106,6 @@ const Form = ({ shortId, guests, setStatus }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/*<Guest ref={guestsRef} guest={guests[0]} />*/}
-      {/*{guests.map((guest, i) => <Guest ref={guestsRefs.current[i]} key={guest.name} guest={guest} />)}*/}
       {completedResponses.map((response, i) => {
         return (
           <fieldset key={response.name}>

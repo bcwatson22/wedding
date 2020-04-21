@@ -11,6 +11,8 @@ import Gatecrasher from './../components/rsvp/Gatecrasher';
 import Greeting from './../components/rsvp/Greeting';
 import Form from './../components/rsvp/Form';
 
+import SmoothScroll from 'smooth-scroll';
+
 const userTokens = {
   arch: '9yLbQgnkE',
   festa: 'zUIDbD5x6M',
@@ -42,10 +44,11 @@ const getGuestInfoQuery = () => gql`
 `
 
 const RSVP = ({ children, location }) => {
-  const greeting = useRef(null);
+  const wrapper = useRef(null);
   const [completed, setCompleted] = useState(null);
   const {hideLoading} = useContext(LoadingContext);
 
+  const scroll = new SmoothScroll();
   const urlParams = new URLSearchParams(location.search);
   const userToken = location.search.length ? urlParams.get('guest') : null;
 
@@ -61,13 +64,15 @@ const RSVP = ({ children, location }) => {
 
   const setStatus = (date) => {
 
+    scroll.animateScroll(wrapper.current, null, { speed: 1000, easing: 'easeOutCubic' });
+
     setCompleted(date);
 
   }
 
   return (
     <>
-      <Layout pageName="rsvp">
+      <Layout pageName="rsvp" ref={wrapper}>
         <Helmet>
           <title>RSVP | B&B's wedding</title>
         </Helmet>
@@ -83,7 +88,7 @@ const RSVP = ({ children, location }) => {
           }
           {data &&
             <>
-              <Greeting completed={data && data.guest.response.date ? data.guest.response.date : completed} personal={data ? data.guest.personal : {}} ref={greeting} />
+              <Greeting completed={data && data.guest.response.date ? data.guest.response.date : completed} personal={data ? data.guest.personal : {}} />
               <Form shortId={userTokens[userToken]} guests={data.guest.responses ? data.guest.responses : []} setStatus={setStatus} />
             </>
           }

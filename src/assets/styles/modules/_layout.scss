@@ -1,5 +1,3 @@
-// @import 'mixins';
-
 html,
 body {
   height: 100%;
@@ -13,6 +11,13 @@ body {
 main {
   position: relative;
   min-height: 71rem;
+  transition: all 0.2s ease;
+  will-change: opacity;
+  opacity: 0.999;
+
+  .loading & {
+    opacity: 0.001;
+  }
 }
 
 .wrapper {
