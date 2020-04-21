@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, createRef, useContext } from 'react
 import PropTypes from 'prop-types';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import moment from 'moment';
 
 import LoadingContext from './../../context/LoadingContext';
 
@@ -27,6 +28,7 @@ const Form = ({ shortId, guests, setStatus }) => {
 
   const [updateGuestResponses] = useMutation(updateGuestResponseMutation, {
     onCompleted(result) {
+      console.log(result);
       hideLoading();
       setStatus(result.updateOneGuest.response.date);
     }
@@ -96,7 +98,7 @@ const Form = ({ shortId, guests, setStatus }) => {
         shortId: shortId,
         response: {
           responded: true,
-          date: new Date().toISOString().split('T')[0]
+          date: moment()
         },
         responses: cleanedResponses
       }

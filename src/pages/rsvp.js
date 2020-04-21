@@ -88,7 +88,7 @@ const RSVP = ({ children, location }) => {
           }
           {data &&
             <>
-              <Greeting completed={data && data.guest.response.date ? data.guest.response.date : completed} personal={data ? data.guest.personal : {}} />
+              <Greeting completed={completed ? completed : data.guest.response.date} personal={data ? data.guest.personal : {}} />
               <Form shortId={userTokens[userToken]} guests={data.guest.responses ? data.guest.responses : []} setStatus={setStatus} />
             </>
           }

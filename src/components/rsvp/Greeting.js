@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const Instructions = ({ nicknames, greeting }) => {
   return (
@@ -13,10 +14,18 @@ const Instructions = ({ nicknames, greeting }) => {
 };
 
 const Thanks = ({ nicknames, date }) => {
+  const today = moment(),
+        submitted = moment(date),
+        difference = today.diff(submitted, 'months');
+
+  let string = `on ${moment(date).format('Do MMMM')}`;
+
+  if (difference < 3) string = moment(date).fromNow();
+
   return (
     <>
       <h2>Thanks {nicknames && `${nicknames}!`}</h2>
-      <p>We received your RSVP on {date}.</p>
+      <p>We received your RSVP <strong>{string}</strong>.</p>
       <p>You can edit your response below, or please check out the Info and Timings pages for more information about the big day.</p>
     </>
   );
