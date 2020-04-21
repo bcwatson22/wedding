@@ -28,7 +28,6 @@ const Form = ({ shortId, guests, setStatus }) => {
 
   const [updateGuestResponses] = useMutation(updateGuestResponseMutation, {
     onCompleted(result) {
-      console.log(result);
       hideLoading();
       setStatus(result.updateOneGuest.response.date);
     }

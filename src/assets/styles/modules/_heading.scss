@@ -1,0 +1,12 @@
+.heading {
+  &--icon {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 1.5rem;
+      width: auto;
+      height: 2rem;
+    }
+  }
+}
