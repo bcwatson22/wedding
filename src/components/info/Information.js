@@ -10,6 +10,33 @@ import activities from './../../assets/icons/info/activities.svg';
 import contact from './../../assets/icons/info/contact.svg';
 
 const Information = () => {
+  const taxiCompanies = [
+    {
+      name: 'Ashbourne Taxis ',
+      phone: '01335 345198'
+    },
+    {
+      name: 'Dovelin Cars and Minibus',
+      phone: '07974 665439'
+    },
+    {
+      name: 'Star Cars',
+      phone: '01538 266343'
+    },
+    {
+      name: 'ACT Taxis',
+      phone: '01335 343928'
+    },
+    {
+      name: 'Village Taxis Of Ashbourne',
+      phone: '01335 418080'
+    },
+    {
+      name: 'Peak Cars',
+      phone: '01335 370937'
+    }
+  ];
+
   return (
     <>
       <h1>Info</h1>
@@ -26,7 +53,30 @@ const Information = () => {
       <h2 className="heading--icon"><img src={activities} alt="Activities" />Activities</h2>
       <p>Aesthetic 8-bit tofu skateboard drinking vinegar prism. Seitan woke occupy activated charcoal, DIY yr tousled. Ethical helvetica normcore hashtag 8-bit, deep v iceland. Leggings tbh ennui succulents jianbing banjo distillery ugh +1 man bun meh knausgaard. Retro schlitz edison bulb, bitters beard sartorial kitsch raw denim taxidermy mlkshk vape. Hammock chillwave lumbersexual meggings master cleanse kogi 3 wolf moon banh mi pitchfork tumeric etsy. Wolf semiotics gastropub schlitz, gochujang affogato kitsch cray green juice neutra locavore iPhone 8-bit tousled.</p>
       <h2 className="heading--icon"><img src={taxis} alt="Taxis" />Taxis</h2>
-      <p>Pok pok tote bag cronut celiac. Artisan intelligentsia +1 portland, tumeric cloud bread keffiyeh poke occupy shaman freegan. Pour-over blue bottle small batch woke man braid dreamcatcher direct trade af hot chicken cronut ennui. Raw denim kickstarter etsy crucifix. Pop-up typewriter gastropub tilde, hell of palo santo art party narwhal tattooed keytar banjo single-origin coffee godard church-key. Echo park bushwick street art, four loko fanny pack meditation keffiyeh palo santo.</p>
+      <p>Our wedding venue is in the countryside, please make sure to book taxis in advance to guarantee a ride to your accomodation. Music will finish at 11.30pm, and all guests must be off site by midnight.</p>
+      <article className="scrolling-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {taxiCompanies.map((company) => {
+              let { name, phone } = company,
+                  number = phone.replace('0', '+44').replace(/\s/g, '');
+
+              return (
+                <tr key={name}>
+                  <td>{name}</td>
+                  <td><a href={`tel:${number}`} className="button button--text">{phone}</a></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </article>
       <h2 className="heading--icon"><img src={contact} alt="Contact" />Contact</h2>
       <p>Billy - <a href="tel:+447158716298" className="button button--text">07158 716298</a></p>
       <p>Becky - <a href="tel:+447817610931" className="button button--text">07817 610931</a></p>

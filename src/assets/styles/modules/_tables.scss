@@ -1,0 +1,79 @@
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+tbody tr:first-of-type {
+  th,
+  td {
+    &:before {
+      content: none;
+    }
+  }
+}
+
+th,
+td {
+  padding: 2rem;
+  position: relative;
+  @include pseudo-before();
+
+  &:before {
+    width: 100%;
+    top: -0.1rem;
+    left: 0;
+    // border-top: 0.2rem solid var(--grey-light);
+  }
+
+  > * {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+td {
+  tr:nth-of-type(even) & {
+    background: var(--grey-light);
+  }
+}
+
+.scrolling-table {
+  margin-top: 3rem;
+  overflow-x: auto;
+  width: 100%;
+
+  th,
+  td {
+    white-space: nowrap;
+
+    @media screen and (max-width: $tablet) {
+      padding-right: 2rem;
+    }
+  }
+}
