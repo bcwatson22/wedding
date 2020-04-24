@@ -22,6 +22,12 @@ const Utils = {
 
     return height;
 
+  },
+
+  checkExists(thingToCheck) {
+
+    return typeof thingToCheck !== 'undefined';
+    
   }
 
 };

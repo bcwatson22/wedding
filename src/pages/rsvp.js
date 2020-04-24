@@ -4,14 +4,13 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import LoadingContext from './../context/LoadingContext';
+import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
 import Container from './../components/Container';
 import Gatecrasher from './../components/rsvp/Gatecrasher';
 import Greeting from './../components/rsvp/Greeting';
 import Form from './../components/rsvp/Form';
-
-// import SmoothScroll from 'smooth-scroll';
 
 const userTokens = {
   arch: 'ck9d10e2x00qc07160lw3sb1x',
@@ -52,11 +51,12 @@ const RSVP = ({ children, location }) => {
   const wrapper = useRef(null);
   const [completed, setCompleted] = useState(null);
   const {hideLoading} = useContext(LoadingContext);
+  const {hideRouting} = useContext(RoutingContext);
 
-  // const scroll = new SmoothScroll();
+  const haveLocalStorage = typeof localStorage !== 'undefined';
   const urlParams = new URLSearchParams(location.search);
   const urlToken = location.search.length ? urlParams.get('guest') : null;
-  const userToken = localStorage.getItem('bb-wedding-guest') ? localStorage.getItem('bb-wedding-guest') : userTokens[urlToken];
+  const userToken = haveLocalStorage && localStorage.getItem('bb-wedding-guest') ? localStorage.getItem('bb-wedding-guest') : userTokens[urlToken];
 
   const { loading, error, data } = useQuery(getGuestInfoQuery, {
     variables: {
@@ -70,13 +70,21 @@ const RSVP = ({ children, location }) => {
 
   useEffect(() => {
 
-    if (userToken) localStorage.setItem('bb-wedding-guest', userToken);
+    hideRouting();
 
-  }, [userToken]);
+    if (userToken) {
+
+      if (haveLocalStorage) localStorage.setItem('bb-wedding-guest', userToken);
+
+    } else {
+
+      hideLoading();
+
+    }
+
+  }, [haveLocalStorage, userToken, hideLoading, hideRouting]);
 
   const setStatus = (date) => {
-
-    // scroll.animateScroll(wrapper.current, null, { speed: 1000, easing: 'easeOutCubic' });
 
     wrapper.current.scrollIntoView({ behavior: 'smooth' });
 

@@ -3,14 +3,14 @@ import Helmet from 'react-helmet';
 
 import 'assets/styles/application.scss';
 
-import LoadingContext from './../context/LoadingContext';
+import RoutingContext from './../context/RoutingContext';
 
 import Header from './Header';
 import Background from './Background';
 import Footer from './Footer';
 
 const Layout = (props, ref) => {
-  const {loadingCount} = useContext(LoadingContext);
+  const {routing} = useContext(RoutingContext);
 
   let className = '';
 
@@ -21,7 +21,7 @@ const Layout = (props, ref) => {
       <Helmet bodyAttributes={{class: className}}>
         <title>Gatsby Site</title>
       </Helmet>
-      <div className={`wrapper${loadingCount > 0 ? ' loading' : ''}`}>
+      <div className={`wrapper${routing ? ' routing' : ''}`}>
         <Header />
         <main ref={ref}>
           <Background />

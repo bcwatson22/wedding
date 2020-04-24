@@ -117,12 +117,12 @@ const Form = ({ rsvpId, guests, setStatus }) => {
             <legend className="h2">{response.name}</legend>
             <div className="form-group">
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="true" defaultChecked={ response.attending} onClick={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="true" defaultChecked={response.attending === true} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't wait!
               </label>
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="false" defaultChecked={ !response.attending} onClick={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="false" defaultChecked={response.attending === false} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't make it
               </label>
@@ -138,7 +138,7 @@ const Form = ({ rsvpId, guests, setStatus }) => {
           </fieldset>
         );
       })}
-      <button type="submit" className="button button--block" disabled={completedResponses.filter(guest => guest.hasOwnProperty('attending')).length !== guests.length}>Submit</button>
+      <button type="submit" className="button button--block" disabled={completedResponses.filter(guest => guest.attending !== null).length !== guests.length}>Submit</button>
     </form>
   );
 };

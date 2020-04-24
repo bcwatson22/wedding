@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import LoadingContext from './../context/LoadingContext';
+import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
 import Container from './../components/Container';
@@ -36,6 +37,7 @@ const getGuestResponsesQuery = gql`
 
 const Responses = ({ children, location }) => {
   const {hideLoading} = useContext(LoadingContext);
+  const {hideRouting} = useContext(RoutingContext);
 
   const { loading, error, data } = useQuery(getGuestResponsesQuery, {
     onCompleted(result) {
@@ -46,8 +48,9 @@ const Responses = ({ children, location }) => {
   useEffect(() => {
 
     hideLoading();
+    hideRouting();
 
-  }, [hideLoading]);
+  }, [hideLoading, hideRouting]);
 
   return (
     <>

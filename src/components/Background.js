@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import * as basicScroll from 'basicscroll';
 
+import LoadingContext from './../context/LoadingContext';
 import Utils from './../services/Utils';
 
 import LeftLeft from './vectors/LeftLeft';
@@ -30,6 +31,7 @@ const initScroll = (wrapper) => {
 const Background = ({ children }) => {
   const wrapper = useRef(null);
   const [scroll, setScroll] = useState(false);
+  const {loadingCount} = useContext(LoadingContext);
 
   useEffect(() => {
 
@@ -43,7 +45,7 @@ const Background = ({ children }) => {
   }, []);
 
   return (
-    <div className={`background${scroll ? ' scroll' : ''}`} ref={wrapper}>
+    <div className={`background${loadingCount > 0 ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
       <LeftLeft />
       <LeftCentre />
       <CentreCentre />
