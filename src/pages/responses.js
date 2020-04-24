@@ -11,13 +11,20 @@ import Container from './../components/Container';
 const getGuestResponsesQuery = gql`
   query guests {
     guests {
-      response {
+      id
+      personal {
+        greeting
+        nicknames
+      }
+      contact {
+        address
+        email
+      }
+      rsvp {
         responded
         date
-      }
-      responses {
-        name
-        rsvp {
+        responses {
+          name
           attending
           dietary
           comments

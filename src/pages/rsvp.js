@@ -14,26 +14,31 @@ import Form from './../components/rsvp/Form';
 import SmoothScroll from 'smooth-scroll';
 
 const userTokens = {
-  arch: '9yLbQgnkE',
-  festa: 'zUIDbD5x6M',
-  tay: 'FdnRvyCAFp',
-  tys: '1GNpq5bcLH'
+  arch: 'ck9d10e2x00qc07160lw3sb1x',
+  festa: 'ck9d16dgj00r6071666co3j1k',
+  tay: 'ck9d11or400qr0716w4w5h1k7',
+  tys: 'ck9d16oqy00rk0716v3uvg8bc'
 }
 
 const getGuestInfoQuery = gql`
-  query guest($shortId: String!) {
-    guest(query: { shortId: $shortId }) {
+  query guest($id: ID!) {
+    guest(where: { id: $id }) {
+      id
       personal {
-        nicknames
         greeting
+        nicknames
       }
-      response {
+      contact {
+        address
+        email
+      }
+      rsvp {
+        id
         responded
         date
-      }
-      responses {
-        name
-        rsvp {
+        responses {
+          id
+          name
           attending
           dietary
           comments
@@ -48,14 +53,14 @@ const RSVP = ({ children, location }) => {
   const [completed, setCompleted] = useState(null);
   const {hideLoading} = useContext(LoadingContext);
 
-  const scroll = new SmoothScroll();
+  // const scroll = new SmoothScroll();
   const urlParams = new URLSearchParams(location.search);
   const urlToken = location.search.length ? urlParams.get('guest') : null;
   const userToken = localStorage.getItem('bb-wedding-guest') ? localStorage.getItem('bb-wedding-guest') : userTokens[urlToken];
 
   const { loading, error, data } = useQuery(getGuestInfoQuery, {
     variables: {
-      shortId: userToken
+      id: userToken
     },
     skip: !userToken,
     onCompleted(result) {
@@ -71,7 +76,9 @@ const RSVP = ({ children, location }) => {
 
   const setStatus = (date) => {
 
-    scroll.animateScroll(wrapper.current, null, { speed: 1000, easing: 'easeOutCubic' });
+    // scroll.animateScroll(wrapper.current, null, { speed: 1000, easing: 'easeOutCubic' });
+
+    wrapper.current.scrollIntoView({ behavior: 'smooth' });
 
     setCompleted(date);
 
@@ -93,10 +100,10 @@ const RSVP = ({ children, location }) => {
               <h2>Just grabbing your deets</h2>
             </>
           }
-          {data &&
+          {data && data.guest &&
             <>
-              <Greeting completed={completed ? completed : data.guest.response.date} personal={data ? data.guest.personal : {}} />
-              <Form shortId={userToken} guests={data.guest.responses ? data.guest.responses : []} setStatus={setStatus} />
+              <Greeting completed={completed ? completed : data.guest.rsvp.date} personal={data ? data.guest.personal : {}} />
+              <Form rsvpId={data.guest.rsvp.id} guests={data.guest.rsvp.responses ? data.guest.rsvp.responses : []} setStatus={setStatus} />
             </>
           }
           {error &&
@@ -104,6 +111,7 @@ const RSVP = ({ children, location }) => {
               <h1>Bollocks</h1>
               <h2>Something's gone wrong</h2>
               <p>Unfortunately it appears the server has either lost its shit or spat its dummy out pram. Please try again!</p>
+              <p>{error}</p>
             </>
           }
         </Container>

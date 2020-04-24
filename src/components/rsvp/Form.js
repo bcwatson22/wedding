@@ -8,28 +8,33 @@ import LoadingContext from './../../context/LoadingContext';
 
 import Utils from './../../services/Utils';
 
-const updateGuestResponseMutation = gql`
-  mutation updateGuestResponse($shortId: String!, $response: GuestResponseUpdateInput!, $responses: [GuestResponsesUpdateInput]!) {
-    updateOneGuest(
-      query: { shortId: $shortId }
-      set: { response: $response, responses: $responses }
+const updateGuestRsvpMutation = gql`
+  mutation updateGuestRsvp($rsvpId: Int!, $date: String, $responded: Boolean!, $responses: GuestResponseUpdateManyInput!) {
+    updateGuestRsvp(
+      where: { id: $rsvpId },
+      data: { date: $date, responded: $responded, responses: $responses }
     ) {
-      response {
-        date
+      responded,
+      date,
+      responses {
+        name,
+        attending,
+        comments,
+        dietary
       }
     }
   }
 `
 
-const Form = ({ shortId, guests, setStatus }) => {
+const Form = ({ rsvpId, guests, setStatus }) => {
   const fieldRefs = useRef(guests.map(() => createRef()));
   const [completedResponses, setCompletedResponses] = useState(guests);
   const {showLoading, hideLoading} = useContext(LoadingContext);
 
-  const [updateGuestResponses] = useMutation(updateGuestResponseMutation, {
+  const [updateGuestResponses] = useMutation(updateGuestRsvpMutation, {
     onCompleted(result) {
       hideLoading();
-      setStatus(result.updateOneGuest.response.date);
+      setStatus(result.updateGuestRsvp.date);
     }
   });
 
@@ -39,23 +44,13 @@ const Form = ({ shortId, guests, setStatus }) => {
 
   }, []);
 
-  const scaffoldRsvp = (i) => {
+  const handleRadio = (e, i) => {
 
     const existing = [...completedResponses];
 
-    if (!existing[i].rsvp) existing[i].rsvp = {}
-
-    return existing;
-
-  }
-
-  const handleRadio = (e, i) => {
-
-    const existing = scaffoldRsvp(i);
-
     let attending = e.target.value === 'true';
 
-    existing[i].rsvp.attending = attending;
+    existing[i].attending = attending;
 
     setCompletedResponses(existing);
 
@@ -63,24 +58,34 @@ const Form = ({ shortId, guests, setStatus }) => {
 
   const handleTextarea = (e, i) => {
 
-    const existing = scaffoldRsvp(i);
+    const existing = [...completedResponses];
 
-    existing[i].rsvp[e.target.name] = e.target.value;
+    existing[i][e.target.name] = e.target.value;
 
     setCompletedResponses(existing);
 
   }
 
-  const cleanResponses = () => {
+  const formatResponses = () => {
 
-    const copiedResponses = JSON.parse(JSON.stringify(completedResponses));
+    const responseArray = [];
 
-    copiedResponses.forEach((response) => {
-      delete response.__typename;
-      delete response.rsvp.__typename;
+    completedResponses.forEach((response) => {
+
+      const { id, __typename, ...cleaned } = response;
+
+      responseArray.push(
+        {
+          where: {
+            id: response.id
+          },
+          data: cleaned
+        }
+      );
+
     });
 
-    return copiedResponses;
+    return responseArray;
 
   }
 
@@ -90,16 +95,15 @@ const Form = ({ shortId, guests, setStatus }) => {
 
     showLoading();
 
-    const cleanedResponses = cleanResponses();
+    const formattedResponses = formatResponses();
+    const responseObject = { updateMany: formattedResponses };
 
     updateGuestResponses({
       variables: {
-        shortId: shortId,
-        response: {
-          responded: true,
-          date: moment()
-        },
-        responses: cleanedResponses
+        rsvpId: rsvpId,
+        responded: true,
+        date: moment(),
+        responses: responseObject
       }
     })
 
@@ -113,34 +117,34 @@ const Form = ({ shortId, guests, setStatus }) => {
             <legend className="h2">{response.name}</legend>
             <div className="form-group">
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="true" defaultChecked={response.rsvp && response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="true" defaultChecked={ response.attending} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't wait!
               </label>
               <label className="form-input form-input--radio h3">
-                <input type="radio" name={`attendance${response.name}`} value="false" defaultChecked={response.rsvp && !response.rsvp.attending} onClick={(e) => handleRadio(e, i)} />
+                <input type="radio" name={`attendance${response.name}`} value="false" defaultChecked={ !response.attending} onClick={(e) => handleRadio(e, i)} />
                 <span className="form-input--radio__indicator"></span>
                 Can't make it
               </label>
             </div>
             <label className="form-input form-input--textarea h3">
               Comments
-              <textarea rows="2" name="comments" value={completedResponses[i].rsvp && completedResponses[i].rsvp.comments ? completedResponses[i].rsvp.comments : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
+              <textarea rows="2" name="comments" value={completedResponses[i].comments ? completedResponses[i].comments : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
             </label>
-            <label className={`form-input form-input--textarea h3${completedResponses[i].rsvp && completedResponses[i].rsvp.attending ? ' form-input--shown' : ' form-input--hidden'}`} ref={fieldRefs.current[i]}>
+            <label className={`form-input form-input--textarea h3${completedResponses[i].attending ? ' form-input--shown' : ' form-input--hidden'}`} ref={fieldRefs.current[i]}>
               Dietary requirements
-              <textarea rows="2" name="dietary" value={completedResponses[i].rsvp && completedResponses[i].rsvp.dietary ? completedResponses[i].rsvp.dietary : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
+              <textarea rows="2" name="dietary" value={completedResponses[i].dietary ? completedResponses[i].dietary : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
             </label>
           </fieldset>
         );
       })}
-      <button type="submit" className="button button--block" disabled={completedResponses.filter(guest => guest.rsvp).length !== guests.length}>Submit</button>
+      <button type="submit" className="button button--block" disabled={completedResponses.filter(guest => guest.hasOwnProperty('attending')).length !== guests.length}>Submit</button>
     </form>
   );
 };
 
 Form.propTypes = {
-  shortId: PropTypes.string,
+  rsvpId: PropTypes.number,
   guests: PropTypes.array,
   setStatus: PropTypes.func
 }
