@@ -11,7 +11,7 @@ import Gatecrasher from './../components/rsvp/Gatecrasher';
 import Greeting from './../components/rsvp/Greeting';
 import Form from './../components/rsvp/Form';
 
-import SmoothScroll from 'smooth-scroll';
+// import SmoothScroll from 'smooth-scroll';
 
 const userTokens = {
   arch: 'ck9d10e2x00qc07160lw3sb1x',
