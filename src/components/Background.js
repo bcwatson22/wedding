@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as basicScroll from 'basicscroll';
 
 import LoadingContext from './../context/LoadingContext';
-import Utils from './../services/Utils';
+import { delay } from './../services/utils';
 
 import LeftLeft from './vectors/LeftLeft';
 import LeftCentre from './vectors/LeftCentre';
@@ -35,7 +35,7 @@ const Background = ({ children }) => {
 
   useEffect(() => {
 
-    Utils.delay(1300).then(() => {
+    delay(1300).then(() => {
 
       // initScroll(wrapper.current);
       // setScroll(true);

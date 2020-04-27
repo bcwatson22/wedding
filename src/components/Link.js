@@ -5,11 +5,11 @@ import { navigate } from 'gatsby';
 import LoadingContext from './../context/LoadingContext';
 import RoutingContext from './../context/RoutingContext';
 
-import Utils from './../services/Utils';
+import { delay } from './../services/utils';
 
 const Link = ({children, target}) => {
-  const {showLoading} = useContext(LoadingContext);
-  const {showRouting} = useContext(RoutingContext);
+  const { showLoading } = useContext(LoadingContext);
+  const { showRouting } = useContext(RoutingContext);
 
   const navigateTo = (e) => {
 
@@ -21,15 +21,12 @@ const Link = ({children, target}) => {
 
     if (pathname.length > 1) pathname = window.location.pathname.replace(/\/$/, '');
 
-    console.log(`${location} === ${pathname}`);
-
     if (location !== pathname) {
 
       showLoading();
       showRouting();
 
-      Utils.delay(200).then(() => navigate(location));
-      // navigate(location);
+      delay(200).then(() => navigate(location));
 
     }
 

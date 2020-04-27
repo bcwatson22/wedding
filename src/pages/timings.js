@@ -8,8 +8,8 @@ import Layout from './../components/Layout';
 import Container from './../components/Container';
 
 const Timings = ({ children, location }) => {
-  const {hideLoading} = useContext(LoadingContext);
-  const {hideRouting} = useContext(RoutingContext);
+  const { hideLoading } = useContext(LoadingContext);
+  const { hideRouting } = useContext(RoutingContext);
 
   useEffect(() => {
 

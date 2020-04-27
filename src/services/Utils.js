@@ -1,35 +1,44 @@
-const Utils = {
+const delay = (time) => {
 
-  delay(time) {
+  return new Promise((resolve) => {
 
-    return new Promise((resolve) => {
+    setTimeout(() => {
 
-      setTimeout(() => {
+      resolve();
 
-        resolve();
+    }, time);
 
-      }, time);
+  });
 
-    });
+}
 
-  },
+const setHeightVar = ($target, $element, varName) => {
 
-  setHeightVar($target, $element, varName) {
+  let height = $target.scrollHeight;
 
-    let height = $target.scrollHeight;
+  $element.style.setProperty(varName, height);
 
-    $element.style.setProperty(varName, height);
+  return height;
 
-    return height;
+}
 
-  },
+const checkExists = (thingToCheck) => {
 
-  checkExists(thingToCheck) {
+  return typeof thingToCheck !== 'undefined';
 
-    return typeof thingToCheck !== 'undefined';
-    
-  }
+}
 
+const scrollTo = ($target) => {
+
+  $target.scrollIntoView({ behavior: 'smooth' });
+
+  return $target
+
+}
+
+export {
+  delay,
+  setHeightVar,
+  checkExists,
+  scrollTo
 };
-
-export default Utils;

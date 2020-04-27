@@ -12,6 +12,8 @@ import Gatecrasher from './../components/rsvp/Gatecrasher';
 import Greeting from './../components/rsvp/Greeting';
 import Form from './../components/rsvp/Form';
 
+import { scrollTo } from './../services/utils';
+
 const userTokens = {
   arch: 'ck9d10e2x00qc07160lw3sb1x',
   festa: 'ck9d16dgj00r6071666co3j1k',
@@ -50,8 +52,8 @@ const getGuestInfoQuery = gql`
 const RSVP = ({ children, location }) => {
   const wrapper = useRef(null);
   const [completed, setCompleted] = useState(null);
-  const {hideLoading} = useContext(LoadingContext);
-  const {hideRouting} = useContext(RoutingContext);
+  const { hideLoading } = useContext(LoadingContext);
+  const { hideRouting } = useContext(RoutingContext);
 
   const haveLocalStorage = typeof localStorage !== 'undefined';
   const urlParams = new URLSearchParams(location.search);
@@ -86,7 +88,7 @@ const RSVP = ({ children, location }) => {
 
   const setStatus = (date) => {
 
-    wrapper.current.scrollIntoView({ behavior: 'smooth' });
+    scrollTo(wrapper.current);
 
     setCompleted(date);
 

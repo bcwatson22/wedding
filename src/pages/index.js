@@ -9,8 +9,8 @@ import Container from './../components/Container';
 import Hero from './../components/Hero';
 
 const IndexPage = () => {
-  const {hideLoading} = useContext(LoadingContext);
-  const {hideRouting} = useContext(RoutingContext);
+  const { hideLoading } = useContext(LoadingContext);
+  const { hideRouting } = useContext(RoutingContext);
 
   useEffect(() => {
 

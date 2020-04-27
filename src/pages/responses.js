@@ -36,8 +36,8 @@ const getGuestResponsesQuery = gql`
 `
 
 const Responses = ({ children, location }) => {
-  const {hideLoading} = useContext(LoadingContext);
-  const {hideRouting} = useContext(RoutingContext);
+  const { hideLoading } = useContext(LoadingContext);
+  const { hideRouting } = useContext(RoutingContext);
 
   const { loading, error, data } = useQuery(getGuestResponsesQuery, {
     onCompleted(result) {

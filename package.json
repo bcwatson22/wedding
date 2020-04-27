@@ -12,6 +12,7 @@
     "gatsby-plugin-resolve-src": "2.0.0",
     "gatsby-plugin-sass": "2.1.28",
     "gatsby-source-filesystem": "2.1.48",
+    "gatsby-source-graphql": "^2.4.3",
     "graphql-tag": "2.10.3",
     "isomorphic-fetch": "2.2.1",
     "moment": "2.24.0",

@@ -28,7 +28,7 @@ const Information = () => {
       phone: '01335 343928'
     },
     {
-      name: 'Village Taxis Of Ashbourne',
+      name: 'Village Taxis of Ashbourne',
       phone: '01335 418080'
     },
     {

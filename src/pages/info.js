@@ -9,8 +9,8 @@ import Container from './../components/Container';
 import Information from './../components/info/Information';
 
 const Info = ({ children, location }) => {
-  const {hideLoading} = useContext(LoadingContext);
-  const {hideRouting} = useContext(RoutingContext);
+  const { hideLoading } = useContext(LoadingContext);
+  const { hideRouting } = useContext(RoutingContext);
 
   useEffect(() => {
 

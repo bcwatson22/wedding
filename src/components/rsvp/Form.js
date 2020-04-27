@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import LoadingContext from './../../context/LoadingContext';
 
-import Utils from './../../services/Utils';
+import { setHeightVar } from './../../services/utils';
 
 const updateGuestRsvpMutation = gql`
   mutation updateGuestRsvp($rsvpId: Int!, $date: String, $responded: Boolean!, $responses: GuestResponseUpdateManyInput!) {
@@ -40,7 +40,7 @@ const Form = ({ rsvpId, guests, setStatus }) => {
 
   useEffect(() => {
 
-    fieldRefs.current.map((field, i) => Utils.setHeightVar(field.current, field.current, '--height'));
+    fieldRefs.current.map((field, i) => setHeightVar(field.current, field.current, '--height'));
 
   }, []);
 
