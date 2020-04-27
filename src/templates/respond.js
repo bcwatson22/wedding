@@ -44,7 +44,6 @@ export default ({ data }) => {
 
     if (hasLocalStorage()) localStorage.setItem('bb-wedding-guest', userToken);
 
-
   }, [hideRouting, userToken]);
 
   return (

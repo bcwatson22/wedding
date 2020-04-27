@@ -7,7 +7,7 @@ import RoutingContext from './../context/RoutingContext';
 import Layout from './../components/Layout';
 import Container from './../components/Container';
 
-const Timings = ({ children, location }) => {
+export default ({ children, location }) => {
   const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
@@ -35,5 +35,3 @@ const Timings = ({ children, location }) => {
     </Layout>
   );
 };
-
-export default Timings;

@@ -8,7 +8,7 @@ import Layout from './../components/Layout';
 import Container from './../components/Container';
 import Hero from './../components/Hero';
 
-const IndexPage = () => {
+export default () => {
   const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
@@ -30,5 +30,3 @@ const IndexPage = () => {
     </Layout>
   );
 };
-
-export default IndexPage;

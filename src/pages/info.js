@@ -8,7 +8,7 @@ import Layout from './../components/Layout';
 import Container from './../components/Container';
 import Information from './../components/info/Information';
 
-const Info = ({ children, location }) => {
+export default ({ children, location }) => {
   const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
@@ -30,5 +30,3 @@ const Info = ({ children, location }) => {
     </Layout>
   );
 };
-
-export default Info;

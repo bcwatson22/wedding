@@ -58,8 +58,55 @@ td {
 }
 
 td {
+  vertical-align: middle;
+
+  tr:nth-of-type(odd) & {
+    --primary: var(--white);
+    --secondary: var(--grey-light);
+  }
+
   tr:nth-of-type(even) & {
-    background: var(--grey-light);
+    --primary: var(--grey-light);
+    --secondary: var(--white);
+  }
+
+  background: var(--primary);
+
+  &[rowspan] {
+    text-shadow: 0 0 1rem var(--white); 
+  }
+
+  &[rowspan="2"] {
+    background: linear-gradient(to bottom,
+      var(--primary) 50%,
+      var(--secondary) 50%,
+      var(--secondary) 100%);
+  }
+
+  &[rowspan="3"] {
+    background: linear-gradient(to bottom,
+      var(--primary) 33.33%,
+      var(--secondary) 33.33%,
+      var(--secondary) 66.66%,
+      var(--primary) 66.66%,
+      var(--primary) 100%);
+  }
+
+  &[rowspan="4"] {
+    background: linear-gradient(to bottom,
+      var(--primary) 25%,
+      var(--secondary) 25%,
+      var(--secondary) 50%,
+      var(--primary) 50%,
+      var(--primary) 75%,
+      var(--secondary) 75%,
+      var(--secondary) 100%);
+  }
+
+  img {
+    width: 3rem;
+    height: auto;
+    margin: auto;
   }
 }
 

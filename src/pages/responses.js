@@ -8,6 +8,11 @@ import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
 import Container from './../components/Container';
+import Loading from './../components/Loading';
+import Error from './../components/Error';
+import Responses from './../components/rsvp/Responses';
+
+import { hasLocalStorage } from './../services/utils';
 
 const getGuestResponsesQuery = gql`
   query guests {
@@ -33,9 +38,9 @@ const getGuestResponsesQuery = gql`
       }
     }
   }
-`
+`;
 
-const Responses = ({ children, location }) => {
+export default ({ children, location }) => {
   const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
@@ -50,6 +55,8 @@ const Responses = ({ children, location }) => {
     hideLoading();
     hideRouting();
 
+    if (hasLocalStorage()) localStorage.setItem('bb-wedding-admin', 'aye');
+
   }, [hideLoading, hideRouting]);
 
   return (
@@ -59,29 +66,18 @@ const Responses = ({ children, location }) => {
           <title>Responses | B&B's wedding</title>
         </Helmet>
         <Container>
+          <h1>Responses</h1>
           {loading &&
-            <>
-              <h1>Un momentito</h1>
-              <h2>Just grabbing the deets</h2>
-            </>
+            <Loading />
           }
-          {data &&
-            <>
-              <h1>Responses</h1>
-              <p>{JSON.stringify(data)}</p>
-            </>
+          {data && data.guests &&
+            <Responses guests={data.guests} />
           }
           {error &&
-            <>
-              <h1>Bollocks</h1>
-              <h2>Something's gone wrong</h2>
-              <p>Unfortunately it appears the server has either lost its shit or spat its dummy out pram. Please try again!</p>
-            </>
+            <Error error={error} />
           }
         </Container>
       </Layout>
     </>
   );
 };
-
-export default Responses;

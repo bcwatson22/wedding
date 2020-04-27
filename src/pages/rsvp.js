@@ -11,7 +11,7 @@ import Gatecrasher from './../components/rsvp/Gatecrasher';
 
 import { hasLocalStorage } from './../services/utils';
 
-const RSVP = ({ children, location }) => {
+export default ({ children, location }) => {
   const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
@@ -50,5 +50,3 @@ const RSVP = ({ children, location }) => {
     </>
   );
 };
-
-export default RSVP;

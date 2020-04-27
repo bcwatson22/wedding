@@ -2,7 +2,11 @@ import React from 'react';
 
 import Link from './Link';
 
+import { hasLocalStorage } from './../services/utils';
+
 const Nav = () => {
+  const userAdmin = hasLocalStorage() && localStorage.getItem('bb-wedding-admin') ? localStorage.getItem('bb-wedding-admin') : null;
+
   const navItems = [
     {
       name: 'Home'
@@ -14,7 +18,7 @@ const Nav = () => {
       name: 'Timings'
     },
     {
-      name: 'RSVP'
+      name: userAdmin ? 'Responses' : 'RSVP'
     }
   ];
 
