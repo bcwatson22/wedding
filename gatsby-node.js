@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query getAllGuests {
-      guestsData {
+      wedding {
         guests {
           id
         }
@@ -14,66 +14,18 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  result.data.guestsData.guests.forEach((guest) => {
+  result.data.wedding.guests.forEach((guest) => {
 
     const { id } = guest;
 
-    console.log(` id is ${id}`);
-
     createPage({
       path: `rsvp/${id}`,
-      component: path.resolve('./src/templates/rsvp.js'),
+      component: path.resolve('./src/templates/respond.js'),
       context: {
-        id: id
+        guestId: id
       },
     });
 
   });
 
 }
-
-
-
-
-
-// const { createFilePath } = require('gatsby-source-filesystem');
-
-// exports.onCreateNode = ({ node }) => {
-//   console.log(node.internal.type)
-// }
-
-// exports.onCreateNode = ({ node, getNode, actions }) => {
-//
-//   const { createNodeField } = actions;
-//
-//   if (node.internal.type === 'MarkdownRemark') {
-//
-//     const slug = createFilePath({ node, getNode, basePath: 'rsvp' });
-//
-//     createNodeField({
-//       node,
-//       name: `slug`,
-//       value: slug,
-//     });
-//
-//   }
-//
-// }
-//
-// query getAllGuests {
-//   guestsData {
-//     guests {
-//       id
-//       personal {
-//         nicknames
-//         greeting
-//       }
-//       rsvp {
-//         responded
-//         responses {
-//           name
-//         }
-//       }
-//     }
-//   }
-// }

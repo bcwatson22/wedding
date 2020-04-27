@@ -14,7 +14,7 @@ module.exports = {
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'BBAPI',
-        fieldName: 'guestsData',
+        fieldName: 'wedding',
         url: 'https://wedding-server-e0acff40a9.herokuapp.com/wedding-service/prod',
       }
     }

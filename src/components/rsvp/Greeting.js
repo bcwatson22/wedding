@@ -9,7 +9,7 @@ const Instructions = ({ nicknames, greeting }) => {
     <>
       <h2>Now then {nicknames && `${nicknames}`}</h2>
       {greeting && <p>{greeting}</p>}
-      <p>Please fill in the form below to let us know if you can make it. If you could make sure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
+      <p>Please fill in the form below to let us know if you can make it. If you could ensure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
       <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
     </>
   );

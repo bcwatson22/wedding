@@ -24,7 +24,7 @@ const updateGuestRsvpMutation = gql`
       }
     }
   }
-`
+`;
 
 const Form = ({ rsvpId, guests, setStatus }) => {
   const fieldRefs = useRef(guests.map(() => createRef()));
