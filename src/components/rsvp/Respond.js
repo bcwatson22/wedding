@@ -66,6 +66,9 @@ const Respond = ({ userToken, personal, wrapper }) => {
     onCompleted(result) {
       hideLoading();
       setCompleted(result.guest.rsvp.date);
+    },
+    onError() {
+      hideLoading();
     }
   });
 

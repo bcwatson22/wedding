@@ -56,12 +56,12 @@ import Container from './../components/Container';
 // import Greeting from './../components/rsvp/Greeting';
 import Respond from './../components/rsvp/Respond';
 
-// import { scrollTo } from './../services/utils';
+import { hasLocalStorage } from './../services/utils';
 
 export const getGuestInfoQueryBuildtime = graphql`
-  query guest($id: ID!) {
+  query guest($guestId: ID!) {
     wedding {
-      guest(where: { id: $id }) {
+      guest(where: { id: $guestId }) {
         id
         personal {
           nicknames
@@ -134,7 +134,7 @@ export default ({ data }) => {
 
     // if (userToken) {
 
-      // if (haveLocalStorage) localStorage.setItem('bb-wedding-guest', userToken);
+      if (hasLocalStorage()) localStorage.setItem('bb-wedding-guest', userToken);
 
     // } else {
 
@@ -142,7 +142,7 @@ export default ({ data }) => {
 
     // }
 
-  }, [hideRouting]);
+  }, [hideRouting, userToken]);
 
   // const setStatus = (date) => {
   //

@@ -35,6 +35,9 @@ const Form = ({ rsvpId, guests, setStatus }) => {
     onCompleted(result) {
       hideLoading();
       setStatus(result.updateGuestRsvp.date);
+    },
+    onError() {
+      hideLoading();
     }
   });
 

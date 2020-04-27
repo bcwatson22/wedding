@@ -36,9 +36,16 @@ const scrollTo = ($target) => {
 
 }
 
+const hasLocalStorage = () => {
+
+  return typeof localStorage !== 'undefined';
+
+}
+
 export {
   delay,
   setHeightVar,
   checkExists,
-  scrollTo
+  scrollTo,
+  hasLocalStorage
 };
