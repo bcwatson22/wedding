@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import LoadingContext from './../context/LoadingContext';
 import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
@@ -41,7 +40,6 @@ const getGuestResponsesQuery = gql`
 `;
 
 export default ({ children, location }) => {
-  const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
   const { loading, error, data } = useQuery(getGuestResponsesQuery, {
@@ -52,12 +50,11 @@ export default ({ children, location }) => {
 
   useEffect(() => {
 
-    hideLoading();
     hideRouting();
 
     if (hasLocalStorage()) localStorage.setItem('bb-wedding-admin', 'aye');
 
-  }, [hideLoading, hideRouting]);
+  }, [hideRouting]);
 
   return (
     <>

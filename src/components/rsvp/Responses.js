@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+
+import LoadingContext from './../../context/LoadingContext';
 
 import tick from './../../assets/icons/responses/tick.svg';
 import cross from './../../assets/icons/responses/cross.svg';
 
 const True = () => {
   return (
-    <img src={tick} alt="True" />
+    <img src={tick} alt="" />
   );
 };
 
 const False = () => {
   return (
-    <img src={cross} alt="True" />
+    <img src={cross} alt="" />
   );
 };
 
 const Responses = ({ guests }) => {
+  const { hideLoading } = useContext(LoadingContext);
+
+  useEffect(() => {
+
+    hideLoading();
+
+  }, [hideLoading]);
+
   return (
     <>
       <h2>{guests.filter(guest => guest.rsvp.responded).length} responses out of {guests.length} respondees</h2>
