@@ -11,7 +11,7 @@ import Loading from './../components/Loading';
 import Error from './../components/Error';
 import Responses from './../components/rsvp/Responses';
 
-import { hasLocalStorage } from './../services/utils';
+import { cleanResponse, hasLocalStorage } from './../services/utils';
 
 const getGuestResponsesQuery = gql`
   query guests {
@@ -43,9 +43,10 @@ export default ({ children, location }) => {
   const { hideRouting } = useContext(RoutingContext);
 
   const { loading, error, data } = useQuery(getGuestResponsesQuery, {
-    onCompleted(result) {
-      console.log(result)
-    }
+    // onCompleted(result) {
+    //   console.log(result)
+    //   console.log(result.guests.map(guest => cleanResponse(guest, '__typename')))
+    // }
   });
 
   useEffect(() => {
@@ -68,7 +69,7 @@ export default ({ children, location }) => {
             <Loading />
           }
           {data && data.guests &&
-            <Responses guests={data.guests} />
+            <Responses guests={data.guests.map(guest => cleanResponse(guest))} />
           }
           {error &&
             <Error error={error} />

@@ -19,8 +19,6 @@ const Link = ({children, target}) => {
 
     e.preventDefault();
 
-    console.log(pathname.length);
-
     const elem = (e.target.localName === 'a') ? e.target : e.target.parentElement;
     const location = elem.getAttribute('href');
 

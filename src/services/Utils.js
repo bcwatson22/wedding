@@ -12,6 +12,14 @@ const delay = (time) => {
 
 }
 
+const cleanResponse = (obj, key) => {
+
+  const { __typename, ...cleaned } = obj;
+
+  return cleaned;
+
+}
+
 const setHeightVar = ($target, $element, varName) => {
 
   let height = $target.scrollHeight;
@@ -44,6 +52,7 @@ const hasLocalStorage = () => {
 
 export {
   delay,
+  cleanResponse,
   setHeightVar,
   checkExists,
   scrollTo,

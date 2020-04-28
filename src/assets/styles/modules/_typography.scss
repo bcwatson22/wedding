@@ -91,6 +91,10 @@ small {
   display: block;
 }
 
+.central {
+  text-align: center;
+}
+
 @media screen and (min-width: $tablet) {
   h1,
   .h1 * {

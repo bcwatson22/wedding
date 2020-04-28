@@ -5,6 +5,8 @@ import LoadingContext from './../../context/LoadingContext';
 
 import Link from './../Link';
 
+import { cleanResponse } from './../../services/utils';
+
 import tick from './../../assets/icons/responses/tick.svg';
 import cross from './../../assets/icons/responses/cross.svg';
 
@@ -22,6 +24,14 @@ const False = () => {
 
 const Responses = ({ guests }) => {
   const { hideLoading } = useContext(LoadingContext);
+  const total = guests.map(guest => guest.rsvp.responses.map(response => cleanResponse(response))).flat();
+  const invited = total.length;
+  const attending = total.filter(response => response.attending === true).length;
+  const comments = total.filter(response => response.comments).length;
+  const dietary = total.filter(response => response.dietary).length;
+  const responded = guests.filter(guest => guest.rsvp.responded).length;
+  const respondees = guests.length;
+  const percentage = (responded / respondees) * 100;
 
   useEffect(() => {
 
@@ -31,7 +41,7 @@ const Responses = ({ guests }) => {
 
   return (
     <>
-      <h2>{guests.filter(guest => guest.rsvp.responded).length} responses out of {guests.length} respondees</h2>
+      <h2>{percentage}% ({responded} responses out of {respondees} respondees)</h2>
       <article className="scrolling-table">
         <table>
           <thead>
@@ -59,6 +69,14 @@ const Responses = ({ guests }) => {
                 ))}
               </React.Fragment>
             ))}
+            <tr>
+              <td><strong>Total</strong></td>
+              <td className="central"><strong>{responded}</strong></td>
+              <td className="central"><strong>{invited}</strong></td>
+              <td className="central"><strong>{attending}</strong></td>
+              <td><strong>{comments}</strong></td>
+              <td><strong>{dietary}</strong></td>
+            </tr>
           </tbody>
         </table>
       </article>
