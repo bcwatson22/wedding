@@ -27,4 +27,8 @@
     color: inherit;
     font-weight: 650;
   }
+
+  &--active {
+    @include text-link-underline();
+  }
 }

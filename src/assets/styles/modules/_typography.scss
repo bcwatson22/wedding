@@ -69,6 +69,11 @@ h3,
 p {
   margin-top: 1.5rem;
   font-weight: 300;
+
+  + img,
+  + section {
+    margin-top: 1.5rem;
+  }
 }
 
 button,
@@ -80,6 +85,10 @@ small {
 
 small {
   font-size: 1.2rem;
+}
+
+[property] {
+  display: block;
 }
 
 @media screen and (min-width: $tablet) {
@@ -111,5 +120,10 @@ small {
 
   p {
     margin-top: 3rem;
+
+    + img,
+    + section {
+      margin-top: 3rem;
+    }
   }
 }

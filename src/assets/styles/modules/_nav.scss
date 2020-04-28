@@ -22,7 +22,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
 
     .icon {
       height: 50%;
@@ -43,7 +42,6 @@
 
     a {
       color: mix(#b4dbd0, #ffffff, 40%);
-      @include text-link-inverse();
 
       .icon {
         margin-right: 0.75rem;

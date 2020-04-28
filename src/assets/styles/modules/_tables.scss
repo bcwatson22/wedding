@@ -38,15 +38,6 @@ tbody tr:first-of-type {
 th,
 td {
   padding: 2rem;
-  position: relative;
-  @include pseudo-before();
-
-  &:before {
-    width: 100%;
-    top: -0.1rem;
-    left: 0;
-    // border-top: 0.2rem solid var(--grey-light);
-  }
 
   > * {
     margin-bottom: 1rem;
@@ -58,6 +49,7 @@ td {
 }
 
 td {
+  background: var(--primary);
   vertical-align: middle;
 
   tr:nth-of-type(odd) & {
@@ -70,10 +62,8 @@ td {
     --secondary: var(--white);
   }
 
-  background: var(--primary);
-
   &[rowspan] {
-    text-shadow: 0 0 1rem var(--white); 
+    text-shadow: 0 0 1rem var(--white);
   }
 
   &[rowspan="2"] {

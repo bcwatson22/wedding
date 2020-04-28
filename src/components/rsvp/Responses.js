@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import LoadingContext from './../../context/LoadingContext';
 
+import Link from './../Link';
+
 import tick from './../../assets/icons/responses/tick.svg';
 import cross from './../../assets/icons/responses/cross.svg';
 
@@ -47,7 +49,7 @@ const Responses = ({ guests }) => {
               <React.Fragment key={guest.personal.nicknames}>
                 {guest.rsvp.responses.map((response, index) => (
                   <tr key={response.name}>
-                    {index === 0 && <td rowSpan={guest.rsvp.responses.length}>{guest.personal.nicknames}</td>}
+                    {index === 0 && <td rowSpan={guest.rsvp.responses.length}><Link target={`/rsvp/${guest.id}`}>{guest.personal.nicknames}</Link></td>}
                     <td>{guest.rsvp.responded ? <True /> : <False />}</td>
                     <td>{response.name}</td>
                     <td>{response.attending === true && <True />}{response.attending === false && <False />}</td>
