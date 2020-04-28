@@ -42,7 +42,6 @@ const Information = () => {
 
   return (
     <>
-      <h1>Info</h1>
       <h2 className="heading--icon"><img src={date} alt="Date" />Date</h2>
       <p>The wedding is on <strong>Saturday 29th May 2021</strong>.</p>
       <p>This is a <strong>bank holiday</strong> in the UK, which should hopefully give people a bit of flexibility and help to ease hectic travel arrangements.</p>
@@ -79,8 +78,8 @@ const Information = () => {
           </thead>
           <tbody>
             {taxiCompanies.map((company) => {
-              let { name, phone } = company,
-                  number = phone.replace('0', '+44').replace(/\s/g, '');
+              const { name, phone } = company;
+              const number = phone.replace('0', '+44').replace(/\s/g, '');
 
               return (
                 <tr key={name}>

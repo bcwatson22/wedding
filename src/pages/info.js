@@ -25,6 +25,7 @@ export default ({ children, location }) => {
         <title>Info | B&B's wedding</title>
       </Helmet>
       <Container>
+        <h1>Info</h1>
         <Information />
       </Container>
     </Layout>

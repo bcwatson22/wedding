@@ -1,0 +1,176 @@
+.timeline {
+  margin-top: 6rem;
+  position: relative;
+  @include pseudo-before();
+
+  &:before {
+    width: 0.2rem;
+    height: 100%;
+    top: 0rem;
+    @include central-x();
+    background: var(--grey-light);
+  }
+
+  * {
+    margin: 0;
+  }
+
+  &__hour {
+    border-top: 0.1rem solid var(--grey-light);
+    height: 16rem;
+    position: relative;
+    @include pseudo-blocks();
+
+    &:last-of-type {
+      height: auto;
+    }
+
+    &:before,
+    &:after {
+      @include central-x();
+      background: var(--grey-light);
+      border-radius: 50%;
+    }
+
+    &:before {
+      width: 1.6rem;
+      height: 1.6rem;
+      top: -0.8rem;
+    }
+
+    h2 {
+      position: absolute;
+      width: 100%;
+      top: -2rem;
+    }
+
+    &:not(:last-of-type) {
+      &:after {
+        width: 1rem;
+        height: 1rem;
+        top: 3.5rem;
+      }
+
+      h2 {
+        @include pseudo-blocks();
+
+        &:before,
+        &:after {
+          width: 1rem;
+          height: 1rem;
+          @include central-x();
+          background: var(--grey-light);
+          border-radius: 50%;
+        }
+
+        &:before {
+          top: 9.5rem;
+        }
+
+        &:after {
+          top: 13.5rem;
+        }
+      }
+    }
+
+    &:nth-of-type(even) h2 {
+      text-align: right;
+    }
+  }
+
+  &__event {
+    width: calc(50% - 2rem);
+    height: 1rem;
+    @include pseudo-after();
+
+    main .inner & {
+      position: absolute;
+    }
+
+    &:after {
+      width: 1rem;
+      height: 1rem;
+      @include central-y();
+      background: var(--green-dark);
+      border-radius: 50%;
+      z-index: 5;
+    }
+
+    &-info {
+      z-index: 10;
+      position: absolute;
+      @include central-y();
+    }
+
+    &-icon {
+      width: 4rem;
+      height: 4rem;
+      background: var(--green-dark);
+      border-radius: 50%;
+      @include central-y();
+
+      main .inner & {
+        position: absolute;
+      }
+
+      img {
+        width: auto;
+        height: 2rem;
+        @include central();
+      }
+
+      &--tall img {
+        height: 1.8rem;
+      }
+    }
+
+    &--right {
+      left: 50%;
+
+      &:after {
+        left: -0.5rem;
+      }
+
+      .timeline__event-info {
+        padding-left: 2rem;
+      }
+
+      .timeline__event-icon {
+        left: -2rem;
+      }
+    }
+
+    &--left {
+      right: 50%;
+      text-align: right;
+
+      &:after {
+        right: -0.5rem;
+      }
+
+      .timeline__event-info {
+        padding-right: 2rem;
+      }
+
+      .timeline__event-icon {
+        right: -2rem;
+      }
+    }
+
+    &--on-the-hour {
+      top: -0.5rem;
+    }
+
+    &--quarter-past {
+      top: 3.5rem;
+    }
+
+    &--half-past {
+      top: 7.5rem;
+    }
+
+    &--quarter-to {
+      top: 11.5rem;
+    }
+  }
+}

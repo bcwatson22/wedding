@@ -26,9 +26,9 @@ const Nav = () => {
     <nav className="nav nav--primary">
       <ul>
         {navItems.map((item) => {
-          let { name } = item,
-              link = name.toLowerCase(),
-              image = require(`./../assets/icons/nav/${link}.svg`);
+          const { name } = item;
+          const link = name.toLowerCase();
+          const image = require(`./../assets/icons/nav/${link}.svg`);
 
           return (
             <li key={link}>
