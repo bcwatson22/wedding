@@ -1,9 +1,10 @@
 import React from 'react';
+import moment from 'moment';
 
 const Timeline = () => {
   const timings = [
     {
-      hour: '12pm',
+      hour: '12:00',
       events: [
         {
           time: '12:30',
@@ -14,7 +15,7 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '1pm',
+      hour: '13:00',
       events: [
         {
           time: '13:00',
@@ -31,7 +32,7 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '2pm',
+      hour: '14:00',
       events: [
         {
           time: '14:00',
@@ -42,7 +43,7 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '3pm',
+      hour: '15:00',
       events: [
         {
           time: '15:00',
@@ -59,13 +60,13 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '4pm'
+      hour: '16:00'
     },
     {
-      hour: '5pm'
+      hour: '17:00'
     },
     {
-      hour: '6pm',
+      hour: '18:00',
       events: [
         {
           time: '18:00',
@@ -76,10 +77,10 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '7pm'
+      hour: '19:00'
     },
     {
-      hour: '8pm',
+      hour: '20:00',
       events: [
         {
           time: '20:00',
@@ -90,13 +91,13 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '9pm'
+      hour: '21:00'
     },
     {
-      hour: '10pm'
+      hour: '22:00'
     },
     {
-      hour: '11pm',
+      hour: '23:00',
       events: [
         {
           time: '23:30',
@@ -107,7 +108,7 @@ const Timeline = () => {
       ]
     },
     {
-      hour: '12am'
+      hour: '00:00'
     }
   ];
 
@@ -115,12 +116,14 @@ const Timeline = () => {
     <section className="timeline">
       {timings.map((timing) => {
         const { hour, events } = timing;
+        const time = `2021-05-29T${hour}:00`;
 
         return (
           <article className="timeline__hour" key={hour}>
-            <h2><time dateTime={`2021-05-29T${hour}:00TZD`}>{hour}</time></h2>
+            <h2><time dateTime={time}>{moment(time).format('ha')}</time></h2>
             {events && events.map((event) => {
               const { time, title, icon, position } = event;
+              const start = `2021-05-29T${time}:00`;
               const image = require(`./../../assets/icons/timings/${icon}.svg`);
               let modifier = 'timeline__event--';
 
@@ -151,7 +154,7 @@ const Timeline = () => {
                 <aside className={`timeline__event timeline__event--${position}${modifier.length && ' ' + modifier}`} key={event.title}>
                   <div className="timeline__event-info">
                     <span className={`timeline__event-icon${icon === 'speeches' ? ' timeline__event-icon--tall' : ''}`}><img src={image} alt={title} /></span>
-                    <p><time dateTime={`2021-05-29T${time}:00TZD`}>{time}</time></p>
+                    <p><time dateTime={start}>{moment(start).format('h:mma')}</time></p>
                     <h3>{title}</h3>
                   </div>
                 </aside>
