@@ -16,7 +16,6 @@
   }
 
   &__hour {
-    border-top: 0.1rem solid var(--grey-light);
     height: 16rem;
     position: relative;
     @include pseudo-blocks();
@@ -105,9 +104,10 @@
     &-icon {
       width: 4rem;
       height: 4rem;
-      background: var(--green-dark);
+      background: var(--green-mint);
       border-radius: 50%;
       @include central-y();
+      border: 0.1rem solid var(--grey-light);
 
       main .inner & {
         position: absolute;
@@ -120,7 +120,7 @@
       }
 
       &--tall img {
-        height: 1.8rem;
+        height: 2.4rem;
       }
     }
 
@@ -132,7 +132,7 @@
       }
 
       .timeline__event-info {
-        padding-left: 2rem;
+        padding-left: 3rem;
       }
 
       .timeline__event-icon {
@@ -149,7 +149,7 @@
       }
 
       .timeline__event-info {
-        padding-right: 2rem;
+        padding-right: 3rem;
       }
 
       .timeline__event-icon {

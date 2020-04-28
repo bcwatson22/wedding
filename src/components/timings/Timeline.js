@@ -119,7 +119,7 @@ const Timeline = () => {
         return (
           <article className="timeline__hour" key={hour}>
             <h2><time dateTime={`2021-05-29T${hour}:00TZD`}>{hour}</time></h2>
-            {timing.events && timing.events.map((event) => {
+            {events && events.map((event) => {
               const { time, title, icon, position } = event;
               const image = require(`./../../assets/icons/timings/${icon}.svg`);
               let modifier = 'timeline__event--';
@@ -150,7 +150,7 @@ const Timeline = () => {
               return (
                 <aside className={`timeline__event timeline__event--${position}${modifier.length && ' ' + modifier}`} key={event.title}>
                   <div className="timeline__event-info">
-                    <span className={`timeline__event-icon${icon === 'guests' || icon === 'speeches' ? ' timeline__event-icon--tall' : ''}`}><img src={image} alt={title} /></span>
+                    <span className={`timeline__event-icon${icon === 'speeches' ? ' timeline__event-icon--tall' : ''}`}><img src={image} alt={title} /></span>
                     <p><time dateTime={`2021-05-29T${time}:00TZD`}>{time}</time></p>
                     <h3>{title}</h3>
                   </div>

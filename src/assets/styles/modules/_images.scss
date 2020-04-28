@@ -10,5 +10,9 @@ picture {
 img {
   width: 100%;
   max-width: 100%;
-  object-fit: cover;
+
+  picture &,
+  figure & {
+    object-fit: cover;
+  }
 }
