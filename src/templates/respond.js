@@ -53,7 +53,7 @@ export default ({ data }) => {
           <title>RSVP | B&B's wedding</title>
         </Helmet>
         <Container>
-          <Respond userToken={userToken} personal={guest.personal} wrapper={wrapper.current} />
+          <Respond userToken={userToken} personal={guest.personal} wrapper={wrapper} />
         </Container>
       </Layout>
     </>

@@ -51,8 +51,6 @@ const Respond = ({ userToken, personal, wrapper }) => {
 
   const setStatus = (date) => {
 
-    console.log('setStatus duck')
-
     scrollTo(wrapper);
 
     setCompleted(date);

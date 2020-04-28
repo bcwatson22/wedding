@@ -1,9 +1,10 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import LoadingContext from './../../context/LoadingContext';
 
 import Link from './../Link';
+import Scroll from './../Scroll';
 
 import { cleanResponse } from './../../services/utils';
 
@@ -23,6 +24,7 @@ const False = () => {
 };
 
 const Responses = ({ guests }) => {
+  const totals = useRef(null);
   const { hideLoading } = useContext(LoadingContext);
   const total = guests.map(guest => guest.rsvp.responses.map(response => cleanResponse(response))).flat();
   const invited = total.length;
@@ -41,7 +43,7 @@ const Responses = ({ guests }) => {
 
   return (
     <>
-      <h2>{percentage}% ({responded} responses out of {respondees} respondees)</h2>
+      <h2><Scroll target={totals}>{percentage}% ({responded} responses out of {respondees} respondees)</Scroll></h2>
       <article className="scrolling-table">
         <table>
           <thead>
@@ -69,8 +71,16 @@ const Responses = ({ guests }) => {
                 ))}
               </React.Fragment>
             ))}
+            <tr ref={totals}>
+              <th>Total guests</th>
+              <th>Responded</th>
+              <th>Name</th>
+              <th>Attending</th>
+              <th>Comments</th>
+              <th>Dietary</th>
+            </tr>
             <tr>
-              <td><strong>Total</strong></td>
+              <td><strong>{respondees}</strong></td>
               <td className="central"><strong>{responded}</strong></td>
               <td className="central"><strong>{invited}</strong></td>
               <td className="central"><strong>{attending}</strong></td>
