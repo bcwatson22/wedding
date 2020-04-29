@@ -37,10 +37,7 @@
       display: block;
       pointer-events: none;
       text-indent: -99999rem;
-
-      main .inner & {
-        position: absolute;
-      }
+      position: absolute;
     }
 
     &-offset {
@@ -143,10 +140,7 @@
     width: 50%;
     height: 1rem;
     @include pseudo-after();
-
-    main .inner & {
-      position: absolute;
-    }
+    position: absolute;
 
     &:after {
       @include timeline-dot();
@@ -155,11 +149,17 @@
       z-index: 5;
     }
 
+    &-info,
+    &-icon,
+    &-icon img {
+      position: absolute;
+      @include central-y();
+    }
+
     &-info {
       padding: 25vh 0;
       z-index: 10;
-      position: absolute;
-      @include central-y();
+      width: 100%;
 
       h3,
       p {
@@ -178,10 +178,6 @@
       transform: translateY(-50%) scale((calc(1 * var(--appear))));
       transform-origin: 50% 50%;
       will-change: transform;
-
-      main .inner & {
-        position: absolute;
-      }
 
       img {
         width: auto;

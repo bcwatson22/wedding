@@ -42,7 +42,7 @@ main {
     max-width: 76rem;
     @include pseudo-before();
 
-    * {
+    > * {
       position: relative;
     }
 
