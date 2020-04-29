@@ -38,7 +38,9 @@ const checkExists = (thingToCheck) => {
 
 const scrollTo = ($target) => {
 
-  const $elem = (typeof $target === 'object' && $target.hasOwnProperty('current')) ? $target.current : $target;
+  const $elem = (typeof $target === 'object' && $target.hasOwnProperty('current'))
+    ? $target.current 
+    : $target;
 
   $elem.scrollIntoView({ behavior: 'smooth' });
 

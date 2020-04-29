@@ -2,7 +2,24 @@ import React, { useEffect, useRef, createRef } from 'react';
 import moment from 'moment';
 import * as basicScroll from 'basicscroll';
 
-const initScroll = (target) => {
+const initHours = (target, offset) => {
+
+  basicScroll.create({
+    elem: offset,
+    from: 'top-middle',
+    to: 'bottom-middle',
+    direct: target,
+    props: {
+      '--disappear': {
+        from: 0.999,
+        to: 0.001
+      }
+    }
+  }).start();
+
+}
+
+const initEvents = (target) => {
 
   basicScroll.create({
     elem: target,
@@ -10,7 +27,7 @@ const initScroll = (target) => {
     to: 'bottom-middle',
     direct: true,
     props: {
-      '--scroll': {
+      '--appear': {
         from: 0.001,
         to: 0.999
       }
@@ -152,23 +169,30 @@ const timings = [
 ];
 
 const Timeline = () => {
+  const allHours = timings.map(timing => timing);
+  const hourRefs = useRef(allHours.map(() => createRef()));
   const allEvents = timings.map(timing => timing.events && timing.events.map(event => event)).flat().filter(event => event !== undefined);
   const eventRefs = useRef(allEvents.map(() => createRef()));
 
   useEffect(() => {
 
-    eventRefs.current.map((event, i) => initScroll(event.current));
+    console.log(hourRefs);
+
+    hourRefs.current.map((hour) => initHours(hour.current, hour.current.firstChild));
+
+    eventRefs.current.map((event) => initEvents(event.current));
 
   }, []);
 
   return (
     <section className="timeline">
-      {timings.map((timing) => {
+      {timings.map((timing, i) => {
         const { hour, events } = timing;
         const time = `2021-05-29T${hour}:00`;
 
         return (
-          <article className="timeline__hour" key={hour}>
+          <article className="timeline__hour" key={hour} ref={hourRefs.current[i]}>
+            <span className="timeline__hour-offset">Offset</span>
             <h2><time dateTime={time}>{moment(time).format('ha')}</time></h2>
             {events && events.map((event) => {
               const { time, title, icon, position } = event;

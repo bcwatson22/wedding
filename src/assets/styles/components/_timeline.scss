@@ -33,10 +33,25 @@
       top: -0.8rem;
     }
 
+    &-offset {
+      display: block;
+      position: absolute;
+      height: 8rem;
+      width: 100%;
+      top: -8rem;
+      left: 0;
+      pointer-events: none;
+      text-indent: -99999rem;
+      // background: rgba(20,115,15,0.3);
+      // border-top: 1px solid red;
+    }
+
     h2 {
       position: absolute;
       width: 100%;
       top: -1.5rem;
+      opacity: var(--disappear);
+      will-change: opacity;
     }
 
     &:not(:last-of-type) {
@@ -155,7 +170,7 @@
       h3,
       p {
         will-change: opacity, transform;
-        opacity: var(--scroll);
+        opacity: var(--appear);
       }
     }
 
@@ -166,7 +181,7 @@
       border-radius: 50%;
       @include central-y();
       border: 0.1rem solid var(--grey-light);
-      transform: translateY(-50%) scale((calc(1 * var(--scroll))));
+      transform: translateY(-50%) scale((calc(1 * var(--appear))));
       transform-origin: 50% 50%;
       will-change: transform;
 
@@ -197,7 +212,7 @@
 
         h3,
         p {
-          transform: translateX(calc(1rem * var(--scroll)));
+          transform: translateX(calc(1rem * var(--appear)));
         }
       }
 
@@ -219,7 +234,7 @@
 
         h3,
         p {
-          transform: translateX(calc(-1rem * var(--scroll)));
+          transform: translateX(calc(-1rem * var(--appear)));
         }
       }
 
