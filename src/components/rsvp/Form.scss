@@ -71,14 +71,12 @@ textarea {
 
 .form-input {
   @include hwa();
-  // @include text-link-inverse();
   display: block;
   transition: max-height 0.35s ease;
   overflow: hidden;
   margin: 0;
 
   &--hidden {
-    // margin-top: 0;
     max-height: 0;
   }
 
@@ -133,7 +131,6 @@ textarea {
 }
 
 .form-group {
-  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
