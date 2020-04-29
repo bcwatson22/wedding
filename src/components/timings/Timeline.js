@@ -7,7 +7,7 @@ const initHours = (target, offset) => {
   basicScroll.create({
     elem: offset,
     from: 'top-middle',
-    to: 'bottom-middle',
+    to: 'middle-middle',
     direct: target,
     props: {
       '--disappear': {
@@ -24,7 +24,7 @@ const initEvents = (target) => {
   basicScroll.create({
     elem: target,
     from: 'top-middle',
-    to: 'bottom-middle',
+    to: 'middle-middle',
     direct: true,
     props: {
       '--appear': {
@@ -196,7 +196,7 @@ const Timeline = () => {
 
   return (
     <section className="timeline">
-      {timings.map((timing) => {
+      {timings.map((timing, index) => {
         const { hour, events } = timing;
         const i = overlappingHours.findIndex(h => h.hour === hour);
         const time = `2021-05-29T${hour}:00`;
@@ -204,6 +204,7 @@ const Timeline = () => {
         return (
           <article className="timeline__hour" key={hour} ref={hourRefs.current[i]}>
             {i !== -1 && <span className="timeline__hour-offset">Offset</span>}
+            {index !== timings.length - 1 && <span className="timeline__hour-marker">Marker</span>}
             <h2><time dateTime={time}>{moment(time).format('ha')}</time></h2>
             {events && events.map((event) => {
               const { time, title, icon, position } = event;

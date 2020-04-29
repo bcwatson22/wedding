@@ -18,10 +18,9 @@
   &__hour {
     height: 16rem;
     position: relative;
-    @include pseudo-blocks();
+    @include pseudo-before();
 
-    &:before,
-    &:after {
+    &:before {
       @include central-x();
       background: var(--grey-light);
       border-radius: 50%;
@@ -33,25 +32,67 @@
       top: -0.8rem;
     }
 
-    &-offset {
+    &-offset,
+    &-marker {
       display: block;
-      position: absolute;
-      height: 8rem;
-      width: 100%;
-      top: -8rem;
-      left: 0;
       pointer-events: none;
       text-indent: -99999rem;
-      // background: rgba(20,115,15,0.3);
-      // border-top: 1px solid red;
+
+      main .inner & {
+        position: absolute;
+      }
+    }
+
+    &-offset {
+      height: 25vh;
+      top: -25vh;
+      left: 0;
+    }
+
+    &-marker {
+      @include pseudo-blocks();
+    }
+
+    &-marker,
+    &-marker:before,
+    &-marker:after {
+      @include timeline-dot();
+      @include central-x();
+    }
+
+    &-marker {
+      top: 3.5rem;
+
+      &:before {
+        top: 4rem;
+      }
+
+      &:after {
+        top: 8rem;
+      }
     }
 
     h2 {
       position: absolute;
       width: 100%;
       top: -1.5rem;
+      @include pseudo-before();
       opacity: var(--disappear);
       will-change: opacity;
+
+      &:before {
+        width: calc(50% - 7rem);
+        height: 0.2rem;
+        background: var(--grey-light);
+        top: 1.5rem;
+      }
+    }
+
+    &:first-of-type,
+    &:last-of-type {
+      h2:before {
+        content: none;
+      }
     }
 
     &:first-of-type,
@@ -81,62 +122,14 @@
       }
     }
 
-    &:not(:last-of-type) {
-      h2,
-      h2 time {
-        @include pseudo-blocks();
-      }
-
-      h2:before,
-      h2:after,
-      h2 time:after {
-        @include timeline-dot();
-        @include central-x();
-      }
-
-      h2 {
-        &:before {
-          top: 9rem;
-        }
-
-        &:after {
-          top: 13rem;
-        }
-
-        time {
-          display: block;
-          width: 100%;
-
-          &:before {
-            width: calc(50% - 7rem);
-            height: 0.2rem;
-            background: var(--grey-light);
-            top: 1.5rem;
-          }
-
-          &:after {
-            top: 5rem;
-          }
-        }
-      }
-    }
-
-    &:first-of-type {
-      h2 time:before {
-        content: none;
-      }
-    }
-
-    &:nth-of-type(odd) h2 {
-      time:before {
-        left: 7rem;
-      }
+    &:nth-of-type(odd) h2:before {
+      left: 7rem;
     }
 
     &:nth-of-type(even) h2 {
       text-align: right;
 
-      time:before {
+      &:before {
         right: 7rem;
       }
     }
@@ -163,7 +156,7 @@
     }
 
     &-info {
-      padding: 6rem 0;
+      padding: 25vh 0;
       z-index: 10;
       position: absolute;
       @include central-y();
