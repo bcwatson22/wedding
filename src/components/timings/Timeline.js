@@ -94,7 +94,15 @@ const timings = [
     ]
   },
   {
-    hour: '19:00'
+    hour: '19:00',
+    events: [
+      {
+        time: '19:00',
+        title: 'First dance',
+        icon: 'boogying',
+        position: 'left'
+      }
+    ]
   },
   {
     hour: '20:00',
@@ -103,12 +111,26 @@ const timings = [
         time: '20:00',
         title: 'Pizza',
         icon: 'pizza',
-        position: 'left'
+        position: 'right'
       }
     ]
   },
   {
-    hour: '21:00'
+    hour: '21:00',
+    events: [
+      {
+        time: '21:00',
+        title: 'Frolicking',
+        icon: 'frolicking',
+        position: 'left'
+      },
+      {
+        time: '21:45',
+        title: 'Dance the night away',
+        icon: 'bomb',
+        position: 'right'
+      }
+    ]
   },
   {
     hour: '22:00'
@@ -120,7 +142,7 @@ const timings = [
         time: '23:30',
         title: 'Carriages',
         icon: 'carriages',
-        position: 'right'
+        position: 'left'
       }
     ]
   },
