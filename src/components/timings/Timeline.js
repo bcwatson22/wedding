@@ -214,7 +214,6 @@ const Timeline = () => {
               const { time, title, icon, position } = event;
               const index = animatingEvents.findIndex(e => e.time === time);
               const start = `2021-05-29T${time}:00`;
-              // const image = require(`./../../assets/icons/timings/${icon}.svg`);
               let modifier = 'timeline__event--';
 
               switch (time.substring(3, 5)) {
