@@ -10,7 +10,7 @@ import Background from './Background';
 import Footer from './Footer';
 
 const Layout = (props, ref) => {
-  const {routing} = useContext(RoutingContext);
+  const { routing } = useContext(RoutingContext);
 
   let className = '';
 

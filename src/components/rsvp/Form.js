@@ -29,7 +29,7 @@ const updateGuestRsvpMutation = gql`
 const Form = ({ rsvpId, guests, setStatus }) => {
   const fieldRefs = useRef(guests.map(() => createRef()));
   const [completedResponses, setCompletedResponses] = useState(guests);
-  const {showLoading, hideLoading} = useContext(LoadingContext);
+  const { showLoading, hideLoading } = useContext(LoadingContext);
 
   const [updateGuestResponses] = useMutation(updateGuestRsvpMutation, {
     onCompleted(result) {

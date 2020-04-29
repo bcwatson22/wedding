@@ -20,10 +20,6 @@
     position: relative;
     @include pseudo-blocks();
 
-    &:last-of-type {
-      height: auto;
-    }
-
     &:before,
     &:after {
       @include central-x();
@@ -72,8 +68,38 @@
       }
     }
 
+    &:nth-of-type(12) {
+      .timeline__event-info h3,
+      .timeline__event-info p,
+      .timeline__event-icon {
+        opacity: 0.999;
+      }
+
+      .timeline__event--right {
+        .timeline__event-info h3,
+        .timeline__event-info p {
+          transform: translateX(1rem);
+        }
+      }
+
+      .timeline__event--left {
+        .timeline__event-info h3,
+        .timeline__event-info p {
+          transform: translateX(-1rem);
+        }
+      }
+
+      .timeline__event-icon {
+        transform: translateY(-50%) scale(1);
+      }
+    }
+
     &:nth-of-type(even) h2 {
       text-align: right;
+    }
+
+    &:last-of-type {
+      height: auto;
     }
   }
 
@@ -96,9 +122,16 @@
     }
 
     &-info {
+      padding: 6rem 0;
       z-index: 10;
       position: absolute;
       @include central-y();
+
+      h3,
+      p {
+        will-change: opacity, transform;
+        opacity: var(--scroll);
+      }
     }
 
     &-icon {
@@ -108,6 +141,9 @@
       border-radius: 50%;
       @include central-y();
       border: 0.1rem solid var(--grey-light);
+      transform: translateY(-50%) scale((calc(1 * var(--scroll))));
+      transform-origin: 50% 50%;
+      will-change: transform;
 
       main .inner & {
         position: absolute;
@@ -132,7 +168,12 @@
       }
 
       .timeline__event-info {
-        padding-left: 3rem;
+        padding-left: 2rem;
+
+        h3,
+        p {
+          transform: translateX(calc(1rem * var(--scroll)));
+        }
       }
 
       .timeline__event-icon {
@@ -149,7 +190,12 @@
       }
 
       .timeline__event-info {
-        padding-right: 3rem;
+        padding-right: 2rem;
+
+        h3,
+        p {
+          transform: translateX(calc(-1rem * var(--scroll)));
+        }
       }
 
       .timeline__event-icon {

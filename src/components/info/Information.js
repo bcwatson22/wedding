@@ -12,34 +12,34 @@ import contact from './../../assets/icons/info/contact.svg';
 
 import dovedale from './../../assets/images/dovedale.jpg';
 
-const Information = () => {
-  const taxiCompanies = [
-    {
-      name: 'Ashbourne Taxis ',
-      phone: '01335 345198'
-    },
-    {
-      name: 'Dovelin Cars and Minibus',
-      phone: '07974 665439'
-    },
-    {
-      name: 'Star Cars',
-      phone: '01538 266343'
-    },
-    {
-      name: 'ACT Taxis',
-      phone: '01335 343928'
-    },
-    {
-      name: 'Village Taxis of Ashbourne',
-      phone: '01335 418080'
-    },
-    {
-      name: 'Peak Cars',
-      phone: '01335 370937'
-    }
-  ];
+const taxiCompanies = [
+  {
+    name: 'Ashbourne Taxis ',
+    phone: '01335 345198'
+  },
+  {
+    name: 'Dovelin Cars and Minibus',
+    phone: '07974 665439'
+  },
+  {
+    name: 'Star Cars',
+    phone: '01538 266343'
+  },
+  {
+    name: 'ACT Taxis',
+    phone: '01335 343928'
+  },
+  {
+    name: 'Village Taxis of Ashbourne',
+    phone: '01335 418080'
+  },
+  {
+    name: 'Peak Cars',
+    phone: '01335 370937'
+  }
+];
 
+const Information = () => {
   return (
     <>
       <h2 className="heading--icon"><img src={date} alt="Date" />Date</h2>

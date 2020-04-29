@@ -30,7 +30,7 @@ const RoutingProvider = ({ children }) => {
 
   return (
     <RoutingContext.Provider value={routing}>
-      {children}
+      { children }
     </RoutingContext.Provider>
   );
 };

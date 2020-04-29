@@ -31,7 +31,7 @@ const LoadingProvider = ({ children }) => {
 
   return (
     <LoadingContext.Provider value={loading}>
-      {children}
+      { children }
     </LoadingContext.Provider>
   );
 };

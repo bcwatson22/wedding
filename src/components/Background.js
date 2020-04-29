@@ -31,7 +31,7 @@ const initScroll = (wrapper) => {
 const Background = ({ children }) => {
   const wrapper = useRef(null);
   const [scroll, setScroll] = useState(false);
-  const {loadingCount} = useContext(LoadingContext);
+  const { loadingCount } = useContext(LoadingContext);
 
   useEffect(() => {
 
