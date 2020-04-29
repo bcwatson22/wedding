@@ -2,6 +2,8 @@ import React, { useEffect, useRef, createRef } from 'react';
 import moment from 'moment';
 import * as basicScroll from 'basicscroll';
 
+import './Timeline.scss';
+
 const initHours = (target, offset) => {
 
   basicScroll.create({

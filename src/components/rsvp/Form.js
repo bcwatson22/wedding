@@ -8,6 +8,8 @@ import LoadingContext from './../../context/LoadingContext';
 
 import { setHeightVar } from './../../services/utils';
 
+import './Form.scss';
+
 const updateGuestRsvpMutation = gql`
   mutation updateGuestRsvp($rsvpId: Int!, $date: String, $responded: Boolean!, $responses: GuestResponseUpdateManyInput!) {
     updateGuestRsvp(
