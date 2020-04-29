@@ -1,3 +1,14 @@
 .icon {
+  width: 4rem;
+  height: 4rem;
+  background: var(--green-mint);
+  border-radius: 50%;
+  border: 0.1rem solid var(--grey-light);
 
+  img {
+    position: absolute;
+    width: auto;
+    height: 2rem;
+    @include central();
+  }
 }

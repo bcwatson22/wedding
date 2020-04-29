@@ -61,7 +61,7 @@ main {
     main & {
       padding: 6rem;
 
-      * {
+      > * {
         position: relative;
       }
 

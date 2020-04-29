@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
 
-    .icon {
+    .nav__icon {
       height: 50%;
       width: auto;
     }
@@ -43,7 +43,7 @@
     a {
       color: mix(#b4dbd0, #ffffff, 40%);
 
-      .icon {
+      .nav__icon {
         margin-right: 0.75rem;
       }
     }
@@ -57,7 +57,7 @@
     a {
       color: var(--white);
 
-      .icon {
+      .nav__icon {
         margin-right: 1rem;
       }
     }

@@ -4,24 +4,24 @@ import Link from './Link';
 
 import { hasLocalStorage } from './../services/utils';
 
+const userAdmin = hasLocalStorage() && localStorage.getItem('bb-wedding-admin') ? localStorage.getItem('bb-wedding-admin') : null;
+
+const navItems = [
+  {
+    name: 'Home'
+  },
+  {
+    name: 'Info'
+  },
+  {
+    name: 'Timings'
+  },
+  {
+    name: userAdmin ? 'Responses' : 'RSVP'
+  }
+];
+
 const Nav = () => {
-  const userAdmin = hasLocalStorage() && localStorage.getItem('bb-wedding-admin') ? localStorage.getItem('bb-wedding-admin') : null;
-
-  const navItems = [
-    {
-      name: 'Home'
-    },
-    {
-      name: 'Info'
-    },
-    {
-      name: 'Timings'
-    },
-    {
-      name: userAdmin ? 'Responses' : 'RSVP'
-    }
-  ];
-
   return (
     <nav className="nav nav--primary">
       <ul>
@@ -33,7 +33,7 @@ const Nav = () => {
           return (
             <li key={link}>
               <Link target={link === 'home' ? '/' : `/${link}`}>
-                <img src={image} className={`icon icon--${link}`} alt={`${name} icon`} />
+                <img src={image} className={`nav__icon nav__icon--${link}`} alt={`${name} icon`} />
                 <span>{name}</span>
               </Link>
             </li>

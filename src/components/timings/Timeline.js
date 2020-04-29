@@ -4,6 +4,8 @@ import * as basicScroll from 'basicscroll';
 
 import './Timeline.scss';
 
+import Icon from './../Icon';
+
 const initHours = (target, offset) => {
 
   basicScroll.create({
@@ -212,7 +214,7 @@ const Timeline = () => {
               const { time, title, icon, position } = event;
               const index = animatingEvents.findIndex(e => e.time === time);
               const start = `2021-05-29T${time}:00`;
-              const image = require(`./../../assets/icons/timings/${icon}.svg`);
+              // const image = require(`./../../assets/icons/timings/${icon}.svg`);
               let modifier = 'timeline__event--';
 
               switch (time.substring(3, 5)) {
@@ -241,7 +243,7 @@ const Timeline = () => {
               return (
                 <aside className={`timeline__event timeline__event--${position}${modifier.length && ' ' + modifier}`} key={event.title}>
                   <div className="timeline__event-info" ref={eventRefs.current[index]}>
-                    <span className={`timeline__event-icon${icon === 'speeches' ? ' timeline__event-icon--tall' : ''}`}><img src={image} alt={title} /></span>
+                    <Icon file={icon} folder="timings" alt={title} classes={`timeline__event-icon${icon === 'speeches' ? ' timeline__event-icon--tall' : ''}`} />
                     <p><time dateTime={start}>{moment(start).format('h:mma')}</time></p>
                     <h3>{title}</h3>
                   </div>
