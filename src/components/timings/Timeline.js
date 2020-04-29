@@ -168,15 +168,25 @@ const timings = [
   }
 ];
 
+const needsHourBinding = (timing, index) => {
+
+  const isAnEvenIndex = (index % 2 === 0);
+  const hasEventsThisHour = (timing.events);
+  const hasEventOnTheHour = (hasEventsThisHour && timing.events.find(event => event.time.endsWith('00')));
+  const hasOverlappingEvent = (isAnEvenIndex && hasEventOnTheHour && hasEventOnTheHour.position === 'left')
+      || (!isAnEvenIndex && hasEventOnTheHour && hasEventOnTheHour.position === 'right');
+
+  return hasOverlappingEvent;
+
+}
+
 const Timeline = () => {
-  const allHours = timings.map(timing => timing);
-  const hourRefs = useRef(allHours.map(() => createRef()));
-  const allEvents = timings.map(timing => timing.events && timing.events.map(event => event)).flat().filter(event => event !== undefined);
-  const eventRefs = useRef(allEvents.map(() => createRef()));
+  const overlappingHours = timings.map((timing, index) => needsHourBinding(timing, index) ? timing : null).filter(hour => hour !== null);
+  const hourRefs = useRef(overlappingHours.map(() => createRef()));
+  const animatingEvents = timings.slice(1, -1).map(timing => timing.events && timing.events.map(event => event)).flat().filter(event => event !== undefined);
+  const eventRefs = useRef(animatingEvents.map(() => createRef()));
 
   useEffect(() => {
-
-    console.log(hourRefs);
 
     hourRefs.current.map((hour) => initHours(hour.current, hour.current.firstChild));
 
@@ -186,17 +196,18 @@ const Timeline = () => {
 
   return (
     <section className="timeline">
-      {timings.map((timing, i) => {
+      {timings.map((timing) => {
         const { hour, events } = timing;
+        const i = overlappingHours.findIndex(h => h.hour === hour);
         const time = `2021-05-29T${hour}:00`;
 
         return (
           <article className="timeline__hour" key={hour} ref={hourRefs.current[i]}>
-            <span className="timeline__hour-offset">Offset</span>
+            {i !== -1 && <span className="timeline__hour-offset">Offset</span>}
             <h2><time dateTime={time}>{moment(time).format('ha')}</time></h2>
             {events && events.map((event) => {
               const { time, title, icon, position } = event;
-              const index = allEvents.findIndex(e => e.time === time);
+              const index = animatingEvents.findIndex(e => e.time === time);
               const start = `2021-05-29T${time}:00`;
               const image = require(`./../../assets/icons/timings/${icon}.svg`);
               let modifier = 'timeline__event--';

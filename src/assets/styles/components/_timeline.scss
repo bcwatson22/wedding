@@ -54,6 +54,33 @@
       will-change: opacity;
     }
 
+    &:first-of-type,
+    &:nth-of-type(12) {
+      .timeline__event-info h3,
+      .timeline__event-info p,
+      .timeline__event-icon {
+        opacity: 0.999;
+      }
+
+      .timeline__event--right {
+        .timeline__event-info h3,
+        .timeline__event-info p {
+          transform: translateX(1rem);
+        }
+      }
+
+      .timeline__event--left {
+        .timeline__event-info h3,
+        .timeline__event-info p {
+          transform: translateX(-1rem);
+        }
+      }
+
+      .timeline__event-icon {
+        transform: translateY(-50%) scale(1);
+      }
+    }
+
     &:not(:last-of-type) {
       h2,
       h2 time {
@@ -97,32 +124,6 @@
     &:first-of-type {
       h2 time:before {
         content: none;
-      }
-    }
-
-    &:nth-of-type(12) {
-      .timeline__event-info h3,
-      .timeline__event-info p,
-      .timeline__event-icon {
-        opacity: 0.999;
-      }
-
-      .timeline__event--right {
-        .timeline__event-info h3,
-        .timeline__event-info p {
-          transform: translateX(1rem);
-        }
-      }
-
-      .timeline__event--left {
-        .timeline__event-info h3,
-        .timeline__event-info p {
-          transform: translateX(-1rem);
-        }
-      }
-
-      .timeline__event-icon {
-        transform: translateY(-50%) scale(1);
       }
     }
 
