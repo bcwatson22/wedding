@@ -48,7 +48,7 @@ const Greeting = ({ completed, personal }) => {
 
 Greeting.propTypes = {
   completed: PropTypes.string,
-  personal: PropTypes.object
+  personal: PropTypes.object.isRequired
 }
 
 export default Greeting;

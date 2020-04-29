@@ -74,9 +74,9 @@ const Respond = ({ userToken, personal, wrapper }) => {
 };
 
 Respond.propTypes = {
-  userToken: PropTypes.string,
-  personal: PropTypes.object,
-  wrapper: PropTypes.object
+  userToken: PropTypes.string.isRequired,
+  personal: PropTypes.object.isRequired,
+  wrapper: PropTypes.object.isRequired
 }
 
 export default Respond;

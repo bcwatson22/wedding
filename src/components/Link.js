@@ -7,7 +7,7 @@ import RoutingContext from './../context/RoutingContext';
 
 import { delay } from './../services/utils';
 
-const Link = ({children, target}) => {
+const Link = ({ children, target }) => {
   const { showLoading } = useContext(LoadingContext);
   const { showRouting } = useContext(RoutingContext);
 
@@ -41,7 +41,8 @@ const Link = ({children, target}) => {
 };
 
 Link.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node.isRequired,
+  target: PropTypes.string.isRequired
 };
 
 export default Link;

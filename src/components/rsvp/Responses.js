@@ -95,7 +95,7 @@ const Responses = ({ guests }) => {
 };
 
 Responses.propTypes = {
-  guests: PropTypes.array
+  guests: PropTypes.array.isRequired
 };
 
 export default Responses;

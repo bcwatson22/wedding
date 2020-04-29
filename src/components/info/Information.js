@@ -1,8 +1,8 @@
 import React from 'react';
 
-import dovedale from './../../assets/images/dovedale.jpg';
-
 import Icon from './../Icon';
+
+import dovedale from './../../assets/images/dovedale.jpg';
 
 const taxiCompanies = [
   {
@@ -36,11 +36,10 @@ const Information = () => {
     <>
       <h2 className="heading--icon"><Icon file="date" folder="info" alt="Date" />Date</h2>
       <p>The wedding is on <strong>Saturday 29th May 2021</strong>.</p>
-      <p>This is a <strong>bank holiday</strong> in the UK, which should hopefully give people a bit of flexibility and help to ease hectic travel arrangements.</p>
+      <p>This is a <strong>bank holiday</strong> in the UK, which should hopefully give you a bit of flexibility and help to ease hectic travel arrangements.</p>
       <h2 className="heading--icon"><Icon file="location" folder="info" alt="Location" />Location</h2>
-      <p>It will take place at <strong>Lower Damgate Farm</strong>, near Ilam which is nestled in Dovedale in the Peak District.</p>
-      <p>The farm is also an animal sanctuary, so you might see a random alpaca or two at some point!</p>
-      <p>To find it on a map, it's best to look for the name of the farm as its postcode will take you to Stanshope which is half a mile away. The address is:</p>
+      <p>It will take place at <strong>Lower Damgate Farm</strong>, near Ilam which is nestled in Dovedale; a stunning part of the Peak District. The farm is also an animal sanctuary, so you might see a random alpaca or two at some point!</p>
+      <p>To find directions on an app or satnav, it's best to look for the name of the farm as its postcode will take you to Stanshope which is half a mile away. The address is:</p>
       <p translate="no" typeof="schema:PostalAddress">
         <strong property="schema:streetAddress">Lower Damgate Farm</strong>
         <strong property="schema:addressLocality">Ilam</strong>
@@ -59,7 +58,7 @@ const Information = () => {
       <p>Aesthetic 8-bit tofu skateboard drinking vinegar prism. Seitan woke occupy activated charcoal, DIY yr tousled. Ethical helvetica normcore hashtag 8-bit, deep v iceland. Leggings tbh ennui succulents jianbing banjo distillery ugh +1 man bun meh knausgaard. Retro schlitz edison bulb, bitters beard sartorial kitsch raw denim taxidermy mlkshk vape. Hammock chillwave lumbersexual meggings master cleanse kogi 3 wolf moon banh mi pitchfork tumeric etsy. Wolf semiotics gastropub schlitz, gochujang affogato kitsch cray green juice neutra locavore iPhone 8-bit tousled.</p>
       <img src={dovedale} alt="Dovedale" />
       <h2 className="heading--icon"><Icon file="taxis" folder="info" alt="Taxis" />Taxis</h2>
-      <p>Our wedding venue is in the countryside, please make sure to book taxis in advance to guarantee a ride to your accomodation. Music will finish at 11.30pm, and all guests must be off site by midnight.</p>
+      <p>Our wedding venue is in the countryside, please make sure to <strong>book taxis in advance</strong> to guarantee a ride to your accomodation. Music will <strong>finish at 11.30pm</strong>, and all guests must be off site by midnight.</p>
       <article className="scrolling-table">
         <table>
           <thead>

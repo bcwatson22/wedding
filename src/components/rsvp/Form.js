@@ -149,9 +149,9 @@ const Form = ({ rsvpId, guests, setStatus }) => {
 };
 
 Form.propTypes = {
-  rsvpId: PropTypes.number,
-  guests: PropTypes.array,
-  setStatus: PropTypes.func
+  rsvpId: PropTypes.number.isRequired,
+  guests: PropTypes.array.isRequired,
+  setStatus: PropTypes.func.isRequired
 }
 
 export default Form;
