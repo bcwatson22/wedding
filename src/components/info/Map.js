@@ -1,6 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+import LoadingContext from './../../context/LoadingContext';
 
 import './Map.scss';
 
@@ -8,12 +10,13 @@ const Map = () => {
   const [mapbox, setMapbox] = useState(null);
   const container = useRef(null);
   const marker = useRef(null);
+  const { finishedLoading } = useContext(LoadingContext);
 
   useEffect(() => {
 
     mapboxgl.accessToken = process.env.MAPBOX_KEY;
 
-    const initMap = ({ setMap, container }) => {
+    const initMap = ({ setMapbox, container }) => {
       const map = new mapboxgl.Map({
         container: container.current,
         style: 'mapbox://styles/mapbox/outdoors-v11',
@@ -29,9 +32,9 @@ const Map = () => {
       });
     };
 
-    if (!mapbox) initMap({ setMapbox, container });
+    if (!mapbox && finishedLoading) initMap({ setMapbox, container });
 
-  }, [mapbox]);
+  }, [mapbox, finishedLoading]);
 
   return (
     <section className={`map map--${mapbox ? 'loaded' : 'loading'}`}>
