@@ -3,9 +3,9 @@
   position: absolute;
   top: var(--top);
   left: 0;
-  @include stagger(1, 6, 0.1s);
+  @include stagger(1, 7, 0.1s);
   border-radius: 0;
-  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0.999;
   will-change: opacity transform border-radius;
 
@@ -22,6 +22,6 @@
   .scroll & {
     @include parallax(1, 6);
     transition-duration: 0.1s;
-    @include stagger(1, 6, 0s);
+    @include stagger(1, 7, 0s);
   }
 }

@@ -3,7 +3,9 @@ import { createContext } from 'react';
 const LoadingContext = createContext({
   loadingCount: 1,
   showLoading: () => {},
-  closeLoading: () => {}
+  hideLoading: () => {},
+  finishedLoading: false,
+  finishLoading: () => {}
 });
 
 export default LoadingContext;

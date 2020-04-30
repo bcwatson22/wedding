@@ -19,7 +19,7 @@ const Map = () => {
         container: container.current,
         style: 'mapbox://styles/mapbox/outdoors-v11',
         center: [-1.8101, 53.0778],
-        zoom: 10
+        zoom: 9.5
       });
 
       map.on('load', () => {

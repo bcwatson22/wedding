@@ -6,7 +6,8 @@ const LoadingProvider = ({ children }) => {
     toggleLoading(prevState => {
       return {
         ...prevState,
-        loadingCount: prevState.loadingCount + 1
+        loadingCount: prevState.loadingCount + 1,
+        finishedLoading: false
       }
     })
   }
@@ -21,13 +22,24 @@ const LoadingProvider = ({ children }) => {
     })
   }
 
+  const finishLoading = () => {
+    toggleLoading(prevState => {
+      return {
+        ...prevState,
+        finishedLoading: true
+      }
+    })
+  }
+
   const loadingState = {
     loadingCount: 1,
     showLoading,
-    hideLoading
+    hideLoading,
+    finishedLoading: false,
+    finishLoading
   }
 
-  const [loading, toggleLoading] = useState(loadingState)
+  const [loading, toggleLoading] = useState(loadingState);
 
   return (
     <LoadingContext.Provider value={loading}>

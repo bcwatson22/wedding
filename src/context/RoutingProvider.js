@@ -3,7 +3,7 @@ import RoutingContext from './RoutingContext';
 
 const RoutingProvider = ({ children }) => {
   const showRouting = () => {
-    toggleROuting(prevState => {
+    toggleRouting(prevState => {
       return {
         ...prevState,
         routing: true
@@ -12,7 +12,7 @@ const RoutingProvider = ({ children }) => {
   }
 
   const hideRouting = () => {
-    toggleROuting(prevState => {
+    toggleRouting(prevState => {
       return {
         ...prevState,
         routing: false
@@ -26,7 +26,7 @@ const RoutingProvider = ({ children }) => {
     hideRouting
   }
 
-  const [routing, toggleROuting] = useState(routingState)
+  const [routing, toggleRouting] = useState(routingState);
 
   return (
     <RoutingContext.Provider value={routing}>
