@@ -1,12 +1,11 @@
-import React, { useContext, lazy, Suspense } from 'react';
+import React, { useContext } from 'react';
 
 import LoadingContext from './../../context/LoadingContext';
 
 import Icon from './../Icon';
+import Map from './Map';
 
 import dovedale from './../../assets/images/dovedale.jpg';
-
-const Map = lazy(() => import('./Map'));
 
 const taxiCompanies = [
   {
@@ -40,7 +39,6 @@ const Information = () => {
 
   return (
     <>
-      <h2>Finished? {finishedLoading ? 'yep' : 'nope'}</h2>
       <h2 className="heading--icon"><Icon file="date" folder="info" alt="Date" />Date</h2>
       <p>The wedding is on <strong>Saturday 29th May 2021</strong>.</p>
       <p>This is a <strong>bank holiday</strong> in the UK, which should hopefully give you a bit of flexibility and help to ease hectic travel arrangements.</p>
@@ -53,11 +51,7 @@ const Information = () => {
         <strong property="schema:addressRegion">Derbyshire</strong>
         <strong property="schema:postalCode">DE6 2AD</strong>
       </p>
-      {finishedLoading &&
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <Map />
-        </Suspense>
-      }
+      {finishedLoading && <Map />}
       <h2 className="heading--icon"><Icon file="accomodation" folder="info" alt="Accomodation" />Accomodation</h2>
       <p>Craft beer etsy everyday carry cloud bread live-edge health goth ethical roof party microdosing sartorial. Keffiyeh crucifix literally, ennui bushwick gentrify beard snackwave quinoa. Kitsch gochujang synth portland jean shorts chia narwhal bicycle rights 8-bit. Readymade try-hard put a bird on it scenester helvetica sriracha microdosing farm-to-table meggings glossier taxidermy aesthetic. Yr messenger bag PBR&B celiac chicharrones, deep v heirloom fixie marfa microdosing vinyl copper mug sartorial cloud bread trust fund. Migas sustainable vexillologist williamsburg hexagon keytar.</p>
       <h2 className="heading--icon"><Icon file="food" folder="info" alt="Food and drinks" />Food and drinks</h2>

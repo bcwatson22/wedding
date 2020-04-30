@@ -86,6 +86,24 @@
   }
 }
 
+@mixin loading($size: 1rem, $position: 'central') {
+  position: relative;
+  @include pseudo-after();
+
+  &:after {
+    position: absolute;
+    @include central();
+    display: block;
+    width: $size;
+    height: $size;
+    border: 0.2rem solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    border-top: 0.2rem solid var(--white);
+    will-change: transform;
+    animation: spin-#{$position} 1s linear infinite;
+  }
+}
+
 @mixin timeline-dot() {
   width: 1rem;
   height: 1rem;

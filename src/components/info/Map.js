@@ -11,8 +11,7 @@ const Map = () => {
 
   useEffect(() => {
 
-    // mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYmN3YXRzb24yMiIsImEiOiJjazltaGpnc3IwMDB3M3VwNHVjY2s0ZjI0In0.P603X9dgsSlFC38vmKvXXQ';
+    mapboxgl.accessToken = process.env.MAPBOX_KEY;
 
     const initMap = ({ setMap, container }) => {
       const map = new mapboxgl.Map({
@@ -35,7 +34,7 @@ const Map = () => {
   }, [mapbox]);
 
   return (
-    <section className={`map${mapbox ? ' map--loaded' : ''}`}>
+    <section className={`map map--${mapbox ? 'loaded' : 'loading'}`}>
       <article className="map__container" ref={container} />
       <span className="map__pin" ref={marker} />
     </section>

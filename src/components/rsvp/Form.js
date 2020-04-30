@@ -31,7 +31,7 @@ const updateGuestRsvpMutation = gql`
 const Form = ({ rsvpId, guests, setStatus }) => {
   const fieldRefs = useRef(guests.map(() => createRef()));
   const [completedResponses, setCompletedResponses] = useState(guests);
-  const { showLoading, hideLoading } = useContext(LoadingContext);
+  const { loadingCount, showLoading, hideLoading } = useContext(LoadingContext);
 
   const [updateGuestResponses] = useMutation(updateGuestRsvpMutation, {
     onCompleted(result) {
@@ -143,7 +143,7 @@ const Form = ({ rsvpId, guests, setStatus }) => {
           </fieldset>
         );
       })}
-      <button type="submit" className="button button--block" disabled={completedResponses.filter(guest => guest.attending !== null).length !== guests.length}>Submit</button>
+      <button type="submit" className={`button button--block${loadingCount > 0 ? ' button--loading' : ''}`} disabled={completedResponses.filter(guest => guest.attending !== null).length !== guests.length}>Submit</button>
     </form>
   );
 };

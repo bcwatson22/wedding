@@ -1,6 +1,10 @@
+@import './../../assets/styles/modules/animations';
+@import './../../assets/styles/modules/mixins';
+
 .map {
   width: 100%;
   height: 50rem;
+  background: var(--green-light);
 
   &__container {
     width: 100%;
@@ -21,6 +25,12 @@
     will-change: opacity;
   }
 
+  &--loading {
+    z-index: 5;
+    @include loading(2rem);
+  }
+
+  &--loading:after,
   &--loaded > * {
     opacity: 0.999;
   }

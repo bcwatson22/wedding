@@ -22,6 +22,16 @@
     }
   }
 
+  &--loading {
+    @include loading(1rem, 'central-y');
+    padding-right: 5rem;
+
+    &:after {
+      left: auto;
+      right: 2rem;
+    }
+  }
+
   &--text {
     @include text-link-inverse();
     color: inherit;
