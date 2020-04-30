@@ -8,7 +8,7 @@ import './Timeline.scss';
 
 const initHours = (target, offset) => {
 
-  basicScroll.create({
+  let instance = basicScroll.create({
     elem: offset,
     from: 'top-middle',
     to: 'middle-middle',
@@ -19,13 +19,16 @@ const initHours = (target, offset) => {
         to: 0.001
       }
     }
-  }).start();
+  });
+
+  instance.update();
+  instance.start();
 
 }
 
 const initEvents = (target) => {
 
-  basicScroll.create({
+  let instance = basicScroll.create({
     elem: target,
     from: 'top-middle',
     to: 'middle-middle',
@@ -36,7 +39,10 @@ const initEvents = (target) => {
         to: 0.999
       }
     }
-  }).start();
+  });
+
+  instance.update();
+  instance.start();
 
 }
 
