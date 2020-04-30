@@ -57,7 +57,7 @@ const Background = ({ children }) => {
 };
 
 Background.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 };
 
 export default Background;

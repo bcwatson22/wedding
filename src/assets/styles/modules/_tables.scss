@@ -135,6 +135,12 @@ td {
   overflow-x: auto;
   width: 100%;
 
+  @media screen and (max-width: $columns) {
+    width: calc(100% + 6rem);
+    margin-left: -3rem;
+    padding-left: 3rem;
+  }
+
   th,
   td {
     white-space: nowrap;
