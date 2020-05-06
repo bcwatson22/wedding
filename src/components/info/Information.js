@@ -47,7 +47,7 @@ const Information = () => {
         <strong property="schema:addressRegion">Derbyshire</strong>
         <strong property="schema:postalCode">DE6 2AD</strong>
       </p>
-      {/*<Map />*/}
+      <Map />
       <h2 className="heading--icon"><Icon file="accomodation" folder="info" alt="Accomodation" />Accomodation</h2>
       <p>Craft beer etsy everyday carry cloud bread live-edge health goth ethical roof party microdosing sartorial. Keffiyeh crucifix literally, ennui bushwick gentrify beard snackwave quinoa. Kitsch gochujang synth portland jean shorts chia narwhal bicycle rights 8-bit. Readymade try-hard put a bird on it scenester helvetica sriracha microdosing farm-to-table meggings glossier taxidermy aesthetic. Yr messenger bag PBR&B celiac chicharrones, deep v heirloom fixie marfa microdosing vinyl copper mug sartorial cloud bread trust fund. Migas sustainable vexillologist williamsburg hexagon keytar.</p>
       <h2 className="heading--icon"><Icon file="food" folder="info" alt="Food and drinks" />Food and drinks</h2>

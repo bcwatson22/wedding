@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, { useState, useRef } from 'react';
+import { InView } from 'react-intersection-observer'
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
-import LoadingContext from './../../context/LoadingContext';
 
 import './Map.scss';
 
@@ -10,9 +9,8 @@ const Map = () => {
   const [mapbox, setMapbox] = useState(null);
   const container = useRef(null);
   const marker = useRef(null);
-  const { finishedLoading } = useContext(LoadingContext);
 
-  useEffect(() => {
+  const createMap = () => {
 
     mapboxgl.accessToken = process.env.MAPBOX_KEY;
 
@@ -32,15 +30,15 @@ const Map = () => {
       });
     };
 
-    if (!mapbox && finishedLoading) initMap({ setMapbox, container });
+    if (!mapbox) initMap({ setMapbox, container });
 
-  }, [mapbox, finishedLoading]);
+  }
 
   return (
-    <section className={`map map--${mapbox ? 'loaded' : 'loading'}`}>
+    <InView as="section" className={`map map--${mapbox ? 'loaded' : 'loading'}`} onChange={(inView, entry) => inView ? createMap() : ''}>
       <article className="map__container" ref={container} />
       <span className="map__pin" ref={marker} />
-    </section>
+    </InView>
   );
 };
 
