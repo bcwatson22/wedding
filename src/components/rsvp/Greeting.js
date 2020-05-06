@@ -5,11 +5,13 @@ import moment from 'moment';
 import Link from './../Link';
 
 const Instructions = ({ nicknames, greeting }) => {
+  const deadline = '2021-03-31';
+
   return (
     <>
       <h2>Now then {nicknames && `${nicknames}`}</h2>
       {greeting && <p>{greeting}</p>}
-      <p>Please fill in the form below to let us know if you can make it. If you could ensure you've sent your response by <strong>31st March 2021</strong> that'd be grand!</p>
+      <p>Please fill in the form below to let us know if you can make it. If you could ensure you've sent your response by <time datetime={deadline}><strong>{moment(deadline).format('Do MMMM YYYY')}</strong></time> that'd be grand!</p>
       <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
     </>
   );
@@ -27,7 +29,7 @@ const Thanks = ({ nicknames, date }) => {
   return (
     <>
       <h2>Thanks {nicknames && `${nicknames}`}</h2>
-      <p>We received your RSVP <strong>{string}</strong>.</p>
+      <p>We received your RSVP <time datetime={date}><strong>{string}</strong></time>.</p>
       <p>You can edit your response below, or please check out the <Link target="/info">Info</Link> and <Link target="/timings">Timings</Link> pages for more information about the big day.</p>
     </>
   );

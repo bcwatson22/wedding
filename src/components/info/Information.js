@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import Icon from './../Icon';
 import Map from './Map';
@@ -32,11 +33,13 @@ const taxiCompanies = [
   }
 ];
 
+const date = '2021-05-29';
+
 const Information = () => {
   return (
     <>
       <h2 className="heading--icon"><Icon file="date" folder="info" alt="Date" />Date</h2>
-      <p>The wedding is on <strong>Saturday 29th May 2021</strong>.</p>
+      <p>The wedding is on <time datetime={date}><strong>{moment(date).format('dddd Do MMMM YYYY')}</strong></time>.</p>
       <p>This is a <strong>bank holiday</strong> in the UK, which should hopefully give you a bit of flexibility and help to ease hectic travel arrangements.</p>
       <h2 className="heading--icon"><Icon file="location" folder="info" alt="Location" />Location</h2>
       <p>It will take place at <strong>Lower Damgate Farm</strong>, near Ilam which is nestled in Dovedale; a stunning part of the Peak District. The farm is also an animal sanctuary, so you might see a random alpaca or two at some point!</p>
