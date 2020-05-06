@@ -119,16 +119,10 @@
   }
 }
 
-@mixin parallax-down($distance) {
-  transform: translateY(calc(var(--scroll) * #{$distance}rem));
-}
-
 @mixin parallax($from: 1, $to: 6) {
-  will-change: transform;
-
   @for $i from $from to $to {
     &:nth-of-type(#{$i}) {
-      @include parallax-down($i * 20);
+      --factor: calc(#{$i} * var(--height));
     }
   }
 }

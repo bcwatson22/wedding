@@ -40,14 +40,14 @@ const Information = () => {
       <p>This is a <strong>bank holiday</strong> in the UK, which should hopefully give you a bit of flexibility and help to ease hectic travel arrangements.</p>
       <h2 className="heading--icon"><Icon file="location" folder="info" alt="Location" />Location</h2>
       <p>It will take place at <strong>Lower Damgate Farm</strong>, near Ilam which is nestled in Dovedale; a stunning part of the Peak District. The farm is also an animal sanctuary, so you might see a random alpaca or two at some point!</p>
-      <p>To find directions on an app or satnav, it's best to look for the name of the farm as its postcode will take you to Stanshope which is half a mile away. The address is:</p>
+      <p>To <strong>find directions</strong> on an app or satnav, it's best to look for the name of the farm as its postcode will take you to Stanshope which is half a mile away. The address is:</p>
       <p translate="no" typeof="schema:PostalAddress">
         <strong property="schema:streetAddress">Lower Damgate Farm</strong>
         <strong property="schema:addressLocality">Ilam</strong>
         <strong property="schema:addressRegion">Derbyshire</strong>
         <strong property="schema:postalCode">DE6 2AD</strong>
       </p>
-      <Map />
+      {/*<Map />*/}
       <h2 className="heading--icon"><Icon file="accomodation" folder="info" alt="Accomodation" />Accomodation</h2>
       <p>Craft beer etsy everyday carry cloud bread live-edge health goth ethical roof party microdosing sartorial. Keffiyeh crucifix literally, ennui bushwick gentrify beard snackwave quinoa. Kitsch gochujang synth portland jean shorts chia narwhal bicycle rights 8-bit. Readymade try-hard put a bird on it scenester helvetica sriracha microdosing farm-to-table meggings glossier taxidermy aesthetic. Yr messenger bag PBR&B celiac chicharrones, deep v heirloom fixie marfa microdosing vinyl copper mug sartorial cloud bread trust fund. Migas sustainable vexillologist williamsburg hexagon keytar.</p>
       <h2 className="heading--icon"><Icon file="food" folder="info" alt="Food and drinks" />Food and drinks</h2>

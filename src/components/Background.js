@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as basicScroll from 'basicscroll';
 
 import LoadingContext from './../context/LoadingContext';
-import { delay } from './../services/utils';
+import { setHeightVar } from './../services/utils';
 
 import LeftLeft from './vectors/LeftLeft';
 import LeftCentre from './vectors/LeftCentre';
@@ -20,8 +20,8 @@ const initScroll = (wrapper) => {
     direct: true,
     props: {
       '--scroll': {
-        from: 0.0001,
-        to: 0.9999
+        from: 0.001,
+        to: 0.999
       }
     }
   }).start();
@@ -30,19 +30,25 @@ const initScroll = (wrapper) => {
 
 const Background = ({ children }) => {
   const wrapper = useRef(null);
-  const [scroll, setScroll] = useState(false);
-  const { loadingCount } = useContext(LoadingContext);
+  const [scroll, setScroll] = useState(null);
+  const { loadingCount, finishedLoading } = useContext(LoadingContext);
 
   useEffect(() => {
 
-    delay(1300).then(() => {
+    if (finishedLoading) {
 
-      // initScroll(wrapper.current);
-      // setScroll(true);
+      if (scroll === null) {
 
-    });
+        initScroll(wrapper.current);
+        setScroll(true);
 
-  }, []);
+      }
+
+      setHeightVar(wrapper.current, wrapper.current, '--background');
+
+    }
+
+  }, [finishedLoading, scroll]);
 
   return (
     <div className={`background${loadingCount > 0 ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>

@@ -45,7 +45,7 @@ const Form = ({ rsvpId, guests, setStatus }) => {
 
   useEffect(() => {
 
-    fieldRefs.current.map((field, i) => setHeightVar(field.current, field.current, '--height'));
+    fieldRefs.current.map((field, i) => setHeightVar(field.current, field.current, '--textarea'));
 
   }, []);
 

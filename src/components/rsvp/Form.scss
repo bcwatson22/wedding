@@ -81,7 +81,7 @@ textarea {
   }
 
   &--shown {
-    max-height: calc(var(--height) * 0.1rem);
+    max-height: calc(var(--textarea) * 0.1rem);
   }
 }
 
