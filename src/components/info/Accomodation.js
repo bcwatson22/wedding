@@ -7,7 +7,7 @@ const accomodationOptions = [
     name: 'YHA Ilam Hall',
     type: 'Hostel',
     phone: '0345 371 9023',
-    website: 'https://yha.org.uk'
+    website: 'https://www.yha.org.uk/hostel/yha-ilam-hall'
   },
   {
     name: 'Dog & Partridge',
@@ -31,13 +31,13 @@ const accomodationOptions = [
     name: 'Paddock House',
     type: 'Cottage(s)',
     phone: '07974 564829',
-    website: 'https://sykescottages.co.uk'
+    website: 'https://sykescottages.co.uk/cottage/Paddock-House-961334.html'
   },
   {
     name: 'Church Farm',
     type: 'Cottage(s)',
     phone: '01335 390216',
-    website: 'https://churchfarmholidaycottages.co.uk'
+    website: 'https://www.churchfarmholidaycottages.co.uk'
   },
   {
     name: 'Winnow Barns Holidays',
@@ -67,13 +67,13 @@ const accomodationOptions = [
     name: 'Travelodge Ashbourne',
     type: 'Hotel',
     phone: '08719 846362',
-    website: 'https://travelodge.co.uk'
+    website: 'https://travelodge.co.uk/hotels/385/Ashbourne-hotel'
   },
   {
     name: 'The Orchards Ilam',
     type: 'Cottage(s)',
     phone: '07973 772538',
-    website: 'https://cottageguide.co.uk'
+    website: 'https://www.cottageguide.co.uk/theorchards'
   }
 ];
 
