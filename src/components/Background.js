@@ -20,8 +20,8 @@ const initScroll = (wrapper) => {
     direct: true,
     props: {
       '--scroll': {
-        from: 0.001,
-        to: 0.999
+        from: 0.00001,
+        to: 0.99999
       }
     }
   }).start();

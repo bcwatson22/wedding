@@ -107,7 +107,15 @@ const timings = [
     hour: '16:00'
   },
   {
-    hour: '17:00'
+    hour: '17:00',
+    events: [
+      {
+        time: '17:00',
+        title: 'Group photo',
+        icon: 'group',
+        position: 'left'
+      }
+    ]
   },
   {
     hour: '18:00',
