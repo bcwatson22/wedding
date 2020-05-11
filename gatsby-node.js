@@ -4,6 +4,25 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+
+  if (stage === 'build-html') {
+
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /mapbox-gl/,
+            use: loaders.null()
+          }
+        ]
+      }
+    })
+
+  }
+
+}
+
 exports.createPages = async ({ graphql, actions }) => {
 
   const { createPage } = actions;

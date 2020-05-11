@@ -82,7 +82,7 @@ const Accomodation = () => {
     <>
       <Heading title="Accomodation" />
       <p>There's a range of accomodation options near the venue, suiting different budgets. We've noted a few here but this list isn't exhaustive.</p>
-      <p>AirBnb has some decent places too: please have a look around <strong>Ilam</strong> and <strong>Hartington</strong>. <strong>Ashbourne</strong> isn't too far away either.</p>
+      <p>AirBnb has some decent places too: please have a look around <strong>Ilam</strong> and <strong>Hartington</strong>. The town of <strong>Ashbourne</strong> isn't too far away either.</p>
       <p>Whatever you choose though, we'd recommend <strong>booking well in advance</strong> as it's a popular tourist spot and a bank holiday - so things could get snapped up fast (especially the YHA)!</p>
       <article className="scrolling-table">
         <table>

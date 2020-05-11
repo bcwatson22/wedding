@@ -201,7 +201,7 @@ const needsHourBinding = (timing, index) => {
 const Timeline = () => {
   const overlappingHours = timings.map((timing, index) => needsHourBinding(timing, index) ? timing : null).filter(hour => hour !== null);
   const hourRefs = useRef(overlappingHours.map(() => createRef()));
-  const animatingEvents = timings.slice(1, -1).map(timing => timing.events && timing.events.map(event => event)).flat().filter(event => event !== undefined);
+  const animatingEvents = timings.slice(1, -1).flatMap(({ events })=> events ? events : []);
   const eventRefs = useRef(animatingEvents.map(() => createRef()));
 
   useEffect(() => {
