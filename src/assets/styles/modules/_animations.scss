@@ -9,6 +9,38 @@
   }
 }
 
+@keyframes shape-loaded {
+  0% {
+    top: 45vh;
+    transform: scale(0.1) translateY(calc(-50%));
+    opacity: 0.001;
+    border-radius: 50% / 15%;
+  }
+
+  100% {
+    top: var(--top);
+    transform: scale(1) translateY(0);
+    opacity: 0.999;
+    border-radius: 0;
+  }
+}
+
+@keyframes shape-loading {
+  0% {
+    top: var(--top);
+    transform: scale(1) translateY(0);
+    opacity: 0.999;
+    border-radius: 0;
+  }
+
+  100% {
+    top: 45vh;
+    transform: scale(0.1) translateY(calc(-50%));
+    opacity: 0.001;
+    border-radius: 50% / 15%;
+  }
+}
+
 @keyframes spin-central {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);

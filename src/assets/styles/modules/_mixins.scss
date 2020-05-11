@@ -130,7 +130,7 @@
 @mixin stagger($from: 1, $to: 6, $delay: 0.1s) {
   @for $i from $from to $to {
     &:nth-of-type(#{$i}) {
-      transition-delay: $i * $delay;
+      animation-delay: $i * $delay;
     }
   }
 }
