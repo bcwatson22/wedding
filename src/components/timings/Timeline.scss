@@ -24,8 +24,9 @@
 
     &:before {
       @include central-x();
-      background: var(--grey-light);
+      background: var(--border);
       border-radius: 50%;
+      z-index: 5;
     }
 
     &:before {

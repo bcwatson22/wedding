@@ -5,11 +5,17 @@ import * as basicScroll from 'basicscroll';
 import LoadingContext from './../context/LoadingContext';
 import { setHeightVar } from './../services/utils';
 
-import LeftLeft from './vectors/LeftLeft';
-import LeftCentre from './vectors/LeftCentre';
-import CentreCentre from './vectors/CentreCentre';
-import RightCentre from './vectors/RightCentre';
-import RightRight from './vectors/RightRight';
+// import LeftLeft from './vectors/LeftLeft';
+// import LeftCentre from './vectors/LeftCentre';
+// import CentreCentre from './vectors/CentreCentre';
+// import RightCentre from './vectors/RightCentre';
+// import RightRight from './vectors/RightRight';
+
+import ll from './../assets/vectors/ll.svg';
+import lc from './../assets/vectors/lc.svg';
+import cc from './../assets/vectors/cc.svg';
+import rc from './../assets/vectors/rc.svg';
+import rr from './../assets/vectors/rr.svg';
 
 const initScroll = (wrapper) => {
 
@@ -52,11 +58,21 @@ const Background = ({ children }) => {
 
   return (
     <div className={`background${loadingCount > 0 ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
-      <LeftLeft />
-      <LeftCentre />
-      <CentreCentre />
-      <RightCentre />
-      <RightRight />
+      <div className="background__column">
+        <img src={ll} className="background__pattern" alt="Background pattern" />
+      </div>
+      <div className="background__column">
+        <img src={lc} className="background__pattern" alt="Background pattern" />
+      </div>
+      <div className="background__column">
+        <img src={cc} className="background__pattern" alt="Background pattern" />
+      </div>
+      <div className="background__column">
+        <img src={rc} className="background__pattern" alt="Background pattern" />
+      </div>
+      <div className="background__column">
+        <img src={rr} className="background__pattern" alt="Background pattern" />
+      </div>
       { children }
     </div>
   );

@@ -107,7 +107,7 @@
 @mixin timeline-dot() {
   width: 1rem;
   height: 1rem;
-  background: var(--grey-light);
+  background: var(--border);
   border-radius: 50%;
 }
 
@@ -127,10 +127,18 @@
   }
 }
 
-@mixin stagger($from: 1, $to: 6, $delay: 0.1s) {
+@mixin stagger-transition($from: 1, $to: 6, $delay: 0.1s) {
   @for $i from $from to $to {
     &:nth-of-type(#{$i}) {
       transition-delay: $i * $delay;
+    }
+  }
+}
+
+@mixin stagger-animation($from: 1, $to: 6, $delay: 0.1s) {
+  @for $i from $from to $to {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $i * $delay;
     }
   }
 }

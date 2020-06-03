@@ -1,10 +1,49 @@
-.column {
+// .shape {
+//   @include hwa();
+//   position: absolute;
+//   top: var(--top);
+//   left: 0;
+//   @include stagger-transition(1, 7, 0.1s);
+//   border-radius: 0;
+//   transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+//   opacity: 0.999;
+//   will-change: opacity, transform, border-radius;
+//
+//   .scroll & {
+//     --height: calc(var(--background) / 7);
+//     @include stagger-transition(1, 7, 0s);
+//     @include parallax();
+//     will-change: transform;
+//     transition-duration: 0.1s;
+//     transform: translateY(calc(var(--scroll) * calc(var(--factor) * 0.1rem)));
+//   }
+//
+//   .loading & {
+//     --top: 45vh;
+//     transform: scale(0.1) translateY(calc(-50%));
+//     transform-origin: 50% 0;
+//     opacity: 0.001;
+//     border-radius: 50% / 15%;
+//     transition-duration: 0.5s;
+//     transition-delay: 0s;
+//   }
+// }
+
+
+.background__column {
   height: 100%;
   max-height: 45rem;
   width: 20%;
   max-width: 10rem;
   position: relative;
+  opacity: 0.001;
+  animation: background-loading 0.5s ease-in-out forwards;
   @include pseudo-after();
+
+  .loading & {
+    // animation-direction: reverse;
+    // animation-delay: 0s;
+  }
 
   &:after {
     width: 1rem;
@@ -22,29 +61,49 @@
     }
   }
 
-  &:first-of-type:after {
-    background: var(--green-mint);
+  &:first-of-type {
     animation-delay: 0s;
+
+    &:after {
+      background: var(--green-mint);
+      animation-delay: 0s;
+    }
   }
 
-  &:nth-of-type(2):after {
-    background: var(--green);
-    animation-delay: 0.1s;
-  }
-
-  &:nth-of-type(3):after {
-    background: var(--green-dark);
-    animation-delay: 0.2s;
-  }
-
-  &:nth-of-type(4):after {
-    background: var(--pink);
+  &:nth-of-type(2) {
     animation-delay: 0.3s;
+
+    &:after {
+      background: var(--green);
+      animation-delay: 0.1s;
+    }
   }
 
-  &:nth-of-type(5):after {
-    background: var(--peach);
+  &:nth-of-type(3) {
+    animation-delay: 0.1s;
+
+    &:after {
+      background: var(--green-dark);
+      animation-delay: 0.2s;
+    }
+  }
+
+  &:nth-of-type(4) {
+    animation-delay: 0.2s;
+
+    &:after {
+      background: var(--pink);
+      animation-delay: 0.3s;
+    }
+  }
+
+  &:nth-of-type(5) {
     animation-delay: 0.4s;
+
+    &:after {
+      background: var(--peach);
+      animation-delay: 0.4s;
+    }
   }
 
   @media screen and (min-width: 375px) {
@@ -69,125 +128,125 @@
     max-height: 142rem;
   }
 
-  &--ll {
-    .shape {
-      &--peach-trapezium {
-        --top: 0;
-      }
-
-      &--pink-moon {
-        --top: 7.042%;
-      }
-
-      &--green {
-        &-trapezium {
-          --top: 17.465%;
-        }
-
-        &-rectangle {
-          --top: 69.859%;
-        }
-      }
-    }
-  }
-
-  &--lc {
-    .shape {
-      &--peach {
-        &-moon {
-          --top: 7.042%;
-        }
-
-        &-triangle {
-          --top: 36.197%;
-        }
-
-        &-rectangle {
-          --top: 69.859%;
-        }
-      }
-
-      &--mint-triangle {
-        --top: 32.636%;
-      }
-    }
-  }
-
-  &--cc {
-    .shape {
-      &--peach-trapezium {
-        --top: 0;
-      }
-
-      &--green-triangle {
-        --top: 32.636%;
-      }
-
-      &--mint-trapezium {
-        --top: 69.859%;
-      }
-
-      &--pink-moon {
-        --top: 72.264%;
-      }
-    }
-  }
-
-  &--rc {
-    .shape {
-      &--peach {
-        &-triangle {
-          --top: 0;
-        }
-
-        &-trapezium {
-          --top: 90.163%;
-        }
-      }
-
-      &--green-triangle {
-        --top: 0;
-      }
-
-      &--mint-ring {
-        --top: 69.859%;
-      }
-
-      &--pink-moon {
-        --top: 72.264%;
-      }
-    }
-  }
-
-  &--rr {
-    .shape {
-      &--mint {
-        &-triangle {
-          --top: 0;
-        }
-
-        &-trapezium {
-          --top: 37.206%;
-        }
-
-        &-rectangle {
-          --top: 65.352%;
-        }
-      }
-
-      &--green {
-        &-triangle {
-          --top: 0;
-        }
-
-        &-ring {
-          --top: 37.116%;
-        }
-      }
-
-      &--pink-moon {
-        --top: 39.356%;
-      }
-    }
-  }
+  // &--ll {
+  //   .shape {
+  //     &--peach-trapezium {
+  //       --top: 0;
+  //     }
+  //
+  //     &--pink-moon {
+  //       --top: 7.042%;
+  //     }
+  //
+  //     &--green {
+  //       &-trapezium {
+  //         --top: 17.465%;
+  //       }
+  //
+  //       &-rectangle {
+  //         --top: 69.859%;
+  //       }
+  //     }
+  //   }
+  // }
+  //
+  // &--lc {
+  //   .shape {
+  //     &--peach {
+  //       &-moon {
+  //         --top: 7.042%;
+  //       }
+  //
+  //       &-triangle {
+  //         --top: 36.197%;
+  //       }
+  //
+  //       &-rectangle {
+  //         --top: 69.859%;
+  //       }
+  //     }
+  //
+  //     &--mint-triangle {
+  //       --top: 32.636%;
+  //     }
+  //   }
+  // }
+  //
+  // &--cc {
+  //   .shape {
+  //     &--peach-trapezium {
+  //       --top: 0;
+  //     }
+  //
+  //     &--green-triangle {
+  //       --top: 32.636%;
+  //     }
+  //
+  //     &--mint-trapezium {
+  //       --top: 69.859%;
+  //     }
+  //
+  //     &--pink-moon {
+  //       --top: 72.264%;
+  //     }
+  //   }
+  // }
+  //
+  // &--rc {
+  //   .shape {
+  //     &--peach {
+  //       &-triangle {
+  //         --top: 0;
+  //       }
+  //
+  //       &-trapezium {
+  //         --top: 90.163%;
+  //       }
+  //     }
+  //
+  //     &--green-triangle {
+  //       --top: 0;
+  //     }
+  //
+  //     &--mint-ring {
+  //       --top: 69.859%;
+  //     }
+  //
+  //     &--pink-moon {
+  //       --top: 72.264%;
+  //     }
+  //   }
+  // }
+  //
+  // &--rr {
+  //   .shape {
+  //     &--mint {
+  //       &-triangle {
+  //         --top: 0;
+  //       }
+  //
+  //       &-trapezium {
+  //         --top: 37.206%;
+  //       }
+  //
+  //       &-rectangle {
+  //         --top: 65.352%;
+  //       }
+  //     }
+  //
+  //     &--green {
+  //       &-triangle {
+  //         --top: 0;
+  //       }
+  //
+  //       &-ring {
+  //         --top: 37.116%;
+  //       }
+  //     }
+  //
+  //     &--pink-moon {
+  //       --top: 39.356%;
+  //     }
+  //   }
+  // }
 }
