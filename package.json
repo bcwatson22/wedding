@@ -15,6 +15,7 @@
     "gatsby-source-filesystem": "2.1.48",
     "gatsby-source-graphql": "2.4.3",
     "graphql-tag": "2.10.3",
+    "gsap": "3.3.0",
     "isomorphic-fetch": "2.2.1",
     "mapbox-gl": "1.10.0",
     "moment": "2.24.0",
@@ -25,7 +26,6 @@
     "react-helmet": "5.2.1",
     "react-intersection-observer": "8.26.2"
   },
-  "devDependencies": {},
   "keywords": [
     "gatsby",
     "sass",
