@@ -5,7 +5,7 @@ import * as basicScroll from 'basicscroll';
 import LoadingContext from './../context/LoadingContext';
 import { setHeightVar } from './../services/utils';
 
-import LeftLeft from './vectors/LeftLeft';
+import LeftLeft from './vectors/ll/LeftLeft';
 import LeftCentre from './vectors/LeftCentre';
 import CentreCentre from './vectors/CentreCentre';
 import RightCentre from './vectors/RightCentre';
