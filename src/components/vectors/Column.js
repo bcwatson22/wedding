@@ -10,7 +10,7 @@ const Column = ({ position, shapes }) => {
         const { desc, box, component, final } = shape;
 
         return (
-          <Vector key={`${position}__${desc}`} desc={desc} box={box} delay={index / 10} final={final}>
+          <Vector key={`${position}__${desc}`} desc={desc} box={box} delay={index / 20} final={final}>
             {component}
           </Vector>
         );

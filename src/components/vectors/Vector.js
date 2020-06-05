@@ -15,19 +15,18 @@ const Vector = ({ children, desc, box, delay, final = false }) => {
     if (loadingCount <= 0) {
 
       gsap.fromTo(vector.current, {
-        opacity: 0.001,
+        autoAlpha: 0.001,
         y: '45vh',
-        scale: 0.1,
-        // borderRadius: '50% / 15%'
+        scale: 0.1
       }, {
-        opacity: 0.999,
+        autoAlpha: 0.999,
         y: 0,
         scale: 1,
-        // borderRadius: 0,
+        // transformOrigin: '50% 0',
         delay: delay,
-        duration: 1,
+        duration: 0.6,
         // ease: 'power1.out',
-        clearProps: 'transform,opacity,border-radius',
+        clearProps: 'transform,opacity,visibility',
         onComplete: () => {
           setAnimated(true);
           if (final) finishLoading();

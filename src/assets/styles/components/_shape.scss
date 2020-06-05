@@ -3,7 +3,8 @@
   position: absolute;
   top: var(--top);
   left: 0;
-  opacity: 0.001;
+  visibility: hidden;
+  // opacity: 0.001;
   // @include stagger(1, 7, 0.1s);
   // border-radius: 0;
   // transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
@@ -11,7 +12,7 @@
   will-change: opacity, transform, border-radius;
 
   &.animated {
-    opacity: 0.999;
+    visibility: inherit;
   }
 
   .scroll & {
@@ -27,8 +28,8 @@
     // opacity: 0.001;
   //   --top: 45vh;
   //   transform: scale(0.1) translateY(calc(-50%));
-    transform: scale(0.1) translateY(45vh);
-    transform-origin: 50% 0;
+    // transform: scale(0.1) translateY(45vh);
+    // transform-origin: 50% 0;
   //   opacity: 0.001;
   //   border-radius: 50% / 15%;
   //   transition-duration: 0.5s;

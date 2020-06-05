@@ -6,10 +6,10 @@ import LoadingContext from './../context/LoadingContext';
 import { setHeightVar } from './../services/utils';
 
 import LeftLeft from './vectors/ll/LeftLeft';
-import LeftCentre from './vectors/LeftCentre';
-import CentreCentre from './vectors/CentreCentre';
-import RightCentre from './vectors/RightCentre';
-import RightRight from './vectors/RightRight';
+import LeftCentre from './vectors/lc/LeftCentre';
+import CentreCentre from './vectors/cc/CentreCentre';
+import RightCentre from './vectors/rc/RightCentre';
+import RightRight from './vectors/rr/RightRight';
 
 const initScroll = (wrapper) => {
 
