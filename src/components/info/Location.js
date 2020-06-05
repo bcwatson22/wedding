@@ -3,7 +3,7 @@ import React from 'react';
 import Heading from './Heading';
 import Map from './Map';
 
-const Date = () => {
+const Location = ({ handleLoading }) => {
   return (
     <>
       <Heading title="Location" />
@@ -15,9 +15,9 @@ const Date = () => {
         <strong property="schema:addressRegion">Derbyshire</strong>
         <strong property="schema:postalCode">DE6 2AD</strong>
       </p>
-      <Map />
+      <Map handleLoading={(ready) => handleLoading(ready)} />
     </>
   );
 };
 
-export default Date;
+export default Location;

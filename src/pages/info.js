@@ -6,18 +6,31 @@ import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
 import Container from './../components/Container';
-import Information from './../components/info/Information';
+import Date from './../components/info/Date';
+import Location from './../components/info/Location';
+import Accomodation from './../components/info/Accomodation';
+import Food from './../components/info/Food';
+import Parking from './../components/info/Parking';
+import Gifts from './../components/info/Gifts';
+import Activities from './../components/info/Activities';
+import Taxis from './../components/info/Taxis';
+import Contact from './../components/info/Contact';
 
 export default ({ children, location }) => {
   const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
 
-  useEffect(() => {
+  const handleLoading = (ready) => {
 
-    hideLoading();
+    if (ready) hideLoading();
+
+  }
+
+  useEffect(() => {
+    
     hideRouting();
 
-  }, [hideLoading, hideRouting]);
+  }, [hideRouting]);
 
   return (
     <Layout pageName="info">
@@ -26,7 +39,15 @@ export default ({ children, location }) => {
       </Helmet>
       <Container>
         <h1>Info</h1>
-        <Information />
+        <Date />
+        <Location handleLoading={(ready) => handleLoading(ready)} />
+        <Accomodation />
+        <Food />
+        <Parking />
+        <Gifts />
+        <Activities />
+        <Taxis />
+        <Contact />
       </Container>
     </Layout>
   );
