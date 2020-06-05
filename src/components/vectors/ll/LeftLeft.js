@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import Column from './../Column';
 import PeachTrapezium from './PeachTrapezium';
@@ -29,10 +29,10 @@ const shapes = [
   }
 ]
 
-const LeftLeft = () => {
+const LeftLeft = (props, ref) => {
   return (
-    <Column position="ll" shapes={shapes} />
+    <Column position="ll" shapes={shapes} ref={ref} />
   );
 };
 
-export default LeftLeft;
+export default forwardRef(LeftLeft);

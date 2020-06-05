@@ -1,9 +1,8 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import * as basicScroll from 'basicscroll';
 
 import LoadingContext from './../context/LoadingContext';
-import { setHeightVar } from './../services/utils';
+import { getHeight, setHeight } from './../services/utils';
 
 import LeftLeft from './vectors/ll/LeftLeft';
 import LeftCentre from './vectors/lc/LeftCentre';
@@ -28,8 +27,9 @@ const initScroll = (wrapper) => {
 
 }
 
-const Background = ({ children }) => {
+const Background = () => {
   const wrapper = useRef(null);
+  const columns = useRef(null);
   const [scroll, setScroll] = useState(null);
   const { loadingCount, finishedLoading } = useContext(LoadingContext);
 
@@ -39,12 +39,22 @@ const Background = ({ children }) => {
 
       if (scroll === null) {
 
-        initScroll(wrapper.current);
-        setScroll(true);
+        const full = getHeight(wrapper);
+        const col = getHeight(columns);
+        const ratio = full / col;
+
+        if (ratio > 1.2) {
+
+          setHeight(wrapper, '--background', full);
+          setHeight(wrapper, '--columns', col);
+          setHeight(wrapper, '--ratio', ratio);
+
+          initScroll(wrapper.current);
+          setScroll(true);
+
+        }
 
       }
-
-      setHeightVar(wrapper.current, wrapper.current, '--background');
 
     }
 
@@ -52,18 +62,12 @@ const Background = ({ children }) => {
 
   return (
     <div className={`background${loadingCount > 0 ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
-      <LeftLeft />
+      <LeftLeft ref={columns} />
       <LeftCentre />
       <CentreCentre />
       <RightCentre />
       <RightRight />
-      { children }
     </div>
   );
 };
-
-Background.propTypes = {
-  children: PropTypes.node
-};
-
 export default Background;

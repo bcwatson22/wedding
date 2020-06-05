@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
 
 import Vector from './Vector';
 
-const Column = ({ position, shapes }) => {
+const Column = (props, ref) => {
+  const { position, shapes } = props;
+
   return (
-    <div className={`column column--${position}`}>
+    <div className={`column column--${position}`} ref={ref}>
       {shapes.map((shape, index) => {
         const { desc, box, component, final } = shape;
 
@@ -19,9 +20,4 @@ const Column = ({ position, shapes }) => {
   );
 };
 
-Column.propTypes = {
-  position: PropTypes.string.isRequired,
-  shapes: PropTypes.array.isRequired
-};
-
-export default Column;
+export default forwardRef(Column);

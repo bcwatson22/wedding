@@ -122,7 +122,7 @@
 @mixin parallax($from: 1, $to: 6) {
   @for $i from $from to $to {
     &:nth-of-type(#{$i}) {
-      --factor: calc(#{$i} * var(--height));
+      --factor: #{$i};
     }
   }
 }

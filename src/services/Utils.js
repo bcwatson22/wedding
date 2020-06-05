@@ -20,11 +20,42 @@ const cleanResponse = (obj, key) => {
 
 }
 
-const setHeightVar = ($target, $element, varName) => {
+const checkCurrentProp = ($target) => {
 
-  let height = $target.scrollHeight;
+  const $elem = (typeof $target === 'object' && $target.hasOwnProperty('current'))
+    ? $target.current
+    : $target;
 
-  $element.style.setProperty(varName, height);
+  return $elem;
+
+}
+
+const getHeight = ($element) => {
+
+  const $elem = checkCurrentProp($element);
+  const height = $elem.scrollHeight;
+
+  return height;
+
+}
+
+const setHeight = ($element, variable, height) => {
+
+  const $elem = checkCurrentProp($element);
+
+  $elem.style.setProperty(variable, height);
+
+  return $elem;
+
+}
+
+const getSetHeight = ($element, $binding, variable) => {
+
+  const $elem = checkCurrentProp($element);
+  const $bind = checkCurrentProp($binding);
+  const height = getHeight($elem);
+
+  setHeight($bind, variable, height);
 
   return height;
 
@@ -32,9 +63,7 @@ const setHeightVar = ($target, $element, varName) => {
 
 const scrollTo = ($target) => {
 
-  const $elem = (typeof $target === 'object' && $target.hasOwnProperty('current'))
-    ? $target.current
-    : $target;
+  const $elem = checkCurrentProp($target);
 
   $elem.scrollIntoView({ behavior: 'smooth' });
 
@@ -63,7 +92,9 @@ const hasLocalStorage = () => {
 export {
   delay,
   cleanResponse,
-  setHeightVar,
+  getHeight,
+  setHeight,
+  getSetHeight,
   scrollTo,
   checkExists,
   isInBrowser,

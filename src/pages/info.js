@@ -27,7 +27,7 @@ export default ({ children, location }) => {
   }
 
   useEffect(() => {
-    
+
     hideRouting();
 
   }, [hideRouting]);

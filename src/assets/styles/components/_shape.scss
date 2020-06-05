@@ -4,35 +4,17 @@
   top: var(--top);
   left: 0;
   visibility: hidden;
-  // opacity: 0.001;
-  // @include stagger(1, 7, 0.1s);
-  // border-radius: 0;
-  // transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-  // opacity: 0.999;
-  will-change: opacity, transform, border-radius;
+  will-change: opacity, transform;
 
   &.animated {
     visibility: inherit;
   }
 
   .scroll & {
-    --height: calc(var(--background) / 7.5);
     // @include stagger(1, 7, 0s);
     @include parallax();
-    will-change: transform;
+    // will-change: transform;
     transition-duration: 0.1s;
-    transform: translateY(calc(var(--scroll) * calc(var(--factor) * 0.1rem)));
-  }
-
-  .loading & {
-    // opacity: 0.001;
-  //   --top: 45vh;
-  //   transform: scale(0.1) translateY(calc(-50%));
-    // transform: scale(0.1) translateY(45vh);
-    // transform-origin: 50% 0;
-  //   opacity: 0.001;
-  //   border-radius: 50% / 15%;
-  //   transition-duration: 0.5s;
-  //   transition-delay: 0s;
+    transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
   }
 }

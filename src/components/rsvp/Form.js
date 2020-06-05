@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import LoadingContext from './../../context/LoadingContext';
 
-import { setHeightVar } from './../../services/utils';
+import { getSetHeight } from './../../services/utils';
 
 import './Form.scss';
 
@@ -45,7 +45,7 @@ const Form = ({ rsvpId, guests, setStatus }) => {
 
   useEffect(() => {
 
-    fieldRefs.current.map((field, i) => setHeightVar(field.current, field.current, '--textarea'));
+    fieldRefs.current.map((field, i) => getSetHeight(field.current, field.current, '--textarea'));
 
   }, []);
 
