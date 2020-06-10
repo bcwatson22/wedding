@@ -38,7 +38,7 @@ const Vector = ({ children, desc, box, delay, final = false }) => {
   }, [vector, delay, final, loadingCount, finishLoading]);
 
   return (
-    <svg className={`shape shape--${desc}${animated ? ' animated' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox={box} ref={vector}>
+    <svg className={`shape shape--${desc}${animated ? ' shape--animated' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox={box} ref={vector}>
       { children }
     </svg>
   );

@@ -6,7 +6,7 @@
   visibility: hidden;
   will-change: opacity, transform;
 
-  &.animated {
+  &--animated {
     visibility: inherit;
   }
 
