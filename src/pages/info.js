@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import Helmet from 'react-helmet';
 
-import LoadingContext from './../context/LoadingContext';
 import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
@@ -17,14 +16,7 @@ import Taxis from './../components/info/Taxis';
 import Contact from './../components/info/Contact';
 
 export default ({ children, location }) => {
-  const { hideLoading } = useContext(LoadingContext);
   const { hideRouting } = useContext(RoutingContext);
-
-  const handleLoading = (ready) => {
-
-    if (ready) hideLoading();
-
-  }
 
   useEffect(() => {
 
@@ -40,7 +32,7 @@ export default ({ children, location }) => {
       <Container>
         <h1>Info</h1>
         <Date />
-        <Location handleLoading={(ready) => handleLoading(ready)} />
+        <Location />
         <Accomodation />
         <Food />
         <Parking />

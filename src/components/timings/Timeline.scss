@@ -4,6 +4,13 @@
   margin-top: 6rem;
   position: relative;
   @include pseudo-before();
+  // opacity: 0.001;
+  // will-change: opacity;
+  // transition: opacity 0.5s ease;
+  //
+  // &--ready {
+  //   opacity: 1;
+  // }
 
   &:before {
     width: 0.2rem;

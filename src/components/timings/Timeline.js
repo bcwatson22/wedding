@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, createRef } from 'react';
+import React, { useEffect, useContext, useRef, createRef } from 'react';
+
 import moment from 'moment';
 import * as basicScroll from 'basicscroll';
 
+import LoadingContext from './../../context/LoadingContext';
 import Icon from './../Icon';
+
+import { delay } from './../../services/utils';
 
 import './Timeline.scss';
 
@@ -199,6 +203,8 @@ const needsHourBinding = (timing, index) => {
 }
 
 const Timeline = () => {
+  const { hideLoading } = useContext(LoadingContext);
+
   const overlappingHours = timings.map((timing, index) => needsHourBinding(timing, index) ? timing : null).filter(hour => hour !== null);
   const hourRefs = useRef(overlappingHours.map(() => createRef()));
   const animatingEvents = timings.slice(1, -1).flatMap(({ events })=> events ? events : []);
@@ -208,9 +214,17 @@ const Timeline = () => {
 
     hourRefs.current.map((hour) => initHours(hour.current, hour.current.firstChild));
 
-    eventRefs.current.map((event) => initEvents(event.current));
+    eventRefs.current.map((event, index) => {
 
-  }, []);
+      initEvents(event.current);
+
+      if (index + 1 === eventRefs.current.length) delay(500).then(() => hideLoading());
+
+      return event.current;
+
+    });
+
+  }, [hideLoading]);
 
   return (
     <section className="timeline">

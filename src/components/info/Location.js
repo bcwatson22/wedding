@@ -3,7 +3,7 @@ import React from 'react';
 import Heading from './Heading';
 import Map from './Map';
 
-const Location = ({ handleLoading }) => {
+const Location = () => {
   return (
     <>
       <Heading title="Location" />
@@ -15,7 +15,7 @@ const Location = ({ handleLoading }) => {
         <strong property="schema:addressRegion">Derbyshire</strong>
         <strong property="schema:postalCode">DE6 2AD</strong>
       </p>
-      <Map handleLoading={(ready) => handleLoading(ready)} />
+      <Map />
     </>
   );
 };

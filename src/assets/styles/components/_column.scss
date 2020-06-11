@@ -5,6 +5,7 @@
   max-width: 10rem;
   position: relative;
   @include pseudo-after();
+  @include hwa();
 
   &:after {
     width: 1rem;
@@ -22,30 +23,56 @@
     }
   }
 
-  &:first-of-type:after {
-    background: var(--green-mint);
-    animation-delay: 0s;
+  &:first-of-type {
+    // --factor: 4;
+
+    &:after {
+      background: var(--green-mint);
+      animation-delay: 0s;
+    }
   }
 
-  &:nth-of-type(2):after {
-    background: var(--green);
-    animation-delay: 0.1s;
+  &:nth-of-type(2) {
+    // --factor: 1;
+
+    &:after {
+      background: var(--green);
+      animation-delay: 0.1s;
+    }
   }
 
-  &:nth-of-type(3):after {
-    background: var(--green-dark);
-    animation-delay: 0.2s;
+  &:nth-of-type(3) {
+    // --factor: 3;
+
+    &:after {
+      background: var(--green-dark);
+      animation-delay: 0.2s;
+    }
   }
 
-  &:nth-of-type(4):after {
-    background: var(--pink);
-    animation-delay: 0.3s;
+  &:nth-of-type(4) {
+    // --factor: 2;
+
+    &:after {
+      background: var(--pink);
+      animation-delay: 0.3s;
+    }
   }
 
-  &:nth-of-type(5):after {
-    background: var(--peach);
-    animation-delay: 0.4s;
+  &:nth-of-type(5) {
+    // --factor: 4;
+
+    &:after {
+      background: var(--peach);
+      animation-delay: 0.4s;
+    }
   }
+
+  // .scroll & {
+    // transform: translateY(calc(var(--scroll) * var(--amount) * calc(var(--ratio) * var(--columns) * 0.1rem)));
+    // transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
+    // transition: transform 0.1s ease-out;
+  // }
 
   @media screen and (min-width: 375px) {
     max-height: 53rem;
