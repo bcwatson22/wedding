@@ -1,10 +1,13 @@
 .column {
-  height: 100%;
-  max-height: 45rem;
+  // max-height: 45rem;
+  // max-width: 10rem;
+  position: absolute;
+  top: 0;
   width: 20%;
-  max-width: 10rem;
-  position: relative;
+  height: 100%;
   @include pseudo-after();
+  @include parallax-fade(1);
+  will-change: opacity, transform;
   @include hwa();
 
   &:after {
@@ -25,7 +28,8 @@
   }
 
   &:first-of-type {
-    --factor: 4;
+    left: 0;
+    @include parallax-down(2);
 
     &:after {
       background: var(--green-mint);
@@ -34,7 +38,8 @@
   }
 
   &:nth-of-type(2) {
-    --factor: 1;
+    left: 20%;
+    @include parallax-down(4);
 
     &:after {
       background: var(--green);
@@ -43,7 +48,8 @@
   }
 
   &:nth-of-type(3) {
-    --factor: 3;
+    left: 40%;
+    @include parallax-down(8);
 
     &:after {
       background: var(--green-dark);
@@ -52,7 +58,8 @@
   }
 
   &:nth-of-type(4) {
-    --factor: 2;
+    left: 60%;
+    @include parallax-down(6);
 
     &:after {
       background: var(--pink);
@@ -61,7 +68,8 @@
   }
 
   &:nth-of-type(5) {
-    --factor: 4;
+    left: 80%;
+    @include parallax-down(10);
 
     &:after {
       background: var(--peach);
@@ -70,32 +78,30 @@
   }
 
   .scroll & {
-    // transform: translateY(calc(var(--scroll) * var(--amount) * calc(var(--ratio) * var(--columns) * 0.1rem)));
-    // transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
-    // transition: transform 0.1s ease-out;
+    // @include parallax-fade(1);
   }
 
-  @media screen and (min-width: 375px) {
-    max-height: 53rem;
-  }
-
-  @media screen and (min-width: 425px) {
-    max-height: 60rem;
-  }
-
-  @media screen and (min-width: $columns) {
-    max-height: 71rem;
-  }
-
-  @media screen and (min-width: $tablet) {
-    max-width: 15rem;
-    max-height: 106.5rem;
-  }
-
-  @media screen and (min-width: $desktop) {
-    max-width: 20rem;
-    max-height: 142rem;
-  }
+  // @media screen and (min-width: 375px) {
+  //   max-height: 53rem;
+  // }
+  //
+  // @media screen and (min-width: 425px) {
+  //   max-height: 60rem;
+  // }
+  //
+  // @media screen and (min-width: $columns) {
+  //   max-height: 71rem;
+  // }
+  //
+  // @media screen and (min-width: $tablet) {
+  //   max-width: 15rem;
+  //   max-height: 106.5rem;
+  // }
+  //
+  // @media screen and (min-width: $desktop) {
+  //   max-width: 20rem;
+  //   max-height: 142rem;
+  // }
 
   &--ll {
     .shape {

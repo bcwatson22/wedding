@@ -119,18 +119,28 @@
   }
 }
 
-@mixin parallax($from: 1, $to: 6) {
-  @for $i from $from to $to {
-    &:nth-of-type(#{$i}) {
-      --factor: #{$i};
-    }
-  }
+// @mixin parallax($from: 1, $to: 6) {
+//   @for $i from $from to $to {
+//     &:nth-of-type(#{$i}) {
+//       --factor: #{$i};
+//     }
+//   }
+// }
+//
+// @mixin stagger($from: 1, $to: 6, $delay: 0.1s) {
+//   @for $i from $from to $to {
+//     &:nth-of-type(#{$i}) {
+//       transition-delay: $i * $delay;
+//     }
+//   }
+// }
+
+@mixin parallax-fade($ratio) {
+  will-change: opacity;
+  opacity: calc(1 - calc(var(--scroll) * #{$ratio}));
 }
 
-@mixin stagger($from: 1, $to: 6, $delay: 0.1s) {
-  @for $i from $from to $to {
-    &:nth-of-type(#{$i}) {
-      transition-delay: $i * $delay;
-    }
-  }
+@mixin parallax-down($distance) {
+  will-change: transform;
+  transform: translateY(calc(var(--scroll) * #{$distance}rem));
 }

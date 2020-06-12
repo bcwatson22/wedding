@@ -1,11 +1,21 @@
 .background {
   // @include hwa();
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  // position: absolute;
+  // position: absolute;
+  // padding-top: 140.2%;
+  position: relative;
+  // margin-bottom: calc(-0.1rem * var(--background));
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: 100%;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  @include pseudo-before();
+
+  &:before {
+    position: relative;
+    padding-top: 140.2%;
+  }
 }

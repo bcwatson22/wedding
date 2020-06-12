@@ -15,7 +15,7 @@ const initScroll = (wrapper) => {
   basicScroll.create({
     elem: wrapper,
     from: 'top-top',
-    to: 'bottom-bottom',
+    to: 'middle-top',
     direct: true,
     props: {
       '--scroll': {
@@ -29,7 +29,7 @@ const initScroll = (wrapper) => {
 
 const Background = () => {
   const wrapper = useRef(null);
-  const columns = useRef(null);
+  // const columns = useRef(null);
   const [scroll, setScroll] = useState(null);
   const { loadingCount, finishedLoading } = useContext(LoadingContext);
 
@@ -37,39 +37,42 @@ const Background = () => {
 
     if (finishedLoading) {
 
-      if (scroll === null) {
+      // if (scroll === null) {
 
-        const full = getHeight(wrapper);
-        const col = getHeight(columns);
-        const ratio = full / col;
+        // const full = getHeight(wrapper);
+        // const col = getHeight(columns);
+        // const ratio = full / col;
+        // const factor = ratio * col / 3.5;
 
-        if (ratio > 1.2) {
+        // if (ratio > 1.2) {
 
           // transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
 
-          setCssVar(wrapper, '--background', full);
-          setCssVar(wrapper, '--columns', col);
-          setCssVar(wrapper, '--ratio', ratio);
+          // setCssVar(wrapper, '--background', full);
+          // setCssVar(wrapper, '--columns', col);
+          // setCssVar(wrapper, '--ratio', factor);
 
           initScroll(wrapper.current);
-          setScroll(true);
+          // setScroll(true);
 
-        }
+        // }
 
-      }
+      // }
 
     }
 
-  }, [finishedLoading, scroll]);
+  }, [finishedLoading]);
 
   return (
-    <div className={`background${loadingCount > 0 ? ' loading' : ''}${scroll ? ' scroll' : ''}`} ref={wrapper}>
-      <LeftLeft ref={columns} />
-      <LeftCentre />
-      <CentreCentre />
-      <RightCentre />
-      <RightRight />
-    </div>
+    <aside>
+      <div className={`background${loadingCount > 0 ? ' loading' : ''}`} ref={wrapper}>
+        <LeftLeft />
+        <LeftCentre />
+        <CentreCentre />
+        <RightCentre />
+        <RightRight />
+      </div>
+    </aside>
   );
 };
 
