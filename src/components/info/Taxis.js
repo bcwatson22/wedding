@@ -31,7 +31,7 @@ const taxiCompanies = [
 
 const Taxis = () => {
   return (
-    <>
+    <section class="info__section info__section--table">
       <Heading title="Taxis" />
       <p>Our wedding venue is in the countryside, please make sure to <strong>book taxis in advance</strong> to guarantee a ride to your accomodation. Music will <strong>finish at 11.30pm</strong>, and all guests must be off site by midnight.</p>
       <article className="scrolling-table">
@@ -57,7 +57,7 @@ const Taxis = () => {
           </tbody>
         </table>
       </article>
-    </>
+    </section>
   );
 };
 

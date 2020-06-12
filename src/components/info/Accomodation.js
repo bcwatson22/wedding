@@ -79,7 +79,7 @@ const accomodationOptions = [
 
 const Accomodation = () => {
   return (
-    <>
+    <section class="info__section info__section--table">
       <Heading title="Accomodation" />
       <p>There's a range of accomodation options near the venue, suiting different budgets. We've noted a few here but this list isn't exhaustive.</p>
       <p>AirBnb has some decent places too: please have a look around <strong>Ilam</strong> and <strong>Hartington</strong>. The town of <strong>Ashbourne</strong> isn't too far away either.</p>
@@ -111,7 +111,7 @@ const Accomodation = () => {
           </tbody>
         </table>
       </article>
-    </>
+    </section>
   );
 };
 
