@@ -1,17 +1,29 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+
 import { InView } from 'react-intersection-observer';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import LoadingContext from './../../context/LoadingContext';
 
+import { isInBrowser } from './../../services/utils';
+
 import './Map.scss';
 
 const Map = () => {
   const [mapbox, setMapbox] = useState(null);
+  const [ready, setReady] = useState(null);
   const container = useRef(null);
   const marker = useRef(null);
   const { hideLoading } = useContext(LoadingContext);
+
+  const loadPolyfills = async () => {
+
+    if (isInBrowser && typeof window.IntersectionObserver === 'undefined') await import('intersection-observer');
+
+    setReady(true);
+
+  }
 
   const createMap = () => {
 
@@ -38,11 +50,21 @@ const Map = () => {
 
   }
 
+  useEffect(() => {
+
+    loadPolyfills();
+
+  }, []);
+
   return (
-    <InView as="section" className={`map map--${mapbox ? 'loaded' : 'loading'}`} onChange={(inView, entry) => inView ? createMap() : hideLoading()}>
-      <article className="map__container" ref={container} />
-      <span className="map__pin" ref={marker} />
-    </InView>
+    <>
+      {ready &&
+        <InView as="section" className={`map map--${mapbox ? 'loaded' : 'loading'}`} onChange={(inView, entry) => inView ? createMap() : hideLoading()}>
+          <article className="map__container" ref={container} />
+          <span className="map__pin" ref={marker} />
+        </InView>
+      }
+    </>
   );
 };
 

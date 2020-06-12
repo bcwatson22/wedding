@@ -27,7 +27,6 @@
 
   &:first-of-type {
     left: 0;
-    @include parallax-down(2);
 
     &:after {
       background: var(--green-mint);
@@ -37,7 +36,6 @@
 
   &:nth-of-type(2) {
     left: 20%;
-    @include parallax-down(4);
 
     &:after {
       background: var(--green);
@@ -47,7 +45,6 @@
 
   &:nth-of-type(3) {
     left: 40%;
-    @include parallax-down(8);
 
     &:after {
       background: var(--green-dark);
@@ -57,7 +54,6 @@
 
   &:nth-of-type(4) {
     left: 60%;
-    @include parallax-down(6);
 
     &:after {
       background: var(--pink);
@@ -67,14 +63,13 @@
 
   &:nth-of-type(5) {
     left: 80%;
-    @include parallax-down(10);
 
     &:after {
       background: var(--peach);
       animation-delay: 0.4s;
     }
   }
-  
+
   &--ll {
     .shape {
       &--peach-trapezium {
