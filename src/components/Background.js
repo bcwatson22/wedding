@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import * as basicScroll from 'basicscroll';
 
 import LoadingContext from './../context/LoadingContext';
-import { getHeight, setCssVar } from './../services/utils';
 
 import LeftLeft from './vectors/ll/LeftLeft';
 import LeftCentre from './vectors/lc/LeftCentre';
@@ -29,37 +28,11 @@ const initScroll = (wrapper) => {
 
 const Background = () => {
   const wrapper = useRef(null);
-  // const columns = useRef(null);
-  const [scroll, setScroll] = useState(null);
   const { loadingCount, finishedLoading } = useContext(LoadingContext);
 
   useEffect(() => {
 
-    if (finishedLoading) {
-
-      // if (scroll === null) {
-
-        // const full = getHeight(wrapper);
-        // const col = getHeight(columns);
-        // const ratio = full / col;
-        // const factor = ratio * col / 3.5;
-
-        // if (ratio > 1.2) {
-
-          // transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
-
-          // setCssVar(wrapper, '--background', full);
-          // setCssVar(wrapper, '--columns', col);
-          // setCssVar(wrapper, '--ratio', factor);
-
-          initScroll(wrapper.current);
-          // setScroll(true);
-
-        // }
-
-      // }
-
-    }
+    if (finishedLoading) initScroll(wrapper.current);
 
   }, [finishedLoading]);
 

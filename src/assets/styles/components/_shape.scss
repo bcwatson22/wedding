@@ -10,14 +10,6 @@
     visibility: inherit;
   }
 
-  // .scroll & {
-  //   // @include stagger(1, 7, 0s);
-  //   @include parallax();
-  //   // will-change: transform;
-  //   transition-duration: 0.1s;
-  //   transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
-  // }
-
   .routing & {
     transition: opacity 0.2s ease, transform 0.2s ease;
     opacity: 0.001;
