@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useContext } from 'react';
 import * as basicScroll from 'basicscroll';
 
 import LoadingContext from './../context/LoadingContext';
-import { getHeight, setHeight } from './../services/utils';
+import { getHeight, setCssVar } from './../services/utils';
 
 import LeftLeft from './vectors/ll/LeftLeft';
 import LeftCentre from './vectors/lc/LeftCentre';
@@ -45,9 +45,11 @@ const Background = () => {
 
         if (ratio > 1.2) {
 
-          setHeight(wrapper, '--background', full);
-          setHeight(wrapper, '--columns', col);
-          setHeight(wrapper, '--ratio', ratio);
+          // transform: translateY(calc(var(--scroll) * calc(var(--factor) * calc(var(--ratio) * calc(var(--columns) / 3.5 * 0.1rem)))));
+
+          setCssVar(wrapper, '--background', full);
+          setCssVar(wrapper, '--columns', col);
+          setCssVar(wrapper, '--ratio', ratio);
 
           initScroll(wrapper.current);
           setScroll(true);

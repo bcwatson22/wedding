@@ -12,7 +12,7 @@ const delay = (time) => {
 
 }
 
-const cleanResponse = (obj, key) => {
+const cleanResponse = (obj) => {
 
   const { __typename, ...cleaned } = obj;
 
@@ -39,7 +39,7 @@ const getHeight = ($element) => {
 
 }
 
-const setHeight = ($element, variable, height) => {
+const setCssVar = ($element, variable, height) => {
 
   const $elem = checkCurrentProp($element);
 
@@ -55,7 +55,7 @@ const getSetHeight = ($element, $binding, variable) => {
   const $bind = checkCurrentProp($binding);
   const height = getHeight($elem);
 
-  setHeight($bind, variable, height);
+  setCssVar($bind, variable, height);
 
   return height;
 
@@ -93,7 +93,7 @@ export {
   delay,
   cleanResponse,
   getHeight,
-  setHeight,
+  setCssVar,
   getSetHeight,
   scrollTo,
   checkExists,
