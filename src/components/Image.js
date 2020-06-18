@@ -1,38 +1,53 @@
 import React, { useEffect, useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
+// import PropTypes from 'prop-types';
+//
+// import LoadingContext from './../context/LoadingContext';
 
-import LoadingContext from './../context/LoadingContext';
-
-import Blazy from 'blazy';
-
-const Image = ({ classes, src, alt }) => {
-  const { finishedLoading } = useContext(LoadingContext);
-
-  useEffect(() => {
-
-    if (finishedLoading) {
-
-      // eslint-disable-next-line
-      const bLazy = new Blazy({
-        selector: '.image--lazy',
-        successClass: 'image--loaded'
-      });
-
+const Image = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "dovedale.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 800, quality: 75) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
-
-  }, [finishedLoading]);
+  `)
 
   return (
-    <picture className={`image${classes ? ' ' + classes : ''}`}>
-      <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src={src} className="image--lazy" alt={alt} />
-    </picture>
+    <Img fluid={data.file.childImageSharp.fluid} />
   );
 };
 
-Image.propTypes = {
-  classes: PropTypes.string,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string
-};
+// Image.propTypes = {
+//   classes: PropTypes.string,
+//   src: PropTypes.string.isRequired,
+//   alt: PropTypes.string
+// };
+
+// export const query = graphql`
+// query {
+//   file(relativePath: { eq: "dovedale.jpg" }) {
+//     childImageSharp {
+//       fluid(maxWidth: 1000) {
+//         base64
+//         tracedSVG
+//         aspectRatio
+//         src
+//         srcSet
+//         srcWebp
+//         srcSetWebp
+//         sizes
+//         originalImg
+//         originalName
+//       }
+//     }
+//   }
+// }
+// `;
 
 export default Image;
