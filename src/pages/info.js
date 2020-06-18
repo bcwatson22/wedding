@@ -1,10 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useRef, createRef, useContext } from 'react';
 import Helmet from 'react-helmet';
 
 import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
 import Container from './../components/Container';
+import SubNav from './../components/info/SubNav';
+import Heading from './../components/info/Heading';
 import Date from './../components/info/Date';
 import Location from './../components/info/Location';
 import Accomodation from './../components/info/Accomodation';
@@ -15,7 +17,49 @@ import Activities from './../components/info/Activities';
 import Taxis from './../components/info/Taxis';
 import Contact from './../components/info/Contact';
 
+const contentSections = [
+  {
+    name: 'Date',
+    component: <Date />
+  },
+  {
+    name: 'Location',
+    component: <Location />
+  },
+  {
+    name: 'Accomodation',
+    component: <Accomodation />,
+    table: true
+  },
+  {
+    name: 'Food and drinks',
+    component: <Food />
+  },
+  {
+    name: 'Parking',
+    component: <Parking />
+  },
+  {
+    name: 'Gifts',
+    component: <Gifts />
+  },
+  {
+    name: 'Activities',
+    component: <Activities />
+  },
+  {
+    name: 'Taxis',
+    component: <Taxis />,
+    table: true
+  },
+  {
+    name: 'Contact',
+    component: <Contact />
+  }
+];
+
 export default ({ children, location }) => {
+  const sectionRefs = useRef(contentSections.map(() => createRef()));
   const { hideRouting } = useContext(RoutingContext);
 
   useEffect(() => {
@@ -31,15 +75,19 @@ export default ({ children, location }) => {
       </Helmet>
       <Container>
         <h1>Info</h1>
-        <Date />
-        <Location />
-        <Accomodation />
-        <Food />
-        <Parking />
-        <Gifts />
-        <Activities />
-        <Taxis />
-        <Contact />
+        <SubNav sections={contentSections} refs={sectionRefs.current} />
+        <p>Here you can find details on everything you need to know about the big day.</p>
+        <p>You can use the buttons above to <strong>scroll down</strong> to the various sections if your finger isn't up to it!</p>
+        {contentSections.map((section, i) => {
+          const { name, component, table } = section;
+
+          return (
+            <section key={name} className={`info__section${table ? ' info__section--table' : ''}`} ref={sectionRefs.current[i]}>
+              <Heading title={name} />
+              {component}
+            </section>
+          );
+        })}
       </Container>
     </Layout>
   );

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import Heading from './Heading';
-
 import { getSetHeight } from './../../services/utils';
 
 const accomodationOptions = [
@@ -90,8 +88,7 @@ const Accomodation = () => {
   }, []);
 
   return (
-    <section className="info__section info__section--table">
-      <Heading title="Accomodation" />
+    <>
       <p>There's a range of accomodation options near the venue, suiting different budgets. We've noted a few here but this list isn't exhaustive.</p>
       <p>AirBnb has some decent places too: please have a look around <strong>Ilam</strong> and <strong>Hartington</strong>. The town of <strong>Ashbourne</strong> isn't too far away either.</p>
       <p>Whatever you choose though, we'd recommend <strong>booking well in advance</strong> as it's a popular tourist spot and a bank holiday - so things could get snapped up fast (especially the YHA)!</p>
@@ -123,7 +120,7 @@ const Accomodation = () => {
         </table>
       </article>
       <button className="button button--block" onClick={(e) => setExpanded(!expanded)}>See {expanded ? 'less' : 'more'}</button>
-    </section>
+    </>
   );
 };
 
