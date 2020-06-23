@@ -6,7 +6,7 @@ import RoutingContext from './../context/RoutingContext';
 
 import Layout from './../components/Layout';
 import Container from './../components/Container';
-import Hero from './../components/Hero';
+import Hero from './../components/home/Hero';
 
 export default () => {
   const { hideLoading } = useContext(LoadingContext);

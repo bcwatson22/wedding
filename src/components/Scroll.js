@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { scrollTo } from './../services/utils';
+import { scrollTo, checkCurrentProp } from './../services/utils';
 
 const Scroll = ({ children, target }) => {
   return (
@@ -13,7 +13,7 @@ const Scroll = ({ children, target }) => {
 
 Scroll.propTypes = {
   children: PropTypes.node.isRequired,
-  target: PropTypes.node.isRequired
+  target: PropTypes.object
 };
 
 export default Scroll;

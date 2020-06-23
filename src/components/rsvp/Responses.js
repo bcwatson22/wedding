@@ -6,7 +6,7 @@ import LoadingContext from './../../context/LoadingContext';
 import Link from './../Link';
 import Scroll from './../Scroll';
 
-import { cleanResponse } from './../../services/utils';
+import { cleanResponse, checkCurrentProp } from './../../services/utils';
 
 import tick from './../../assets/icons/responses/tick.svg';
 import cross from './../../assets/icons/responses/cross.svg';
@@ -43,7 +43,7 @@ const Responses = ({ guests }) => {
 
   return (
     <>
-      <h2><Scroll target={totals}>{percentage}% ({responded} responses out of {respondees} respondees)</Scroll></h2>
+      <h2><Scroll target={totals.current}>{percentage}% ({responded} responses out of {respondees} respondees)</Scroll></h2>
       <article className="table--scrolling">
         <table>
           <thead>
