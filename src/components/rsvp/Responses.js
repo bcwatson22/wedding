@@ -6,7 +6,7 @@ import LoadingContext from './../../context/LoadingContext';
 import Link from './../Link';
 import Scroll from './../Scroll';
 
-import { cleanResponse, checkCurrentProp } from './../../services/utils';
+import { cleanResponse } from './../../services/utils';
 
 import tick from './../../assets/icons/responses/tick.svg';
 import cross from './../../assets/icons/responses/cross.svg';

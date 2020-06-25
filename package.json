@@ -37,7 +37,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "cleanup": "rm -rf public/",
+    "cleanup": "rm -rf .cache public",
     "predev": "npm run cleanup",
     "preprod": "npm run cleanup",
     "build": "gatsby build",

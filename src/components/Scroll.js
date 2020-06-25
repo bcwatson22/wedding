@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { scrollTo, checkCurrentProp } from './../services/utils';
+import { scrollTo } from './../services/utils';
 
 const Scroll = ({ children, target }) => {
   return (
