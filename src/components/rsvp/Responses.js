@@ -43,7 +43,7 @@ const Responses = ({ guests }) => {
 
   return (
     <>
-      <h2><Scroll target={totals}>{percentage}% ({responded} responses out of {respondees} respondees)</Scroll></h2>
+      <h2><Scroll target={totals.current}>{percentage}% ({responded} responses out of {respondees} respondees)</Scroll></h2>
       <article className="table--scrolling">
         <table>
           <thead>

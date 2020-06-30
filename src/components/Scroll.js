@@ -13,7 +13,7 @@ const Scroll = ({ children, target }) => {
 
 Scroll.propTypes = {
   children: PropTypes.node.isRequired,
-  target: PropTypes.node.isRequired
+  target: PropTypes.object
 };
 
 export default Scroll;
