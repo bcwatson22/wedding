@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { getSetHeight } from './../../services/utils';
 
-const accomodationOptions = [
+const accommodationOptions = [
   {
     name: 'YHA Ilam Hall',
     type: 'Hostel',
@@ -77,7 +77,7 @@ const accomodationOptions = [
   }
 ];
 
-const Accomodation = () => {
+const Accommodation = () => {
   const table = useRef(null);
   const [expanded, setExpanded] = useState(false);
 
@@ -89,7 +89,7 @@ const Accomodation = () => {
 
   return (
     <>
-      <p>There's a range of accomodation options near the venue, suiting different budgets. We've noted a few here but this list isn't exhaustive.</p>
+      <p>There's a range of accommodation options near the venue, suiting different budgets. We've noted a few here but this list isn't exhaustive.</p>
       <p>AirBnb has some decent places too: please have a look around <strong>Ilam</strong> and <strong>Hartington</strong>. The town of <strong>Ashbourne</strong> isn't too far away either.</p>
       <p>Whatever you choose though, we'd recommend <strong>booking well in advance</strong> as it's a popular tourist spot and a bank holiday - so things could get snapped up fast (especially the YHA)!</p>
       <article className={`table table--scrolling${expanded ? '' : ' table--collapsed'}`} ref={table}>
@@ -103,7 +103,7 @@ const Accomodation = () => {
             </tr>
           </thead>
           <tbody>
-            {accomodationOptions.map((option) => {
+            {accommodationOptions.map((option) => {
               const { name, type, phone, website } = option;
               const number = phone.replace('0', '+44').replace(/\s/g, '');
 
@@ -124,4 +124,4 @@ const Accomodation = () => {
   );
 };
 
-export default Accomodation;
+export default Accommodation;

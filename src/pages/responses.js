@@ -26,9 +26,11 @@ const getGuestResponsesQuery = gql`
         email
       }
       rsvp {
+        id
         responded
         date
         responses {
+          id
           name
           attending
           dietary
@@ -42,9 +44,8 @@ const getGuestResponsesQuery = gql`
 export default ({ children, location }) => {
   const { hideRouting } = useContext(RoutingContext);
 
-  const { loading, error, data } = useQuery(getGuestResponsesQuery, {
+  const { loading, error, data, refetch } = useQuery(getGuestResponsesQuery, {
     // onCompleted(result) {
-    //   console.log(result)
     //   console.log(result.guests.map(guest => cleanResponse(guest, '__typename')))
     // }
   });
@@ -69,7 +70,7 @@ export default ({ children, location }) => {
             <Loading />
           }
           {data && data.guests &&
-            <Responses guests={data.guests.map(guest => cleanResponse(guest))} />
+            <Responses guests={data.guests.map(guest => cleanResponse(guest))} refetch={refetch} />
           }
           {error &&
             <Error error={error} />

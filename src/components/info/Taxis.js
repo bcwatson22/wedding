@@ -34,7 +34,7 @@ const Taxis = () => {
 
   return (
     <>
-      <p>Our wedding venue is in the countryside, please make sure to <strong>book taxis in advance</strong> to guarantee a ride to your accomodation. Music will <strong>finish at <time dateTime={curfew}>{moment(curfew).format('h:mma')}</time></strong>, and all guests must be off site by midnight.</p>
+      <p>Our wedding venue is in the countryside, please make sure to <strong>book taxis in advance</strong> to guarantee a ride to your accommodation. Music will <strong>finish at <time dateTime={curfew}>{moment(curfew).format('h:mma')}</time></strong>, and all guests must be off site by midnight.</p>
       <article className="table--scrolling">
         <table>
           <thead>

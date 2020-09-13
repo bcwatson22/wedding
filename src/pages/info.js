@@ -9,7 +9,7 @@ import SubNav from './../components/info/SubNav';
 import Heading from './../components/info/Heading';
 import Date from './../components/info/Date';
 import Location from './../components/info/Location';
-import Accomodation from './../components/info/Accomodation';
+import Accommodation from './../components/info/Accommodation';
 import Food from './../components/info/Food';
 import Parking from './../components/info/Parking';
 import Gifts from './../components/info/Gifts';
@@ -27,8 +27,8 @@ const contentSections = [
     component: <Location />
   },
   {
-    name: 'Accomodation',
-    component: <Accomodation />,
+    name: 'Accommodation',
+    component: <Accommodation />,
     table: true
   },
   {
