@@ -13,12 +13,13 @@ fieldset {
 input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 .form-input--checkbox,
-.form-input--radio {
+.form-input--radio,
+h3 {
   margin: 1.5rem 0 3rem;
 
-  label:last-of-type & {
-    margin-bottom: 0;
-  }
+  // label:last-of-type & {
+  //   margin-bottom: 0;
+  // }
 }
 
 input,
@@ -69,7 +70,7 @@ textarea {
   min-height: 8rem;
 }
 
-.form-input {
+.form-section {
   @include hwa();
   display: block;
   transition: max-height 0.35s ease;
@@ -81,7 +82,12 @@ textarea {
   }
 
   &--shown {
-    max-height: calc(var(--textarea) * 0.1rem);
+    max-height: calc(var(--height) * 0.1rem);
+  }
+
+  h3 a {
+    display: block;
+    font-size: 1.6rem;
   }
 }
 
@@ -132,6 +138,11 @@ textarea {
 
 .form-group {
   display: flex;
+  flex-flow: wrap;
   align-items: center;
   justify-content: space-between;
+
+  > * {
+    width: calc(50% - 1.5rem);
+  }
 }

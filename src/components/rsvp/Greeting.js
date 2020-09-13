@@ -13,6 +13,8 @@ const Instructions = ({ nicknames, greeting }) => {
       {greeting && <p>{greeting}</p>}
       <p>Please fill in the form below to let us know if you can make it. If you could ensure you've sent your response by <time dateTime={deadline}><strong>{moment(deadline).format('Do MMMM YYYY')}</strong></time> that'd be grand!</p>
       <p>The food in the day will all be vegetarian, so the <strong>Dietary requirements</strong> field below is more for allergies and intolerances.</p>
+      <p>We'd also love for you to <strong>join us the next day</strong> to continue the celebrations. Numbers are limited by the venue, so we're allocating time slots to our nearest and dearest. Let us know if you'd like to come along!</p>
+      <p>As much as we'd love to invite all of our friend's kids, we can <strong>only accommodate children from close family</strong>. We hope you can enjoy the chance to let your hair down and have a night off!</p>
     </>
   );
 };

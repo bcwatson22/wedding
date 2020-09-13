@@ -4,7 +4,8 @@
       "personal": {
         "create": {
           "nicknames": "Arch and Mya",
-          "greeting": "Buzzing that you're one of my groomsmen Archibald!"
+          "greeting": "Buzzing that you're one of my groomsmen Archibald!",
+          "sunday": 1
         }
       },
       "contact": {

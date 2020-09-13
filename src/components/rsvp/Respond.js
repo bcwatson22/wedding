@@ -52,6 +52,7 @@ const Respond = ({ userToken, personal, wrapper }) => {
   const setStatus = (date) => {
 
     scrollTo(wrapper);
+    // console.log(wrapper);
 
     setCompleted(date);
 
