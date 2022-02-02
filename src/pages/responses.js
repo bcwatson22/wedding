@@ -22,6 +22,7 @@ const getGuestResponsesQuery = gql`
         nicknames
       }
       contact {
+        id
         address
         email
       }
@@ -70,7 +71,7 @@ export default ({ children, location }) => {
             <Loading />
           }
           {data && data.guests &&
-            <Responses guests={data.guests.map(guest => cleanResponse(guest))} refetch={refetch} />
+            <Responses guests={data.guests.sort((a, b) => a.contact.id - b.contact.id).map(guest => cleanResponse(guest))} refetch={refetch} />
           }
           {error &&
             <Error error={error} />
