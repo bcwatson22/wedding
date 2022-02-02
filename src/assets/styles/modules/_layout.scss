@@ -55,6 +55,10 @@ main {
     max-width: 76rem;
     @include pseudo-before();
 
+    .page-home & {
+      max-width: 100rem;
+    }
+
     > * {
       position: relative;
     }

@@ -138,40 +138,10 @@ const Form = ({ rsvpId, guests, setStatus }) => {
               <textarea rows="2" name="comments" value={completedResponses[i].comments ? completedResponses[i].comments : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
             </label>
             <section className={`form-section form-section--${completedResponses[i].attending ? 'shown' : 'hidden'}`} ref={fieldRefs.current[i]}>
-              <article className="form-group">
-                <h3>Meal choice<a href="" className="button button--text">View menu</a></h3>
-                <label className="form-input form-input--radio h3">
-                  <input type="radio" name={`sunday${response.name}`} value="true" defaultChecked={response.attending === true} onClick={(e) => handleRadio(e, i)} />
-                  <span className="form-input--radio__indicator"></span>
-                  Sexy Pie
-                </label>
-                <label className="form-input form-input--radio h3">
-                  <input type="radio" name={`sunday${response.name}`} value="false" defaultChecked={response.attending === false} onClick={(e) => handleRadio(e, i)} />
-                  <span className="form-input--radio__indicator"></span>
-                  Spanakopita
-                </label>
-                <label className="form-input form-input--radio h3">
-                  <input type="radio" name={`sunday${response.name}`} value="false" defaultChecked={response.attending === false} onClick={(e) => handleRadio(e, i)} />
-                  <span className="form-input--radio__indicator"></span>
-                  Moussaka
-                </label>
-              </article>
               <label className="form-input form-input--textarea h3">
                 Dietary requirements
                 <textarea rows="2" name="dietary" value={completedResponses[i].dietary ? completedResponses[i].dietary : ''} onChange={(e) => handleTextarea(e, i)}></textarea>
               </label>
-              {/*<article className="form-group">
-                <label className="form-input form-input--radio h3">
-                  <input type="radio" name={`sunday${response.name}`} value="true" defaultChecked={response.attending === true} onClick={(e) => handleRadio(e, i)} />
-                  <span className="form-input--radio__indicator"></span>
-                  Keen for the Sunday
-                </label>
-                <label className="form-input form-input--radio h3">
-                  <input type="radio" name={`sunday${response.name}`} value="false" defaultChecked={response.attending === false} onClick={(e) => handleRadio(e, i)} />
-                  <span className="form-input--radio__indicator"></span>
-                  Swerving the Sunday
-                </label>
-              </article>*/}
             </section>
           </fieldset>
         );

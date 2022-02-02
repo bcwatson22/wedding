@@ -16,12 +16,6 @@ const accommodationOptions = [
     website: 'http://dogandpartridge.co.uk'
   },
   {
-    name: 'Hillcrest House',
-    type: 'B&B',
-    phone: '-',
-    website: 'https://hillcresthousedovedale.co.uk'
-  },
-  {
     name: 'Stanshope Hall',
     type: 'Hotel',
     phone: '01335 310278',
@@ -68,12 +62,6 @@ const accommodationOptions = [
     type: 'Hotel',
     phone: '08719 846362',
     website: 'https://travelodge.co.uk/hotels/385/Ashbourne-hotel'
-  },
-  {
-    name: 'The Orchards Ilam',
-    type: 'Cottage(s)',
-    phone: '07973 772538',
-    website: 'https://www.cottageguide.co.uk/theorchards'
   }
 ];
 
@@ -91,7 +79,7 @@ const Accommodation = () => {
     <>
       <p>There's a range of accommodation options near the venue, suiting different budgets. We've noted a few here but this list isn't exhaustive.</p>
       <p>AirBnb has some decent places too: please have a look around <strong>Ilam</strong> and <strong>Hartington</strong>. The town of <strong>Ashbourne</strong> isn't too far away either.</p>
-      <p>Whatever you choose though, we'd recommend <strong>booking well in advance</strong> as it's a popular tourist spot and a bank holiday - so things could get snapped up fast (especially the YHA)!</p>
+      <p>Whatever you choose though, we'd recommend <strong>booking well in advance</strong> as it's a popular tourist spot - so things could get snapped up fast (especially the YHA)!</p>
       <article className={`table table--scrolling${expanded ? '' : ' table--collapsed'}`} ref={table}>
         <table>
           <thead>
@@ -119,7 +107,7 @@ const Accommodation = () => {
           </tbody>
         </table>
       </article>
-      <button className="button button--block" onClick={(e) => setExpanded(!expanded)}>See {expanded ? 'less' : 'more'}</button>
+      <button className="button button--block" onClick={() => setExpanded(!expanded)}>See {expanded ? 'less' : 'more'}</button>
     </>
   );
 };

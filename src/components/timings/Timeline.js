@@ -84,10 +84,16 @@ const timings = [
     events: [
       {
         time: '14:00',
-        title: 'Photos',
+        title: 'Wedding photos',
         icon: 'photos',
         position: 'left'
-      }
+      },
+      // {
+      //   time: '14:30',
+      //   title: 'Group photo',
+      //   icon: 'group',
+      //   position: 'right'
+      // }
     ]
   },
   {
@@ -97,13 +103,13 @@ const timings = [
         time: '15:00',
         title: 'Speeches',
         icon: 'speeches',
-        position: 'right'
+        position: 'left'
       },
       {
         time: '15:45',
         title: 'Food',
         icon: 'food',
-        position: 'left'
+        position: 'right'
       }
     ]
   },
@@ -114,9 +120,9 @@ const timings = [
     hour: '17:00',
     events: [
       {
-        time: '17:00',
-        title: 'Group photo',
-        icon: 'group',
+        time: '17:30',
+        title: 'Disco Stew',
+        icon: 'frolicking',
         position: 'left'
       }
     ]
@@ -136,7 +142,7 @@ const timings = [
     hour: '19:00',
     events: [
       {
-        time: '19:00',
+        time: '19:30',
         title: 'First dance',
         icon: 'boogying',
         position: 'left'
@@ -147,8 +153,8 @@ const timings = [
     hour: '20:00',
     events: [
       {
-        time: '20:00',
-        title: 'Pizza',
+        time: '20:30',
+        title: 'Evening food',
         icon: 'pizza',
         position: 'right'
       }
@@ -159,15 +165,9 @@ const timings = [
     events: [
       {
         time: '21:00',
-        title: 'Frolicking',
-        icon: 'frolicking',
-        position: 'left'
-      },
-      {
-        time: '21:45',
-        title: 'Dance the night away',
+        title: 'Party time',
         icon: 'bomb',
-        position: 'right'
+        position: 'left'
       }
     ]
   },
@@ -181,7 +181,7 @@ const timings = [
         time: '23:30',
         title: 'Carriages',
         icon: 'carriages',
-        position: 'left'
+        position: 'right'
       }
     ]
   },

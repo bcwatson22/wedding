@@ -1,26 +1,32 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import Ubud from './Ubud';
+import Dorset from './Dorset';
+import Village from './Village';
+import Ijen from './Ijen';
+import Official from './Official';
+import Coron from './Coron';
+import Ullswater from './Ullswater';
+import Nido from './Nido';
+import Tandem from './Tandem';
+import Beacons from './Beacons';
+import Moovin from './Moovin';
+import Sup from './Sup';
 
-import Img from 'gatsby-image';
-
-const Hero = () => {
-  const image = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "hero.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 750) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-    }
-  `);
-
-  return (
-    <section className="hero">
-      <Img fluid={image.file.childImageSharp.fluid} alt="Billy and Becky" />
-    </section>
-  );
-};
+const Hero = () => (
+  <section className="hero">
+    <Ubud />
+    <Dorset />
+    <Village />
+    <Ijen />
+    <Official />
+    <Ullswater />
+    <Coron />
+    <Nido />
+    <Tandem />
+    <Beacons />
+    <Sup />
+    <Moovin />
+  </section>
+);
 
 export default Hero;

@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Guest {
+  id            String         @id @default(cuid()) @db.VarChar(25)
+  contact       Int?
+  personal      Int?
+  rsvp          Int?
+  GuestContact  GuestContact?  @relation(fields: [contact], references: [id], onUpdate: NoAction)
+  GuestPersonal GuestPersonal? @relation(fields: [personal], references: [id], onUpdate: NoAction)
+  GuestRsvp     GuestRsvp?     @relation(fields: [rsvp], references: [id], onUpdate: NoAction)
+}
+
+model GuestContact {
+  id      Int     @id @default(autoincrement())
+  address String?
+  email   String
+  Guest   Guest[]
+}
+
+model GuestPersonal {
+  id        Int     @id @default(autoincrement())
+  greeting  String?
+  nicknames String
+  Guest     Guest[]
+}
+
+model GuestResponse {
+  id        Int         @id @default(autoincrement())
+  attending Boolean?
+  comments  String?
+  dietary   String?
+  name      String
+  GuestRsvp GuestRsvp[]
+}
+
+model GuestRsvp {
+  id            Int             @id @default(autoincrement())
+  date          String?
+  responded     Boolean
+  Guest         Guest[]
+  GuestResponse GuestResponse[]
+}

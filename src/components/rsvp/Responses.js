@@ -138,7 +138,7 @@ const Responses = ({ guests, refetch }) => {
               <th>Name</th>
               <th>Attending</th>
               <th>Comments</th>
-              <th colSpan="2">>Dietary</th>
+              <th colSpan="2">Dietary</th>
             </tr>
             <tr>
               <td><strong>{respondees}</strong></td>
@@ -146,7 +146,7 @@ const Responses = ({ guests, refetch }) => {
               <td className="central"><strong>{invited}</strong></td>
               <td className="central"><strong>{attending}</strong></td>
               <td><strong>{comments}</strong></td>
-              <td colSpan="2">><strong>{dietary}</strong></td>
+              <td colSpan="2"><strong>{dietary}</strong></td>
             </tr>
           </tbody>
         </table>

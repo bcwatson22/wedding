@@ -1,6 +1,0 @@
-endpoint: https://wedding-server-e0acff40a9.herokuapp.com/wedding-service/prod
-datamodel: datamodel.prisma
-
-generate:
-  - generator: javascript-client
-    output: ./generated/prisma-client/

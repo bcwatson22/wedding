@@ -5,6 +5,7 @@
   "author": "Billy Watson <hello@billywatson.net>",
   "dependencies": {
     "@apollo/react-hooks": "3.0.1",
+    "@prisma/client": "^3.4.2",
     "apollo-boost": "0.4.4",
     "basicscroll": "3.0.3",
     "gatsby": "2.20.24",
@@ -49,5 +50,8 @@
     "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "echo 'Write tests! -> https://gatsby.dev/unit-testing'"
+  },
+  "devDependencies": {
+    "prisma": "^3.4.2"
   }
 }

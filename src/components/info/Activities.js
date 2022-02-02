@@ -17,12 +17,13 @@ const Activities = () => {
     }
   `);
 
-  const walk = '2021-05-30T11:00:00';
+  const walk = '2022-05-15T11:00:00';
 
   return (
     <>
       <p>The surrounding countryside to the venue is <strong>absolutely spectacular</strong>! There is lots of hiking, cycling and climbing nearby if you're feeling active or adventurous.</p>
-      <p>We are also going to be going on a <strong>short walk the morning after</strong> the wedding - at around <time dateTime={walk}><strong>{moment(walk).format('h:mma')} on {moment(walk).format('dddd Do MMMM')}</strong></time>. All are welcome and it'd be sweet to see you again if your hangover allows: but absolutly no dramas at all if you're dying a death or have to get back!</p>
+      <p>We are also going to be going on a <strong>short walk the morning after</strong> the wedding - at around <time dateTime={walk}><strong>{moment(walk).format('h:mma')} on {moment(walk).format('dddd Do MMMM')}</strong></time>.</p>
+      <p>All are welcome and it'd be sweet to see you again if your hangover allows: but absolutely no dramas at all if you're dying a death or have to get back! Meet <strong>outside YHA Ilam at {moment(walk).format('h:mma')}</strong> if you're keen.</p>
       <Img fluid={image.file.childImageSharp.fluid} alt="Thorpe Cloud in Dovedale" />
     </>
   );

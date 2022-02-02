@@ -9,9 +9,9 @@ const Header = () => {
       <Container>
         <h1 className="logo">
           <span className="abbr">B&B</span>
-          <small className="abbr">29.5.2021</small>
+          <small className="abbr">14.5.2022</small>
           <span className="full">Billy & Becky</span>
-          <small className="full">29.5.2021. Ilam, Dovedale, The Shire</small>
+          <small className="full">14.5.2022. Ilam, Dovedale, The Shire</small>
         </h1>
         <Nav />
       </Container>
