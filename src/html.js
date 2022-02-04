@@ -8,6 +8,28 @@ export default function HTML(props) {
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="msapplication-TileColor" 
+          content="#13161d" />
+        <meta name="theme-color" 
+          content="#ffffff" />
+        <link rel="icon" 
+          href="public/favicon.ico" />
+        <link rel="apple-touch-icon" 
+          sizes="180x180" 
+          href="public/apple-touch-icon.png" />
+        <link rel="icon" 
+          type="image/png" 
+          sizes="32x32" 
+          href="public/favicon-32x32.png" />
+        <link rel="icon" 
+          type="image/png" 
+          sizes="16x16" 
+          href="public/favicon-16x16.png" />
+        <link rel="manifest" 
+          href="public/manifest.json" />
+        <link rel="mask-icon" 
+          href="public/safari-pinned-tab.svg" 
+          color="#13161d" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
