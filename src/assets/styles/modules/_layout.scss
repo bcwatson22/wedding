@@ -55,7 +55,8 @@ main {
     max-width: 76rem;
     @include pseudo-before();
 
-    .page-home & {
+    .page-home,
+    .page-responses & {
       max-width: 100rem;
     }
 
