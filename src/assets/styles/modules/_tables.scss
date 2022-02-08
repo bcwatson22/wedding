@@ -74,9 +74,9 @@ td {
       &:before,
       &:after {
         position: absolute;
-        @include central-x();
+        left: 3rem;
         height: var(--height);
-        width: 0.1rem;
+        width: 0.2rem;
         background: var(--border);
       }
 

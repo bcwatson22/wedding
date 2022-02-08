@@ -53,12 +53,13 @@ const Responses = ({ guests, refetch }) => {
 
   const total = guests.map(guest => guest.rsvp.responses.map(response => cleanResponse(response))).flat();
   const invited = total.length;
-  const attending = total.filter(response => response.attending === true).length;
+  const areAttending = total.filter(response => response.attending === true).length;
+  const notAttending = total.filter(response => response.attending === false).length;
   const comments = total.filter(response => response.comments).length;
-  const dietary = total.filter(response => response.dietary).length;
+  const dietary = total.filter(response => response.dietary && !response.dietary.startsWith('None')).length;
   const responded = guests.filter(guest => guest.rsvp.responded).length;
   const respondees = guests.length;
-  const percentage = (responded / respondees) * 100;
+  const percentage = ((responded / respondees) * 100).toFixed(1);
 
   useEffect(() => {
 
@@ -133,10 +134,10 @@ const Responses = ({ guests, refetch }) => {
               </React.Fragment>
             ))}
             <tr ref={totals}>
-              <th>Total guests</th>
-              <th>Responded</th>
-              <th>Name</th>
-              <th>Attending</th>
+              <th>Total invites</th>
+              <th className="central">Responded</th>
+              <th className="central">Total names</th>
+              <th className="central">Attending</th>
               <th>Comments</th>
               <th colSpan="2">Dietary</th>
             </tr>
@@ -144,7 +145,7 @@ const Responses = ({ guests, refetch }) => {
               <td><strong>{respondees}</strong></td>
               <td className="central"><strong>{responded}</strong></td>
               <td className="central"><strong>{invited}</strong></td>
-              <td className="central"><strong>{attending}</strong></td>
+              <td className="central"><strong>{areAttending} | {notAttending}</strong></td>
               <td><strong>{comments}</strong></td>
               <td colSpan="2"><strong>{dietary}</strong></td>
             </tr>
