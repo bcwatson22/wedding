@@ -87,13 +87,7 @@ const timings = [
         title: 'Wedding photos',
         icon: 'photos',
         position: 'left'
-      },
-      // {
-      //   time: '14:30',
-      //   title: 'Group photo',
-      //   icon: 'group',
-      //   position: 'right'
-      // }
+      }
     ]
   },
   {
@@ -231,7 +225,7 @@ const Timeline = () => {
       {timings.map((timing, index) => {
         const { hour, events } = timing;
         const i = overlappingHours.findIndex(h => h.hour === hour);
-        const time = `2021-05-29T${hour}:00`;
+        const time = `2022-05-14T${hour}:00`;
 
         return (
           <article className="timeline__hour" key={hour} ref={hourRefs.current[i]}>
@@ -241,7 +235,7 @@ const Timeline = () => {
             {events && events.map((event) => {
               const { time, title, icon, position } = event;
               const index = animatingEvents.findIndex(e => e.time === time);
-              const start = `2021-05-29T${time}:00`;
+              const start = `2022-05-14T${time}:00`;
               let modifier = 'timeline__event--';
 
               switch (time.substring(3, 5)) {

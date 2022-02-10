@@ -30,7 +30,7 @@ const taxiCompanies = [
 ];
 
 const Taxis = () => {
-  const curfew = '2021-05-29T23:30:00';
+  const curfew = '2022-05-14T23:30:00';
 
   return (
     <>

@@ -11,7 +11,7 @@ const Instructions = ({ nicknames, greeting }) => {
     <>
       <h2>Ey up {nicknames && `${nicknames}`}</h2>
       {greeting && <p>{greeting}</p>}
-      <p>Please fill in the form below to let us know if you can make it. If you could ensure you've sent your response by <time dateTime={deadline}><strong>{moment(deadline).format('Do MMMM YYYY')}</strong></time> that'd be grand!</p>
+      <p>Please fill in the form below to let us know if you can make it. If you could ensure you've sent your response by <time dateTime={deadline}><strong>{moment(deadline).format('Do MMMM YYYY')}</strong></time> that'd be marvellous!</p>
       <p>As much as we'd love to invite all of our friend's kids, we can <strong>only accommodate children from close family</strong>. We hope you can enjoy the chance to let your hair down and have a night off!</p>
     </>
   );
