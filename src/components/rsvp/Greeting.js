@@ -5,7 +5,7 @@ import moment from 'moment';
 import Link from './../Link';
 
 const Instructions = ({ nicknames, greeting }) => {
-  const deadline = '2022-03-31';
+  const deadline = '2022-03-14';
 
   return (
     <>
